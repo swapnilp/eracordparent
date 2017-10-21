@@ -3,13 +3,13 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { ExamsPage } from '../pages/exams/exams';
 import { HostelPage } from '../pages/hostel/hostel';
 import { DailyTeachesPage } from '../pages/daily-teaches/daily-teaches';
 import { AccountPage } from '../pages/account/account';
 import { SettingPage } from '../pages/setting/setting';
-
-
+import { ExamsPage } from '../pages/exams/exams';
+import { MpinLoginPage } from '../pages/mpin-login/mpin-login';
+import { RegisterPage } from '../pages/register/register';
 import { EracordPage } from '../pages/eracord/eracord';
 
 
@@ -29,10 +29,7 @@ export class MyApp {
       splashScreen.hide();
     });
   }
-  goToExams(params){
-    if (!params) params = {};
-    this.navCtrl.setRoot(ExamsPage);
-  }goToHostel(params){
+  goToHostel(params){
     if (!params) params = {};
     this.navCtrl.setRoot(HostelPage);
   }goToDailyTeaches(params){
@@ -44,5 +41,14 @@ export class MyApp {
   }goToSetting(params){
     if (!params) params = {};
     this.navCtrl.setRoot(SettingPage);
+  }goToExams(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(ExamsPage);
+  }goToMpinLogin(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(MpinLoginPage);
+  }goToRegister(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(RegisterPage);
   }
 }

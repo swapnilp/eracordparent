@@ -12,6 +12,8 @@ import { DailyTeachesPage } from '../pages/daily-teaches/daily-teaches';
 import { HostelPage } from '../pages/hostel/hostel';
 import { AccountPage } from '../pages/account/account';
 import { SettingPage } from '../pages/setting/setting';
+import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
+import { OrganisationPaymentPage } from '../pages/organisation-payment/organisation-payment';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -29,7 +31,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DailyTeachesPage,
     HostelPage,
     AccountPage,
-    SettingPage
+    SettingPage,
+    EracordPaymentPage,
+    OrganisationPaymentPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DailyTeachesPage,
     HostelPage,
     AccountPage,
-    SettingPage
+    SettingPage,
+    EracordPaymentPage,
+    OrganisationPaymentPage
   ],
   providers: [
     StatusBar,

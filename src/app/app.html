@@ -2,7 +2,7 @@
   <ion-header>
     <ion-toolbar>
       <ion-title>
-        Students
+        Menu
       </ion-title>
     </ion-toolbar>
   </ion-header>
@@ -13,7 +13,7 @@
           <img />
         </ion-avatar>
         <h2>
-          Student Name
+          student.name
         </h2>
       </ion-item>
       <ion-item color="none" menuClose="" on-click="goToExams()" id="menu-list-item10">
@@ -37,8 +37,12 @@
         Notifications
       </ion-item>
       <ion-item color="none" menuClose="" on-click="goToSetting()" id="menu-list-item21">
-        <ion-icon name="settings" item-left></ion-icon>
+        <ion-icon name="construct" item-left></ion-icon>
         Setting
+      </ion-item>
+      <ion-item color="none" menuClose="" on-click="goToMpinLogin()" id="menu-list-item23">
+        <ion-icon name="log-out" item-left></ion-icon>
+        Sign Out
       </ion-item>
     </ion-list>
   </ion-content>

@@ -12,6 +12,6 @@ export class SettingPage {
   }
   goToExams(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(ExamsPage);
+    this.navCtrl.push(ExamsPage);
   }
 }
