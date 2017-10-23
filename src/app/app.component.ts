@@ -11,7 +11,7 @@ import { ExamsPage } from '../pages/exams/exams';
 import { MpinLoginPage } from '../pages/mpin-login/mpin-login';
 import { RegisterPage } from '../pages/register/register';
 import { EracordPage } from '../pages/eracord/eracord';
-
+import { Events } from 'ionic-angular';
 
 
 @Component({
@@ -19,9 +19,17 @@ import { EracordPage } from '../pages/eracord/eracord';
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = EracordPage;
-
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  rootPage:any = EracordPage;
+  studentName = "Name";
+  
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events) {
+    this.rootPage = MpinLoginPage;
+    
+    events.subscribe('user:login', (name) => {
+      const user = JSON.parse(localStorage.getItem('userData'));
+      this.studentName = user.name;
+    });
+    
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

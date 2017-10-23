@@ -1,7 +1,10 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+
+import { AuthService } from '../providers/auth-service/auth-service';
 import { EracordPage } from '../pages/eracord/eracord';
 import { NewParentPage } from '../pages/new-parent/new-parent';
 import { RegisterParentPage } from '../pages/register-parent/register-parent';
@@ -14,8 +17,6 @@ import { AccountPage } from '../pages/account/account';
 import { SettingPage } from '../pages/setting/setting';
 import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
 import { OrganisationPaymentPage } from '../pages/organisation-payment/organisation-payment';
-
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -37,6 +38,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -57,8 +59,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    SplashScreen, 
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthService
   ]
 })
 export class AppModule {}

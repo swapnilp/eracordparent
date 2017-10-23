@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton="true">
     <ion-title>
       Mpin Login
     </ion-title>
@@ -17,17 +17,18 @@
   <h4 id="mpinLogin-heading5" style="color:#000000;">
     mobile
   </h4>
-  <form id="mpinLogin-form5">
+  <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
     <ion-item id="mpinLogin-input9">
       <ion-label>
         MPIN
       </ion-label>
-      <ion-input type="tel" placeholder=""></ion-input>
+      <ion-input type="tel" placeholder="" required [(ngModel)]="userData.mpin" [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    <button id="mpinLogin-button6" ion-button color="positive" full [disabled]="!loginForm.form.valid">
+      Login
+    </button>
   </form>
-  <button id="mpinLogin-button6" ion-button color="positive" full on-click="goToExams()">
-    Login
-  </button>
   <button id="mpinLogin-button7" ion-button clear color="positive" full small on-click="goToRegister()">
     Different Account?
   </button>
