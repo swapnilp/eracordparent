@@ -6,8 +6,8 @@
       </ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content padding="false" class="side-menu-left has-header">
-    <ion-slides pager slider="slider1" delegate-handle="slider1" id="students-slider1" style="width:100%;height:350PX;">
+  <ion-content padding="false" class="side-menu-left has-header" (mousedown)="onMousedown()">
+    <ion-slides pager slider="slider1" delegate-handle="slider1" centered-slides="true" id="students-slider1" style="width:100%;height:350PX;" (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="onSlideDrag()">
       <ion-slide id="students-slide24" *ngFor="let student of students">
         <ion-list id="menu-list3">
           <ion-item color="none" id="menu-list-item22">

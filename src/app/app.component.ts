@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Platform, Nav, Slides, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -11,7 +11,6 @@ import { ExamsPage } from '../pages/exams/exams';
 import { MpinLoginPage } from '../pages/mpin-login/mpin-login';
 import { RegisterPage } from '../pages/register/register';
 import { EracordPage } from '../pages/eracord/eracord';
-import { Events } from 'ionic-angular';
 
 
 @Component({
@@ -19,10 +18,12 @@ import { Events } from 'ionic-angular';
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
+  @ViewChild(Slides) slides: Slides;
   rootPage:any = EracordPage;
   studentName = "Name";
   students = [{ Name:'item-1', Value:false},
            { Name:'item-2', Value:false}];
+  isFirstChange = true;
   
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events) {
     this.rootPage = MpinLoginPage;
@@ -30,6 +31,7 @@ export class MyApp {
     events.subscribe('user:login', (name) => {
       const user = JSON.parse(localStorage.getItem('userData'));
       this.studentName = user.name;
+      this.slides.update();
     });
     
     platform.ready().then(() => {
@@ -39,6 +41,27 @@ export class MyApp {
       splashScreen.hide();
     });
   }
+
+  ngAfterViewInit() {
+    this.slides.freeMode = true;
+  }
+  
+  slideChanged() {
+    let currentIndex = this.slides.getActiveIndex();
+    this.slides.slideTo(currentIndex, 0, false);
+  }
+  
+  onSlideDrag() {
+    if (this.isFirstChange) {
+      this.isFirstChange = false;
+      this.slideChanged();
+    }
+  }
+
+  onMousedown() {
+    this.isFirstChange = true;
+  }
+  
   goToHostel(params){
     if (!params) params = {};
     this.navCtrl.setRoot(HostelPage);
