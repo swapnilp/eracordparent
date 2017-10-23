@@ -8,7 +8,8 @@ import 'rxjs/add/operator/map';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-let apiUrl = 'http://localhost:3000/parents/';
+//let apiUrl = 'http://localhost:3000/parents/';
+let apiUrl = 'http://192.168.1.2:3000/parents/';
 
 @Injectable()
 export class AuthService {
