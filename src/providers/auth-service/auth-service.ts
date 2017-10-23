@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-let apiUrl = 'http://192.168.1.2:3000/parents/';
+let apiUrl = 'http://localhost:3000/parents/';
 
 @Injectable()
 export class AuthService {
@@ -20,15 +20,17 @@ export class AuthService {
   postData(credentials, type) {
     return new Promise((resolve, reject) => {
       
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      //let headers = new Headers();
+      //headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      //
+      //this.http.post(apiUrl + type+ ".json" , credentials, {headers: headers})
+      //  .subscribe(res => {
+      //    resolve(res.json());
+      //  }, (err) => {
+      //    reject(err);
+      //  });
       
-      this.http.post(apiUrl + type+ ".json" , credentials, {headers: headers})
-        .subscribe(res => {
-          resolve(res.json());
-        }, (err) => {
-          reject(err);
-        });
+      resolve({id: 10, "name": "Swapnil123", "email": "swapnil.patil04@gmail.com"});
     });
   }
 }
