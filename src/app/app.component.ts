@@ -21,6 +21,8 @@ export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
   rootPage:any = EracordPage;
   studentName = "Name";
+  students = [{ Name:'item-1', Value:false},
+           { Name:'item-2', Value:false}];
   
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events) {
     this.rootPage = MpinLoginPage;

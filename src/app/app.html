@@ -6,40 +6,41 @@
       </ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content id="side-menu21">
-    <ion-list id="menu-list3">
-      <ion-item color="none" id="menu-list-item22">
-        <ion-avatar item-left>
-          <img />
-        </ion-avatar>
-        <h2>
-          {{studentName}}
-        </h2>
-      </ion-item>
-      <ion-item color="none" menuClose="" on-click="goToExams()" id="menu-list-item10">
-        <ion-icon name="school" item-left></ion-icon>
-        Exams
-      </ion-item>
-      <ion-item color="none" menuClose="" on-click="goToDailyTeaches()" id="menu-list-item11">
-        <ion-icon name="list-box" item-left></ion-icon>
-        Daily teaches
-      </ion-item>
-      <ion-item color="none" menuClose="" on-click="goToHostel()" id="menu-list-item12">
-        <ion-icon name="home" item-left></ion-icon>
-        Hostel
-      </ion-item>
-      <ion-item color="none" menuClose="" on-click="goToAccount()" id="menu-list-item13">
-        <ion-icon name="bitcoin" item-left></ion-icon>
-        Accounts
-      </ion-item>
-      <ion-item color="none" id="menu-list-item14">
-        <ion-icon name="alarm" item-left></ion-icon>
-        Notifications
-      </ion-item>
-      <ion-item color="none" menuClose="" on-click="goToSetting()" id="menu-list-item21">
-        <ion-icon name="construct" item-left></ion-icon>
-        Setting
-      </ion-item>
+  <ion-content padding="false" class="side-menu-left has-header ">
+    <ion-slides disable-side-menu-drag="" options="{'loop': true}" slider="slider1" delegate-handle="slider1" id="students-slider1" style="width:100%;height:350PX;">
+      <ion-slide id="students-slide24" *ngFor="let student of students">
+        <ion-list id="menu-list3">
+          <ion-item color="none" id="menu-list-item22">
+            {{studentName}}
+          </ion-item>
+          <ion-item color="none" menuClose="" on-click="goToExams()" id="menu-list-item10">
+            <ion-icon name="school" item-left></ion-icon>
+            Exams
+          </ion-item>
+          <ion-item color="none" menuClose="" on-click="goToDailyTeaches()" id="menu-list-item11">
+            <ion-icon name="list-box" item-left></ion-icon>
+            Daily teaches
+          </ion-item>
+          <ion-item color="none" menuClose="" on-click="goToHostel()" id="menu-list-item12">
+            <ion-icon name="home" item-left></ion-icon>
+            Hostel
+          </ion-item>
+          <ion-item color="none" menuClose="" on-click="goToAccount()" id="menu-list-item13">
+            <ion-icon name="bitcoin" item-left></ion-icon>
+            Accounts
+          </ion-item>
+          <ion-item color="none" id="menu-list-item14">
+            <ion-icon name="alarm" item-left></ion-icon>
+            Notifications
+          </ion-item>
+          <ion-item color="none" menuClose="" on-click="goToSetting()" id="menu-list-item21">
+            <ion-icon name="construct" item-left></ion-icon>
+            Setting
+          </ion-item>
+        </ion-list>
+      </ion-slide>
+    </ion-slides>
+    <ion-list>
       <ion-item color="none" menuClose="" on-click="goToMpinLogin()" id="menu-list-item23">
         <ion-icon name="log-out" item-left></ion-icon>
         Sign Out
