@@ -24,7 +24,9 @@ export class MpinLoginPage {
   }goToExams(params){
     if (!params) params = {};
     //this.navCtrl.push(ExamsPage);
-    this.navCtrl.setRoot(ExamsPage);
+    this.navCtrl.setRoot(ExamsPage, {
+      'studentID': params['studentId']
+    });
   }
   
   login(): void {
@@ -36,7 +38,9 @@ export class MpinLoginPage {
       this.events.publish('user:login', "Swapnil Patil");
       
       if(this.responseData.success && this.responseData.students.length > 0){
-        this.navCtrl.setRoot(ExamsPage);
+        this.navCtrl.setRoot(ExamsPage, {
+          'studentID': this.responseData.students[0].student_id
+        });
       } else {
         this.navCtrl.setRoot(StudentsPage);
       }

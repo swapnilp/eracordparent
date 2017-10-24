@@ -92,7 +92,7 @@ export class MyApp {
   }goToExams(params){
     if (!params) params = {};
     this.navCtrl.setRoot(ExamsPage, {
-      'studentID': params.studentID
+      'studentID': params['studentId']
     });
   }goToMpinLogin(params){
     if (!params) params = {};
