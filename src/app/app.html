@@ -7,25 +7,25 @@
     </ion-toolbar>
   </ion-header>
   <ion-content padding="false" class="side-menu-left has-header" (mousedown)="onMousedown()">
-    <ion-slides pager slider="slider1" delegate-handle="slider1" centered-slides="true" id="students-slider1" style="width:100%;height:350PX;" (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="onSlideDrag()">
+    <ion-slides slider="slider1" pager="true" spaceBetween="10" paginationType="bullets"  delegate-handle="slider1" centered-slides="true" id="students-slider1" style="width:100%;height:350PX;" (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="onSlideDrag()" *ngIf="students.length > 0">
       <ion-slide id="students-slide24" *ngFor="let student of students">
         <ion-list id="menu-list3">
           <ion-item color="none" id="menu-list-item22">
-            {{studentName}}
+            {{student.name}}
           </ion-item>
-          <ion-item color="none" menuClose="" on-click="goToExams()" id="menu-list-item10">
+          <ion-item color="none" menuClose="" on-click="goToExams({studentId: student.id})" id="menu-list-item10">
             <ion-icon name="school" item-left></ion-icon>
             Exams
           </ion-item>
-          <ion-item color="none" menuClose="" on-click="goToDailyTeaches()" id="menu-list-item11">
+          <ion-item color="none" menuClose="" on-click="goToDailyTeaches({studentId: student.id})" id="menu-list-item11">
             <ion-icon name="list-box" item-left></ion-icon>
             Daily teaches
           </ion-item>
-          <ion-item color="none" menuClose="" on-click="goToHostel()" id="menu-list-item12">
+          <ion-item color="none" menuClose="" on-click="goToHostel({studentId: student.id})" id="menu-list-item12">
             <ion-icon name="home" item-left></ion-icon>
             Hostel
           </ion-item>
-          <ion-item color="none" menuClose="" on-click="goToAccount()" id="menu-list-item13">
+          <ion-item color="none" menuClose="" on-click="goToAccount({studentId: student.id})" id="menu-list-item13">
             <ion-icon name="bitcoin" item-left></ion-icon>
             Accounts
           </ion-item>
@@ -33,7 +33,7 @@
             <ion-icon name="alarm" item-left></ion-icon>
             Notifications
           </ion-item>
-          <ion-item color="none" menuClose="" on-click="goToSetting()" id="menu-list-item21">
+          <ion-item color="none" menuClose="" on-click="goToSetting({studentId: student.id})" id="menu-list-item21">
             <ion-icon name="construct" item-left></ion-icon>
             Setting
           </ion-item>

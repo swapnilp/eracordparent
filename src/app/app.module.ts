@@ -15,10 +15,12 @@ import { DailyTeachesPage } from '../pages/daily-teaches/daily-teaches';
 import { HostelPage } from '../pages/hostel/hostel';
 import { AccountPage } from '../pages/account/account';
 import { SettingPage } from '../pages/setting/setting';
+import { StudentsPage } from '../pages/students/students';
 import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
 import { OrganisationPaymentPage } from '../pages/organisation-payment/organisation-payment';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AlertService } from '../providers/alert-service/alert-service';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HostelPage,
     AccountPage,
     SettingPage,
+    StudentsPage,
     EracordPaymentPage,
     OrganisationPaymentPage
   ],
@@ -54,6 +57,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HostelPage,
     AccountPage,
     SettingPage,
+    StudentsPage,
     EracordPaymentPage,
     OrganisationPaymentPage
   ],
@@ -61,7 +65,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen, 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthService
+    AuthService,
+    AlertService
   ]
 })
 export class AppModule {}

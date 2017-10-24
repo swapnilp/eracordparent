@@ -21,8 +21,7 @@ export class MyApp {
   @ViewChild(Slides) slides: Slides;
   rootPage:any = EracordPage;
   studentName = "Name";
-  students = [{ Name:'item-1', Value:false},
-           { Name:'item-2', Value:false}];
+  students = [];
   isFirstChange = true;
   
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events) {
@@ -30,8 +29,14 @@ export class MyApp {
     
     events.subscribe('user:login', (name) => {
       const user = JSON.parse(localStorage.getItem('userData'));
+      let self = this;
       this.studentName = user.name;
-      this.slides.update();
+      this.students = user.students;
+      if(this.students.length > 0) {
+        setTimeout(function(){
+          self.slides.update();
+        }, 2000);
+      }
     });
     
     platform.ready().then(() => {
@@ -43,7 +48,9 @@ export class MyApp {
   }
 
   ngAfterViewInit() {
-    this.slides.freeMode = true;
+    if(this.slides) {
+      this.slides.freeMode = true;
+    }
   }
   
   slideChanged() {
@@ -64,19 +71,29 @@ export class MyApp {
   
   goToHostel(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(HostelPage);
+    this.navCtrl.setRoot(HostelPage, {
+      'studentID': params.studentID
+    });
   }goToDailyTeaches(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(DailyTeachesPage);
+    this.navCtrl.setRoot(DailyTeachesPage, {
+      'studentID': params.studentID
+    });
   }goToAccount(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(AccountPage);
+    this.navCtrl.setRoot(AccountPage, {
+      'studentID': params.studentID
+    });
   }goToSetting(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(SettingPage);
+    this.navCtrl.setRoot(SettingPage, {
+      'studentID': params.studentID
+    });
   }goToExams(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(ExamsPage);
+    this.navCtrl.setRoot(ExamsPage, {
+      'studentID': params.studentID
+    });
   }goToMpinLogin(params){
     if (!params) params = {};
     this.navCtrl.setRoot(MpinLoginPage);

@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-exams',
   templateUrl: 'exams.html'
 })
 export class ExamsPage {
-
-  constructor(public navCtrl: NavController) {
+  studentID : any;
+  constructor(public navCtrl: NavController, public params: NavParams) {
+    this.studentID = params.get('studentID');
   }
   
 }

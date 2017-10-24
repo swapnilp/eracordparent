@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
   and Angular DI.
 */
 //let apiUrl = 'http://localhost:3000/parents/';
-let apiUrl = 'http://192.168.1.2:3000/parents/';
+let apiUrl = 'http://192.168.1.100:3000/parents/';
 
 @Injectable()
 export class AuthService {
@@ -21,17 +21,16 @@ export class AuthService {
   postData(credentials, type) {
     return new Promise((resolve, reject) => {
       
-      //let headers = new Headers();
-      //headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      //
-      //this.http.post(apiUrl + type+ ".json" , credentials, {headers: headers})
-      //  .subscribe(res => {
-      //    resolve(res.json());
-      //  }, (err) => {
-      //    reject(err);
-      //  });
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/x-www-form-urlencoded');
       
-      resolve({id: 10, "name": "Swapnil123", "email": "swapnil.patil04@gmail.com"});
+      this.http.post(apiUrl + type+ ".json" , credentials, {headers: headers})
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        });
+      
     });
   }
 }
