@@ -14,17 +14,18 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page11">
-  <h4 id="account-heading10" style="color:#000000;">
-    Balance
+  <h4 id="account-heading10" class="{{balance < 0 ? 'red' : ''}}">
+    Balance <small><strong>{{balance < 0 ? (balance * -1) : balance}}</strong></small> <small style="color: red;" *ngIf="balance < 0">Due</small>
   </h4>
   <h5 id="account-heading11" style="color:#000000;">
     Transactions
   </h5>
   <ion-list id="account-list8">
-    <ion-item color="none" id="account-list-item19">
-      transaction.date
+    <ion-item color="none" id="account-list-item19" *ngFor="let transaction of transactions">
+      {{transaction.date}}
       <br />
-      <ion-note item-right></ion-note>
+      {{transaction.obj_type}}
+      <ion-note item-right>{{transaction.amount}}</ion-note>
     </ion-item>
   </ion-list>
 </ion-content>

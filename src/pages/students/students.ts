@@ -32,7 +32,7 @@ export class StudentsPage {
   }goToAccount(params){
     if (!params) params = {};
     this.navCtrl.setRoot(AccountPage, {
-      'studentID': params.studentID
+      'studentID': params.studentId
     });
   }goToSetting(params){
     if (!params) params = {};
