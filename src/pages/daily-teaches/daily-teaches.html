@@ -15,10 +15,13 @@
 </ion-header>
 <ion-content padding id="page9">
   <ion-list id="dailyTeaches-list5">
-    <ion-item color="none" id="dailyTeaches-list-item16">
-      dtp.subject
+    <ion-item color="none" id="dailyTeaches-list-item16" *ngFor="let dtp of daily_teachs">
+      {{dtp.subject}}
       <br />
-      <ion-note item-right></ion-note>
+      {{dtp.date}}
+      <br>
+      <small>{{dtp.points}}</small>
+      <ion-note item-right>{{(dtp.verify_absenty && dtp.is_absent) ? "Absent" : ""}}</ion-note>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
-import { ExamsPage } from '../exams/exams';
-import { StudentsPage } from '../students/students';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
 import { Events } from 'ionic-angular';
@@ -21,12 +19,6 @@ export class MpinLoginPage {
   goToRegister(params){
     if (!params) params = {};
     this.navCtrl.push(RegisterPage);
-  }goToExams(params){
-    if (!params) params = {};
-    //this.navCtrl.push(ExamsPage);
-    this.navCtrl.setRoot(ExamsPage, {
-      'studentID': params['studentId']
-    });
   }
   
   login(): void {
@@ -36,14 +28,6 @@ export class MpinLoginPage {
       this.responseData = result;
       localStorage.setItem('userData', JSON.stringify(this.responseData));
       this.events.publish('user:login', "Swapnil Patil");
-      
-      if(this.responseData.success && this.responseData.students.length > 0){
-        this.navCtrl.setRoot(ExamsPage, {
-          'studentID': this.responseData.students[0].student_id
-        });
-      } else {
-        this.navCtrl.setRoot(StudentsPage);
-      }
 
     }, (err) => {
       var msg = JSON.parse(err._body).message;

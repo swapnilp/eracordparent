@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { AuthService } from '../../providers/auth-service/auth-service';
 
 @Component({
   selector: 'page-exams',
@@ -7,8 +8,17 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ExamsPage {
   studentID : any;
-  constructor(public navCtrl: NavController, public params: NavParams) {
+  exams = [];
+  
+  constructor(public navCtrl: NavController, public params: NavParams, public authService: AuthService) {
     this.studentID = params.get('studentID');
+    this.getExams()
+  }
+
+  getExams() {
+    this.authService.getApiData('exam_catlogs', "", this.studentID).then((result) => {
+      this.exams = result['exams'];
+    });
   }
   
 }

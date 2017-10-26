@@ -15,10 +15,11 @@
 </ion-header>
 <ion-content padding id="page8">
   <ion-list id="exams-list4">
-    <ion-item color="none" id="exams-list-item15">
-      exam.subject
+    <ion-item color="none" id="exams-list-item15" *ngFor="let exam of exams">
+      {{exam.name}}
       <br />
-      <ion-note item-right></ion-note>
+      {{exam.date}}
+      <ion-note item-right>{{exam.status === "Published" ? (exam.is_present ? exam.marks : "Absent") : exam.status}}</ion-note>
     </ion-item>
   </ion-list>
 </ion-content>

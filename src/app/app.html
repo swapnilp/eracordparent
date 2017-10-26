@@ -7,7 +7,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-content padding="false" class="side-menu-left has-header" (mousedown)="onMousedown()">
-    <ion-slides slider="slider1" pager="true" spaceBetween="10" paginationType="bullets"  delegate-handle="slider1" centered-slides="true" id="students-slider1" style="width:100%;height:350PX;" (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="onSlideDrag()" *ngIf="students.length > 0">
+    <ion-slides slider="slider1" pager="true" spaceBetween="10" paginationType="bullets"  delegate-handle="slider1" centered-slides="true" id="students-slider1" style="width:100%;height:350PX;" (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="onSlideDrag()" *ngIf="false">
       <ion-slide id="students-slide24" *ngFor="let student of students">
         <ion-list id="menu-list3">
           <ion-item color="none" id="menu-list-item22">
@@ -41,6 +41,10 @@
       </ion-slide>
     </ion-slides>
     <ion-list>
+      <ion-item color="none" menuClose="" on-click="goToStudent()" id="menu-list-item23">
+        <ion-icon name="contacts" item-left></ion-icon>
+        Students
+      </ion-item>
       <ion-item color="none" menuClose="" on-click="goToMpinLogin()" id="menu-list-item23">
         <ion-icon name="log-out" item-left></ion-icon>
         Sign Out

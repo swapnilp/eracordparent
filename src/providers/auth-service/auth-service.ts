@@ -10,12 +10,12 @@ import 'rxjs/add/operator/map';
 */
 //let apiUrl = 'http://localhost:3000/parents/';
 let apiUrl = 'http://192.168.1.100:3000/parents/';
+let serverUrl = 'http://192.168.1.100:3000/api/v1/parents/';
 
 @Injectable()
 export class AuthService {
 
   constructor(public http: Http) {
-    console.log('Hello AuthServiceProvider Provider');
   }
   
   postData(credentials, type) {
@@ -33,4 +33,24 @@ export class AuthService {
       
     });
   }
+  
+  getApiData(url, params, student_id = null) {
+    
+    return new Promise((resolve, reject) => {
+      const user = JSON.parse(localStorage.getItem('userData'));
+      
+      let req_params = "&authorization_token="+ user.token;
+      if(student_id) {
+        req_params  = req_params  + "&student_id=" + student_id;
+      }
+      
+      this.http.get(serverUrl + url+ ".json?" + req_params)
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
 }

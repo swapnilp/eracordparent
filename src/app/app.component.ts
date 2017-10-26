@@ -11,7 +11,7 @@ import { ExamsPage } from '../pages/exams/exams';
 import { MpinLoginPage } from '../pages/mpin-login/mpin-login';
 import { RegisterPage } from '../pages/register/register';
 import { EracordPage } from '../pages/eracord/eracord';
-
+import { StudentsPage } from '../pages/students/students';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +20,6 @@ export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
   @ViewChild(Slides) slides: Slides;
   rootPage:any = EracordPage;
-  studentName = "Name";
   students = [];
   isFirstChange = true;
   
@@ -28,15 +27,16 @@ export class MyApp {
     this.rootPage = MpinLoginPage;
     
     events.subscribe('user:login', (name) => {
-      const user = JSON.parse(localStorage.getItem('userData'));
       let self = this;
-      this.studentName = user.name;
+      const user = JSON.parse(localStorage.getItem('userData'));
       this.students = user.students;
-      if(this.students.length > 0) {
-        setTimeout(function(){
-          self.slides.update();
-        }, 2000);
-      }
+      //if(this.students.length > 0 && self.slides) {
+      //  setTimeout(function(){
+      //    self.slides.update();
+      //    self.navCtrl.setRoot(StudentsPage);
+      //  }, 2000);
+      //}
+      self.navCtrl.setRoot(StudentsPage);
     });
     
     platform.ready().then(() => {
@@ -49,7 +49,7 @@ export class MyApp {
 
   ngAfterViewInit() {
     if(this.slides) {
-      this.slides.freeMode = true;
+      //this.slides.freeMode = true;
     }
   }
   
@@ -100,5 +100,8 @@ export class MyApp {
   }goToRegister(params){
     if (!params) params = {};
     this.navCtrl.setRoot(RegisterPage);
+  }goToStudent(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(StudentsPage);
   }
 }
