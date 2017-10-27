@@ -6,11 +6,6 @@
     <ion-title>
       Students
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon name="briefcase"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page15" >
@@ -23,30 +18,36 @@
     <div *ngFor="let student of students">
       <ion-list id="menu-list3">
         <ion-item-divider color="light">{{student.name}}</ion-item-divider>
-        <ion-item color="none" menuClose="" on-click="goToExams({studentId: student.student_id})" id="menu-list-item10">
-          <ion-icon name="school" item-left></ion-icon>
-          Exams
-        </ion-item>
-        <ion-item color="none" menuClose="" on-click="goToDailyTeaches({studentId: student.student_id})" id="menu-list-item11">
-          <ion-icon name="list-box" item-left></ion-icon>
-          Daily teaches
-        </ion-item>
-        <ion-item color="none" menuClose="" on-click="goToHostel({studentId: student.student_id})" id="menu-list-item12">
-          <ion-icon name="home" item-left></ion-icon>
-          Hostel
-        </ion-item>
-        <ion-item color="none" menuClose="" on-click="goToAccount({studentId: student.student_id})" id="menu-list-item13">
-          <ion-icon name="bitcoin" item-left></ion-icon>
-          Accounts
-        </ion-item>
-        <ion-item color="none" id="menu-list-item14">
-          <ion-icon name="alarm" item-left></ion-icon>
-          Notifications
-        </ion-item>
-        <ion-item color="none" menuClose="" on-click="goToSetting({studentId: student.student_id})" id="menu-list-item21">
-          <ion-icon name="construct" item-left></ion-icon>
-          Setting
-        </ion-item>
+        <ion-grid>
+          <ion-row style="height: 60px;" text-center justify-content-center align-items-center>
+            <ion-col on-click="goToExams({studentId: student.student_id})" col-4 class="colBottomNoBorder" justify-content-center align-items-center>
+              <ion-icon name="school" item-left></ion-icon>
+              Exams
+            </ion-col>
+            <ion-col on-click="goToExams({studentId: student.student_id})" col-4 class="colNoBorder colBottomNoBorder">
+              <ion-icon name="list-box" item-left></ion-icon>
+              Daily teaches
+            </ion-col>
+            <ion-col on-click="goToHostel({studentId: student.student_id})" col-4 class="colBottomNoBorder">
+              <ion-icon name="home" item-left></ion-icon>
+              Hostel
+            </ion-col>
+          </ion-row>
+          <ion-row style="height: 60px;" text-center justify-content-center align-items-center>
+            <ion-col on-click="goToAccount({studentId: student.student_id})" col-4>
+              <ion-icon name="briefcase" item-left></ion-icon>
+              Accounts
+            </ion-col>
+            <ion-col col-4 class="colNoBorder">
+              <ion-icon name="alarm" item-left></ion-icon>
+              Notifications
+            </ion-col>
+            <ion-col on-click="goToSetting({studentId: student.student_id})" col-4>
+              <ion-icon name="construct" item-left></ion-icon>
+              Setting
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-list>
     </div>
   </ion-list>

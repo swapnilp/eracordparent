@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
+import { StudentsPage } from '../students/students';
 
 @Component({
   selector: 'page-account',
@@ -40,4 +41,8 @@ export class AccountPage {
     });
   }
   
+  goToStudent(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(StudentsPage);
+  }
 }

@@ -1,3 +1,19 @@
 page-students {
-
+  
+  ion-icon {
+    display: inline-block;
+    font-size: 2.1em;
+    line-height: 49px;
+  }
+  .col{
+    border: solid gray;
+    height: 100%;
+  }
+  .colNoBorder {
+    border-left: none;
+    border-right: none;
+  }
+  .colBottomNoBorder {
+    border-bottom: none;
+  }
 }
