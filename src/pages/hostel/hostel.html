@@ -22,7 +22,7 @@
       Room not allocated
     </h5>
     <h5 id="hostel-heading8" style="color:#000000;" *ngIf="roommates.length > 0">
-      Roommates
+      <ion-item-divider color="light">Roommates</ion-item-divider>
     </h5>
     <ion-list id="hostel-list6" *ngIf="roommates.length > 0">
       <ion-item color="none" id="hostel-list-item17" *ngFor="let student of roommates">
@@ -30,7 +30,7 @@
       </ion-item>
     </ion-list>
     <h5 id="hostel-heading9" style="color:#000000;">
-      IN Out Timing
+      <ion-item-divider color="light">IN Out Timing</ion-item-divider>
     </h5>
     <ion-list id="hostel-list7">
       <ion-item color="none" id="hostel-list-item18">

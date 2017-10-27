@@ -21,8 +21,8 @@
   </div>
   <ion-list id="students-list4" *ngIf="students.length > 0">
     <div *ngFor="let student of students">
-      <h3 id="student-heading7" style="color:#000000;">{{student.name}}</h3>
       <ion-list id="menu-list3">
+        <ion-item-divider color="light">{{student.name}}</ion-item-divider>
         <ion-item color="none" menuClose="" on-click="goToExams({studentId: student.student_id})" id="menu-list-item10">
           <ion-icon name="school" item-left></ion-icon>
           Exams

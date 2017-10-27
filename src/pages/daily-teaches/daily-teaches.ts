@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 
 @Component({
@@ -9,8 +9,13 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 export class DailyTeachesPage {
   studentID : any;
   daily_teachs = [];
-
-  constructor(public navCtrl: NavController, public params: NavParams, public authService: AuthService) {
+  loading = this.loadingController.create({
+    spinner: 'bubbles',
+    content: "Please wait..."
+  });  
+  
+  constructor(public navCtrl: NavController, public params: NavParams, public authService: AuthService, public loadingController: LoadingController) {
+    this.loading.present();
     this.studentID = params.get('studentID');
     this.getDailyTeaches()
   }
@@ -18,6 +23,7 @@ export class DailyTeachesPage {
   getDailyTeaches() {
     this.authService.getApiData('daily_teaches', "", this.studentID).then((result) => {
       this.daily_teachs = result['daily_teaches'];
+      this.loading.dismiss();
     });
   }
   
