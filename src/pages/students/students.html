@@ -17,7 +17,14 @@
   <ion-list id="students-list4" *ngIf="students.length > 0">
     <div *ngFor="let student of students">
       <ion-list id="menu-list3">
-        <ion-item-divider color="light">{{student.name}}</ion-item-divider>
+        <ion-item-divider color="light">
+          <ion-avatar item-start>
+            <img src="{{student.photo_url}}">
+          </ion-avatar>
+          <strong>{{student.name}}</strong><br/>
+          {{student.organisation_name}}
+          
+        </ion-item-divider>
         <ion-grid>
           <ion-row style="height: 70px;" text-center justify-content-center align-items-center>
             <ion-col on-click="goToExams({studentId: student.student_id})" col-4 class="colBottomNoBorder" justify-content-center align-items-center>
