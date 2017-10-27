@@ -15,8 +15,8 @@ export class MpinLoginPage {
   loading:any;
   menu:any;
 
-  constructor(public navCtrl: NavController, public authService: AuthService, public events: Events, public alertService: AlertService, public loadingController: LoadingController,public menu: MenuController) {
-    this.menu = menu;
+  constructor(public navCtrl: NavController, public authService: AuthService, public events: Events, public alertService: AlertService, public loadingController: LoadingController,public menuCtr: MenuController) {
+    this.menu = menuCtr;
     this.menu.enable(false);
   }
 
