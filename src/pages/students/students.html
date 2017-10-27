@@ -19,31 +19,37 @@
       <ion-list id="menu-list3">
         <ion-item-divider color="light">{{student.name}}</ion-item-divider>
         <ion-grid>
-          <ion-row style="height: 60px;" text-center justify-content-center align-items-center>
+          <ion-row style="height: 70px;" text-center justify-content-center align-items-center>
             <ion-col on-click="goToExams({studentId: student.student_id})" col-4 class="colBottomNoBorder" justify-content-center align-items-center>
               <ion-icon name="school" item-left></ion-icon>
+              <br />
               Exams
             </ion-col>
-            <ion-col on-click="goToExams({studentId: student.student_id})" col-4 class="colNoBorder colBottomNoBorder">
+            <ion-col on-click="goToDailyTeaches({studentId: student.student_id})" col-4 class="colNoBorder colBottomNoBorder">
               <ion-icon name="list-box" item-left></ion-icon>
+              <br />
               Daily teaches
             </ion-col>
             <ion-col on-click="goToHostel({studentId: student.student_id})" col-4 class="colBottomNoBorder">
               <ion-icon name="home" item-left></ion-icon>
+              <br />
               Hostel
             </ion-col>
           </ion-row>
-          <ion-row style="height: 60px;" text-center justify-content-center align-items-center>
+          <ion-row style="height: 70px;" text-center justify-content-center align-items-center>
             <ion-col on-click="goToAccount({studentId: student.student_id})" col-4>
               <ion-icon name="briefcase" item-left></ion-icon>
+              <br />
               Accounts
             </ion-col>
             <ion-col col-4 class="colNoBorder">
               <ion-icon name="alarm" item-left></ion-icon>
+              <br />
               Notifications
             </ion-col>
             <ion-col on-click="goToSetting({studentId: student.student_id})" col-4>
               <ion-icon name="construct" item-left></ion-icon>
+              <br />
               Setting
             </ion-col>
           </ion-row>
