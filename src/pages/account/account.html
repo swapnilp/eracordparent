@@ -20,12 +20,20 @@
   <h5 id="account-heading11" style="color:#000000;">
     Transactions
   </h5>
-  <ion-list id="account-list8">
-    <ion-item color="none" id="account-list-item19" *ngFor="let transaction of transactions">
-      {{transaction.date}}
-      <br />
-      {{transaction.obj_type}}
-      <ion-note item-right>{{transaction.amount}}</ion-note>
-    </ion-item>
-  </ion-list>
+  <div *ngIf="transactions.length > 0">
+    <ion-list id="account-list8">
+      <ion-item color="none" id="account-list-item19" *ngFor="let transaction of transactions">
+        {{transaction.date}}
+        <br />
+        {{transaction.obj_type}}
+        <ion-note item-right>{{transaction.amount}}</ion-note>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+  <div *ngIf="!isLoading && transactions.length == 0">
+    <h3 style="color:red;">Transactions not present</h3>
+  </div>
 </ion-content>

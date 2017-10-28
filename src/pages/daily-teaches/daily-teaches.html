@@ -14,14 +14,22 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page9">
-  <ion-list id="dailyTeaches-list5">
-    <ion-item color="none" id="dailyTeaches-list-item16" *ngFor="let dtp of daily_teachs">
-      {{dtp.subject}}
-      <br />
-      {{dtp.date}}
-      <br>
-      <small>{{dtp.points}}</small>
-      <ion-note item-right>{{(dtp.verify_absenty && dtp.is_absent) ? "Absent" : ""}}</ion-note>
-    </ion-item>
-  </ion-list>
+  <div *ngIf="daily_teachs.length > 0">
+    <ion-list id="dailyTeaches-list5">
+      <ion-item color="none" id="dailyTeaches-list-item16" *ngFor="let dtp of daily_teachs">
+        {{dtp.subject}}
+        <br />
+        {{dtp.date}}
+        <br>
+        <small>{{dtp.points}}</small>
+        <ion-note item-right>{{(dtp.verify_absenty && dtp.is_absent) ? "Absent" : ""}}</ion-note>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+  <div *ngIf="!isLoading && daily_teachs.length == 0">
+    <h3 style="color:red;">Daily Teaches not present</h3>
+  </div>
 </ion-content>
