@@ -14,16 +14,20 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page8">
-  <ion-list id="exams-list4">
-    <ion-item color="none" id="exams-list-item15" *ngFor="let exam of exams">
-      {{exam.name}}
-      <br />
-      {{exam.date}}
-      <ion-note item-right>{{exam.status === "Published" ? (exam.is_present ? exam.marks : "Absent") : exam.status}}</ion-note>
-    </ion-item>
-  </ion-list>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-    <ion-infinite-scroll-content></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-  
+  <div *ngIf="exams.length > 0">
+    <ion-list id="exams-list4">
+      <ion-item color="none" id="exams-list-item15" *ngFor="let exam of exams">
+        {{exam.name}}
+        <br />
+        {{exam.date}}
+        <ion-note item-right>{{exam.status === "Published" ? (exam.is_present ? exam.marks : "Absent") : exam.status}}</ion-note>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+  <div *ngIf="!isLoading && exams.length == 0">
+    <h3 style="color:red;">Exams not present</h3>
+  </div>
 </ion-content>
