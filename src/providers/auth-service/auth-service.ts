@@ -10,8 +10,8 @@ import 'rxjs/add/operator/map';
   and Angular DI.
 */
 //let apiUrl = 'http://localhost:3000/parents/';
-let apiUrl = 'http://192.168.1.100:3000/parents/';
-let serverUrl = 'http://192.168.1.100:3000/api/v1/parents/';
+let apiUrl = 'http://192.168.1.101:3000/parents/';
+let serverUrl = 'http://192.168.1.101:3000/api/v1/parents/';
 
 @Injectable()
 export class AuthService {
@@ -42,10 +42,15 @@ export class AuthService {
       if(user) {
       
         let req_params = "&authorization_token="+ user.token;
+        
         if(student_id) {
           req_params  = req_params  + "&student_id=" + student_id;
         }
         
+        let paramsKeys = Object.keys(params);
+        for(let key of paramsKeys) {
+          req_params  = req_params +"&"+ key + "=" +params[key]
+        }
         this.http.get(serverUrl + url+ ".json?" + req_params)
           .subscribe(res => {
             resolve(res.json());

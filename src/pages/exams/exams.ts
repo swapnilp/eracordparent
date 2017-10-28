@@ -14,19 +14,41 @@ export class ExamsPage {
     spinner: 'bubbles',
     content: "Please wait..."
   });  
+  page = 2;
+  isLoading= false;
   
   constructor(public navCtrl: NavController, public params: NavParams, public authService: AuthService, public loadingController: LoadingController) {
     this.loading.present();
     this.studentID = params.get('studentID');
-    this.getExams()
+    this.getExams(1);
   }
 
-  getExams() {
-    this.authService.getApiData('exam_catlogs', "", this.studentID).then((result) => {
-      this.exams = result['exams'];
-      this.loading.dismiss();
+  getExams(page, scroll = null) {
+    this.isLoading = true;
+    this.authService.getApiData('exam_catlogs', {page: page}, this.studentID).then((result) => {
+      if(result['exams'].length == 0 && scroll) {
+        scroll.enable(false);
+      }
+      for(let exam of result['exams']) {
+        this.exams.push(exam);
+      }
+      if(this.loading) {
+        this.loading.dismiss();
+      }
+      this.isLoading = false;
+      if(scroll){ 
+        scroll.complete();
+      }
     });
   }
+  
+  doInfinite(infiniteScroll) {
+    if(!this.isLoading) {
+      this.getExams(this.page, infiniteScroll);
+      this.page++;
+    }
+  }
+  
   
   goToStudent(params){
     if (!params) params = {};
