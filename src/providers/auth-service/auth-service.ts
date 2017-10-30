@@ -35,7 +35,7 @@ export class AuthService {
     });
   }
   
-  getApiData(url, params, student_id = null) {
+  getApiData(url, params, student_id = null, pageObj) {
     let self = this;
     return new Promise((resolve, reject) => {
       const user = JSON.parse(localStorage.getItem('userData'));
@@ -56,8 +56,12 @@ export class AuthService {
             resolve(res.json());
           }, (err) => {
             localStorage.setItem('userData', null);
+            if(url !== 'hostels' && pageObj.loading) {
+              
+              pageObj.loading.dismiss();
+            }
             self.events.publish('user:unauth', "Swapnil Patil");
-            resolve({});
+            resolve(err.json());
           });
       }else {
         reject({});

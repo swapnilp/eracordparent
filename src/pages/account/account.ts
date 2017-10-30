@@ -27,7 +27,7 @@ export class AccountPage {
   }
 
   getBalance() {
-    this.authService.getApiData('accounts', "", this.studentID).then((result) => {
+    this.authService.getApiData('accounts', "", this.studentID, this).then((result) => {
       if(result['success']) {
         this.balance = result['balance'];
         this.getTransactions(1);
@@ -38,19 +38,21 @@ export class AccountPage {
   getTransactions(page, scroll = null) {
     this.isLoading = true;
     let self = this;
-    this.authService.getApiData('accounts/get_transactions', {page: page}, this.studentID).then((result) => {
-      if(result['transactions'].length == 0 && scroll) {
-        scroll.enable(false);
-      }
-      for(let transaction of result['transactions']) {
-        this.transactions.push(transaction);
-      }
-      if(self.loading) {
-        self.loading.dismiss();
-      }
-      this.isLoading = false;
-      if(scroll){ 
-        scroll.complete();
+    this.authService.getApiData('accounts/get_transactions', {page: page}, this.studentID, this).then((result) => {
+      if(result['transactions']) {
+        if(result['transactions'].length == 0 && scroll) {
+          scroll.enable(false);
+        }
+        for(let transaction of result['transactions']) {
+          this.transactions.push(transaction);
+        }
+        if(self.loading) {
+          self.loading.dismiss();
+        }
+        this.isLoading = false;
+        if(scroll){ 
+          scroll.complete();
+        }
       }
     });
   }

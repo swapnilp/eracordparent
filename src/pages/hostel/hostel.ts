@@ -23,14 +23,16 @@ export class HostelPage {
   }
   
   getHostel() {
-    this.authService.getApiData('hostels', "", this.studentID).then((result) => {
+    this.authService.getApiData('hostels', "", this.studentID, this).then((result) => {
       if(result['hostel']) {
         this.hostelName = result['hostel'].name;
         if(result['hostel_room']) {
           this.roommates = result['hostel_room'].students;
         }
       }
-      this.loading.dismiss();
+      if(this.loading){
+        this.loading.dismiss();
+      }
     });
   }
   

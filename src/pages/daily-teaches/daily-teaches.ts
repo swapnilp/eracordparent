@@ -26,19 +26,21 @@ export class DailyTeachesPage {
   getDailyTeaches(page, scroll = null) {
     this.isLoading = true;
     let self = this;
-    this.authService.getApiData('daily_teaches', {page: page}, this.studentID).then((result) => {
-      if(result['daily_teaches'].length == 0 && scroll) {
-        scroll.enable(false);
-      }
-      for(let daily_teach of result['daily_teaches']) {
-        this.daily_teachs.push(daily_teach);
-      }
-      if(self.loading) {
-        self.loading.dismiss();
-      }
-      this.isLoading = false;
-      if(scroll){ 
-        scroll.complete();
+    this.authService.getApiData('daily_teaches', {page: page}, this.studentID, this).then((result) => {
+      if(result['daily_teaches']) {
+        if(result['daily_teaches'].length == 0 && scroll) {
+          scroll.enable(false);
+        }
+        for(let daily_teach of result['daily_teaches']) {
+          this.daily_teachs.push(daily_teach);
+        }
+        if(self.loading) {
+          self.loading.dismiss();
+        }
+        this.isLoading = false;
+        if(scroll){ 
+          scroll.complete();
+        }
       }
     });
   }

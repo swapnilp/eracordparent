@@ -25,19 +25,21 @@ export class ExamsPage {
 
   getExams(page, scroll = null) {
     this.isLoading = true;
-    this.authService.getApiData('exam_catlogs', {page: page}, this.studentID).then((result) => {
-      if(result['exams'].length == 0 && scroll) {
-        scroll.enable(false);
-      }
-      for(let exam of result['exams']) {
-        this.exams.push(exam);
-      }
-      if(this.loading) {
-        this.loading.dismiss();
-      }
-      this.isLoading = false;
-      if(scroll){ 
-        scroll.complete();
+    this.authService.getApiData('exam_catlogs', {page: page}, this.studentID, this).then((result) => {
+      if(result['exams']){
+        if(result['exams'].length == 0 && scroll) {
+          scroll.enable(false);
+        }
+        for(let exam of result['exams']) {
+          this.exams.push(exam);
+        }
+        if(this.loading) {
+          this.loading.dismiss();
+        }
+        this.isLoading = false;
+        if(scroll){ 
+          scroll.complete();
+        }
       }
     });
   }
