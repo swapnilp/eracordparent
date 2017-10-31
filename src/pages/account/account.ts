@@ -17,7 +17,7 @@ export class AccountPage {
     content: "Please wait..."
   });  
   page = 2;
-  isLoading= false;
+  isLoading = true;
 
 
   constructor(public navCtrl: NavController, public params: NavParams, public authService: AuthService, public loadingController: LoadingController) {
@@ -44,7 +44,9 @@ export class AccountPage {
           scroll.enable(false);
         }
         for(let transaction of result['transactions']) {
-          this.transactions.push(transaction);
+          setTimeout(() => {
+            this.transactions.push(transaction);
+          }, 500);
         }
         if(self.loading) {
           self.loading.dismiss();

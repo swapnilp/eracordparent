@@ -22,7 +22,7 @@
   </h5>
   <div *ngIf="transactions.length > 0">
     <ion-list id="account-list8">
-      <ion-item color="none" id="account-list-item19" *ngFor="let transaction of transactions">
+      <ion-item  class="animated fadeInLeft" color="none" id="account-list-item19" *ngFor="let transaction of transactions">
         {{transaction.date}}
         <br />
         {{transaction.obj_type}}

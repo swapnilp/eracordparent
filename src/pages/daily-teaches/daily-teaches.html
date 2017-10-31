@@ -16,7 +16,7 @@
 <ion-content padding id="page9">
   <div *ngIf="daily_teachs.length > 0">
     <ion-list id="dailyTeaches-list5">
-      <ion-item color="none" id="dailyTeaches-list-item16" *ngFor="let dtp of daily_teachs">
+      <ion-item class="animated fadeInLeft" color="none" id="dailyTeaches-list-item16" *ngFor="let dtp of daily_teachs">
         {{dtp.subject}}
         <br />
         {{dtp.date}}

@@ -32,7 +32,10 @@ export class DailyTeachesPage {
           scroll.enable(false);
         }
         for(let daily_teach of result['daily_teaches']) {
-          this.daily_teachs.push(daily_teach);
+          setTimeout(() => {
+            this.daily_teachs.push(daily_teach);
+          }, 500);
+          
         }
         if(self.loading) {
           self.loading.dismiss();

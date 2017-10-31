@@ -31,7 +31,10 @@ export class ExamsPage {
           scroll.enable(false);
         }
         for(let exam of result['exams']) {
-          this.exams.push(exam);
+          setTimeout(() => {
+            this.exams.push(exam);
+          }, 500);
+
         }
         if(this.loading) {
           this.loading.dismiss();
