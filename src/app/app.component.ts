@@ -12,6 +12,7 @@ import { MpinLoginPage } from '../pages/mpin-login/mpin-login';
 import { RegisterPage } from '../pages/register/register';
 import { EracordPage } from '../pages/eracord/eracord';
 import { StudentsPage } from '../pages/students/students';
+import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
 
 @Component({
   templateUrl: 'app.html'
@@ -107,5 +108,8 @@ export class MyApp {
   }goToStudent(params){
     if (!params) params = {};
     this.navCtrl.setRoot(StudentsPage);
+  }goToUnlock(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(EracordPaymentPage);
   }
 }
