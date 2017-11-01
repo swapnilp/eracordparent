@@ -13,6 +13,7 @@ import { RegisterPage } from '../pages/register/register';
 import { EracordPage } from '../pages/eracord/eracord';
 import { StudentsPage } from '../pages/students/students';
 import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,8 +25,16 @@ export class MyApp {
   students = [];
   isFirstChange = true;
   
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, public uniqueDeviceID: UniqueDeviceID) {
     this.rootPage = MpinLoginPage;
+    
+    this.uniqueDeviceID.get()
+      .then((uuid: any) => 
+            alert('asdads')
+           )
+      .catch((error: any) => 
+             alert('Error')
+            );
     
     events.subscribe('user:login', (name) => {
       let self = this;
