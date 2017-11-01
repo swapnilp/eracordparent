@@ -3,7 +3,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
+import { Device } from '@ionic-native/device';
 import { AuthService } from '../providers/auth-service/auth-service';
 import { EracordPage } from '../pages/eracord/eracord';
 import { NewParentPage } from '../pages/new-parent/new-parent';
@@ -64,6 +64,7 @@ import { AlertService } from '../providers/alert-service/alert-service';
   providers: [
     StatusBar,
     SplashScreen, 
+    Device,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     AlertService
