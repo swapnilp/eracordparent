@@ -15,6 +15,7 @@ import { StudentsPage } from '../pages/students/students';
 import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
 import { Device } from '@ionic-native/device';
 
+
 @Component({
   templateUrl: 'app.html'
 })
