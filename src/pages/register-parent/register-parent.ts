@@ -16,6 +16,7 @@ export class RegisterParentPage {
   hasError:boolean = false;
   errors: any;
   errorClass:any = 'error';
+  menu:any;
   
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public params: NavParams, public menuCtr: MenuController) {
     this.menu = menuCtr;

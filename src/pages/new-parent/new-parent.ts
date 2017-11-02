@@ -12,6 +12,7 @@ import { ExamsPage } from '../exams/exams';
 })
 export class NewParentPage {
   parentForm: FormGroup;
+  menu:any;
   
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public menuCtr: MenuController) {
     this.menu = menuCtr;

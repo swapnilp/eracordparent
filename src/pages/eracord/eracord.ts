@@ -11,7 +11,8 @@ import { ExamsPage } from '../exams/exams';
   templateUrl: 'eracord.html'
 })
 export class EracordPage {
-
+  menu:any;
+  
   constructor(public navCtrl: NavController, public menuCtr: MenuController) {
     this.menu = menuCtr;
     this.menu.enable(false);
