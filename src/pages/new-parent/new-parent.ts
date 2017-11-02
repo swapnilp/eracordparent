@@ -24,8 +24,7 @@ export class NewParentPage {
 
   registerParent():void {
     if(this.parentForm.valid) {
-      let data = this.parentForm.controls;
-      let params = {name: data.name.value, mobile: data.mobile.value};
+      let params = this.parentForm.value;
       this.navCtrl.push(RegisterParentPage, params);
     }
   }
