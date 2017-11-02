@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { MpinLoginPage } from '../mpin-login/mpin-login';
 import { RegisterPage } from '../register/register';
 import { ExamsPage } from '../exams/exams';
@@ -9,9 +9,16 @@ import { ExamsPage } from '../exams/exams';
   templateUrl: 'register-parent.html'
 })
 export class RegisterParentPage {
-
-  constructor(public navCtrl: NavController) {
+  name:any;
+  mobile:any;
+  
+  constructor(public navCtrl: NavController, public params: NavParams, public menuCtr: MenuController) {
+    this.menu = menuCtr;
+    this.menu.enable(false);
+    this.name = params.get('name');
+    this.mobile = params.get('mobile');
   }
+
   goToMpinLogin(params){
     if (!params) params = {};
     this.navCtrl.push(MpinLoginPage);

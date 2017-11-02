@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterParentPage } from '../register-parent/register-parent';
 import { MpinLoginPage } from '../mpin-login/mpin-login';
 import { RegisterPage } from '../register/register';
@@ -10,9 +11,25 @@ import { ExamsPage } from '../exams/exams';
   templateUrl: 'new-parent.html'
 })
 export class NewParentPage {
-
-  constructor(public navCtrl: NavController) {
+  parentForm: FormGroup;
+  
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public menuCtr: MenuController) {
+    this.menu = menuCtr;
+    this.menu.enable(false);
+    this.parentForm = formBuilder.group({
+      name: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      mobile: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[0-9]*'), Validators.required])],
+    });
   }
+
+  registerParent():void {
+    if(this.parentForm.valid) {
+      let data = this.parentForm.controls;
+      let params = {name: data.name.value, mobile: data.mobile.value};
+      this.navCtrl.push(RegisterParentPage, params);
+    }
+  }
+  
   goToRegisterParent(params){
     if (!params) params = {};
     this.navCtrl.push(RegisterParentPage);

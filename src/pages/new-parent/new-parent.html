@@ -14,21 +14,17 @@
     <img src="assets/img/oCyQ3ST4Qy6s7UA6af33_400X100.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
   </div>
   <div class="spacer" style="width:300px;height:22px;" id="newParent-spacer4"></div>
-  <form id="newParent-form1">
+  <form [formGroup]="parentForm" id="newParent-form1">
     <ion-item id="newParent-input1">
-      <ion-label>
-        Name
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
+      <ion-label floating>Name</ion-label>
+      <ion-input formControlName="name" type="text" placeholder="Name"></ion-input>
     </ion-item>
     <ion-item id="newParent-input2">
-      <ion-label>
-        Mobile
-      </ion-label>
-      <ion-input type="tel" placeholder=""></ion-input>
+      <ion-label floating>Mobile</ion-label>
+      <ion-input formControlName="mobile" type="tel" placeholder="Mobile Number (10 Digit)"></ion-input>
     </ion-item>
   </form>
-  <button id="newParent-button3" ion-button color="positive" full style="font-weight:500;" on-click="goToRegisterParent()">
+  <button id="newParent-button3" ion-button color="positive" full style="font-weight:500;" on-click="registerParent()" [disabled]="!parentForm.valid">
     Register
   </button>
 </ion-content>

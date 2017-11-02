@@ -27,10 +27,15 @@ export class MyApp {
   isFirstChange = true;
   
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device) {
-    this.rootPage = MpinLoginPage;
     
-    let deviceid = this.device.uuid;
-    alert(deviceid);
+    if(localStorage.getItem('mobile') && localStorage.getItem('deviceId')) {
+      this.rootPage = MpinLoginPage;
+    } else {
+      let deviceid = this.device.uuid;
+      localStorage.setItem('deviceId', deviceid);
+      this.rootPage = EracordPage;
+    }
+    
     events.subscribe('user:login', (name) => {
       let self = this;
       const user = JSON.parse(localStorage.getItem('userData'));
