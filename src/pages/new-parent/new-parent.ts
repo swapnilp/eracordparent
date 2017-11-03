@@ -26,6 +26,7 @@ export class NewParentPage {
   registerParent():void {
     if(this.parentForm.valid) {
       let params = this.parentForm.value;
+      localStorage.removeItem('mobile');
       this.navCtrl.push(RegisterParentPage, params);
     }
   }

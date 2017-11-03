@@ -11,15 +11,12 @@
     <img src="assets/img/oCyQ3ST4Qy6s7UA6af33_400X100.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
   </div>
   <div class="spacer" style="width:300px;height:22px;" id="mpinLogin-spacer8"></div>
-  <h3 id="mpinLogin-heading4" style="color:#000000;">
-    name
-  </h3>
   <h4 id="mpinLogin-heading5" style="color:#000000;">
-    mobile
+    Mobile - {{mobile}}
   </h4>
   <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
     <ion-item id="mpinLogin-input9">
-      <ion-label>
+      <ion-label floating>
         MPIN
       </ion-label>
       <ion-input type="tel" placeholder="" required [(ngModel)]="userData.mpin" [ngModelOptions]="{standalone: true}"></ion-input>

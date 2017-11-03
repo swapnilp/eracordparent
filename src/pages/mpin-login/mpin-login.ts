@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, MenuController } from 'ionic-angular';
-import { RegisterPage } from '../register/register';
+import { EracordPage } from '../eracord/eracord';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
 import { Events } from 'ionic-angular';
@@ -14,15 +14,17 @@ export class MpinLoginPage {
   userData = {"device_id": "123456","mpin": "", "mobile": "9850840777"};
   loading:any;
   menu:any;
+  mobile:any='';
 
   constructor(public navCtrl: NavController, public authService: AuthService, public events: Events, public alertService: AlertService, public loadingController: LoadingController,public menuCtr: MenuController) {
     this.menu = menuCtr;
     this.menu.enable(false);
+    this.mobile = localStorage.getItem('mobile');
   }
 
   goToRegister(params){
     if (!params) params = {};
-    this.navCtrl.push(RegisterPage);
+    this.navCtrl.push(EracordPage);
   }
   
   login(): void {

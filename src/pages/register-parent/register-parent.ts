@@ -39,7 +39,11 @@ export class RegisterParentPage {
     //this.hasError= true;
     //this.errorClass= 'success';
     //this.errors= "asdasdasd";
-    this.navCtrl.push(MpinLoginPage);
+    if(this.parentForm.valid) {
+      let values  = this.parentForm.value;
+      localStorage.setItem('mobile', values.mobile);
+      this.navCtrl.push(MpinLoginPage);
+    }
   }
 
   goToMpinLogin(params){

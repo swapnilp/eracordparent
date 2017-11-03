@@ -3,7 +3,6 @@ import { NavController, MenuController } from 'ionic-angular';
 import { NewParentPage } from '../new-parent/new-parent';
 import { RegisterParentPage } from '../register-parent/register-parent';
 import { MpinLoginPage } from '../mpin-login/mpin-login';
-import { RegisterPage } from '../register/register';
 import { ExamsPage } from '../exams/exams';
 
 @Component({
@@ -26,9 +25,6 @@ export class EracordPage {
   }goToMpinLogin(params){
     if (!params) params = {};
     this.navCtrl.push(MpinLoginPage);
-  }goToRegister(params){
-    if (!params) params = {};
-    this.navCtrl.push(RegisterPage);
   }goToExams(params){
     if (!params) params = {};
     this.navCtrl.push(ExamsPage);

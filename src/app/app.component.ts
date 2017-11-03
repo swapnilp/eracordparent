@@ -110,6 +110,7 @@ export class MyApp {
     });
   }goToMpinLogin(params){
     if (!params) params = {};
+    localStorage.removeItem('userData');
     this.navCtrl.setRoot(MpinLoginPage);
   }goToRegister(params){
     if (!params) params = {};
