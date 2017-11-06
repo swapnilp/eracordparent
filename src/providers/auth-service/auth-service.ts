@@ -10,8 +10,10 @@ import 'rxjs/add/operator/map';
   and Angular DI.
 */
 //let apiUrl = 'http://localhost:3000/parents/';
-let apiUrl = 'http://192.168.1.101:3000/parents/';
-let serverUrl = 'http://192.168.1.101:3000/api/v1/parents/';
+let apiUrl = 'https://eracord.com/parents/';
+let serverUrl = 'https://eracord.com/api/v1/parents/';
+//let apiUrl = 'http://192.168.1.101/parents/';
+//let serverUrl = 'http://192.168.1.101/api/v1/parents/';
 
 @Injectable()
 export class AuthService {
@@ -40,6 +42,7 @@ export class AuthService {
       
       let headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      //headers.append('Access-Control-Allow-Origin', '*'),
       
       this.http.post(serverUrl + type+ ".json" , credentials, {headers: headers})
         .subscribe(res => {
