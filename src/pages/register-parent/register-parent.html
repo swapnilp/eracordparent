@@ -40,8 +40,7 @@
     <button id="registerParent-button5" ion-button clear color="positive" full small>
       Resend SMS
     </button>
-    <ion-list-header id="registerParent-input7" class="success" *ngIf="hasError">
-      {{errors}}<br/>
+    <ion-list-header id="registerParent-input7" class="{{errorClass}} list-header-md" *ngIf="hasError">
       {{errors}}
     </ion-list-header>
     <button id="registerParent-button4" ion-button color="positive" full on-click="register()">

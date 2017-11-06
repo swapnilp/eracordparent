@@ -11,12 +11,12 @@ import { Events } from 'ionic-angular';
 })
 export class MpinLoginPage {
   responseData : any;
-  userData = {"device_id": "123456","mpin": "", "mobile": "9850840777"};
+  userData = {"device_id": localStorage.getItem('deviceId'),"mpin": "", "mobile": localStorage.getItem('mobile')};
   loading:any;
   menu:any;
   mobile:any='';
 
-  constructor(public navCtrl: NavController, public authService: AuthService, public events: Events, public alertService: AlertService, public loadingController: LoadingController,public menuCtr: MenuController) {
+  constructor(public navCtrl: NavController, public authService: AuthService, public events: Events, public alertService: AlertService, public loadingController: LoadingController, public menuCtr: MenuController) {
     this.menu = menuCtr;
     this.menu.enable(false);
     this.mobile = localStorage.getItem('mobile');
@@ -41,7 +41,6 @@ export class MpinLoginPage {
       this.responseData = result;
       localStorage.setItem('userData', JSON.stringify(this.responseData));
       this.events.publish('user:login', "Swapnil Patil");
-      
     }, (err) => {
       this.loading.dismiss();
       var msg = JSON.parse(err._body).message;

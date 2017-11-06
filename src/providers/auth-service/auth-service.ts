@@ -10,8 +10,8 @@ import 'rxjs/add/operator/map';
   and Angular DI.
 */
 //let apiUrl = 'http://localhost:3000/parents/';
-let apiUrl = 'http://192.168.1.102:3000/parents/';
-let serverUrl = 'http://192.168.1.102:3000/api/v1/parents/';
+let apiUrl = 'http://192.168.1.101:3000/parents/';
+let serverUrl = 'http://192.168.1.101:3000/api/v1/parents/';
 
 @Injectable()
 export class AuthService {
@@ -26,6 +26,22 @@ export class AuthService {
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       
       this.http.post(apiUrl + type+ ".json" , credentials, {headers: headers})
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        });
+      
+    });
+  }
+
+  getPostData(credentials, type) {
+    return new Promise((resolve, reject) => {
+      
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      
+      this.http.post(serverUrl + type+ ".json" , credentials, {headers: headers})
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
