@@ -16,6 +16,7 @@ export class DailyTeachesPage {
   });  
   page = 2;
   isLoading= false;
+  totalCount = 0;
   
   constructor(public navCtrl: NavController, public params: NavParams, public authService: AuthService, public loadingController: LoadingController) {
     this.loading.present();
@@ -27,6 +28,7 @@ export class DailyTeachesPage {
     this.isLoading = true;
     let self = this;
     this.authService.getApiData('daily_teaches', {page: page}, this.studentID, this).then((result) => {
+      this.totalCount = result['total_count'];
       if(result['daily_teaches']) {
         if(result['daily_teaches'].length == 0 && scroll) {
           scroll.enable(false);

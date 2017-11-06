@@ -16,6 +16,7 @@ export class ExamsPage {
   });  
   page = 2;
   isLoading= false;
+  totalCount = 0;
   
   constructor(public navCtrl: NavController, public params: NavParams, public authService: AuthService, public loadingController: LoadingController) {
     this.loading.present();
@@ -26,6 +27,7 @@ export class ExamsPage {
   getExams(page, scroll = null) {
     this.isLoading = true;
     this.authService.getApiData('exam_catlogs', {page: page}, this.studentID, this).then((result) => {
+      this.totalCount = result['total_count'];
       if(result['exams']){
         if(result['exams'].length == 0 && scroll) {
           scroll.enable(false);
