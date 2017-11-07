@@ -17,8 +17,8 @@
   <div *ngIf="totalCount > 0">
     <ion-list id="exams-list4">
       <ion-item class="animated fadeInLeft" color="none" id="exams-list-item15" *ngFor="let exam of exams">
-        <h3><strong>{{exam.name}}</strong></h3>
-        {{exam.status === "Published" ? (exam.is_present ? exam.marks : "Absent") : exam.status}} ( <strong><small>Out Of {{exam.total_marks}} </small></strong>)
+        <h3 class="examName"><strong [innerHtml]="exam.name"></strong></h3>
+        <span [innerHtml]="exam.marks"></span>
         <ion-note item-right><small>{{exam.date}}</small></ion-note>
       </ion-item>
     </ion-list>
