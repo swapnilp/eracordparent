@@ -15,16 +15,18 @@
 </ion-header>
 <ion-content padding id="page9">
   <div *ngIf="totalCount > 0">
-    <ion-list id="dailyTeaches-list5">
-      <ion-item class="animated fadeInLeft" color="none" id="dailyTeaches-list-item16" *ngFor="let dtp of daily_teachs">
+    <ion-card class="animated fadeInLeft" color="none" id="dailyTeaches-list-item16" *ngFor="let dtp of daily_teachs">
+      <ion-card-header>
         {{dtp.subject}}
         <br />
-        {{dtp.date}}
-        <br>
-        <small>{{dtp.points}}</small>
+        <h3><strong>{{dtp.date}}</strong></h3>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p><small>{{dtp.points}}</small></p>
         <ion-note item-right>{{(dtp.verify_absenty && dtp.is_absent) ? "Absent" : ""}}</ion-note>
-      </ion-item>
-    </ion-list>
+      </ion-card-content>
+    </ion-card>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>

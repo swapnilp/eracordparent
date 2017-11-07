@@ -18,6 +18,7 @@ export class AccountPage {
   });  
   page = 2;
   isLoading = true;
+  totalCount = 0;
 
 
   constructor(public navCtrl: NavController, public params: NavParams, public authService: AuthService, public loadingController: LoadingController) {
@@ -39,6 +40,7 @@ export class AccountPage {
     this.isLoading = true;
     let self = this;
     this.authService.getApiData('accounts/get_transactions', {page: page}, this.studentID, this).then((result) => {
+      self.totalCount = result['total_count'];
       if(result['transactions']) {
         if(result['transactions'].length == 0 && scroll) {
           scroll.enable(false);
