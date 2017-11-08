@@ -10,10 +10,10 @@ import 'rxjs/add/operator/map';
   and Angular DI.
 */
 //let apiUrl = 'http://localhost:3000/parents/';
-let apiUrl = 'https://eracord.com/parents/';
-let serverUrl = 'https://eracord.com/api/v1/parents/';
-//let apiUrl = 'http://192.168.1.102:3000/parents/';
-//let serverUrl = 'http://192.168.1.102:3000/api/v1/parents/';
+//let apiUrl = 'https://eracord.com/parents/';
+//let serverUrl = 'https://eracord.com/api/v1/parents/';
+let apiUrl = 'http://192.168.1.102:3000/parents/';
+let serverUrl = 'http://192.168.1.102:3000/api/v1/parents/';
 
 @Injectable()
 export class AuthService {
@@ -69,6 +69,9 @@ export class AuthService {
         for(let key of paramsKeys) {
           req_params  = req_params +"&"+ key + "=" +params[key]
         }
+        if(pageObj.filter) {
+          req_params  = req_params + this.objToStr(pageObj.filter, undefined);
+        }
         this.http.get(serverUrl + url+ ".json?" + req_params)
           .subscribe(res => {
             resolve(res.json());
@@ -85,6 +88,30 @@ export class AuthService {
         reject({});
       }
     });
+  }
+
+  objToStr(obj, parent) {
+    let keys = Object.keys(obj);
+    let str = "";
+    for(let key of keys) {
+      if(typeof(obj[key]) == 'object'){
+        let paramKey = "";
+        if(parent) {
+          paramKey = parent + "["+key+"]";
+        } else {
+          paramKey = key;
+        }
+        str = str + this.objToStr(obj[key], paramKey);
+      }else{
+        if(parent) {
+          str  = str + "&"+ parent+ "[" + key + "]";
+        } else {
+          str  = str +"&"+ key;
+        }
+        str = str + "=" +obj[key];
+      }
+    }
+    return str;
   }
 
 }

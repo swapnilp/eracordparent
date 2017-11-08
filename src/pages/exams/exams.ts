@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { StudentsPage } from '../students/students';
+import { ExamFilterPage } from '../exam-filter/exam-filter';
 
 @Component({
   selector: 'page-exams',
@@ -17,10 +18,12 @@ export class ExamsPage {
   page = 2;
   isLoading= false;
   totalCount = 0;
+  filter: any= {};
   
   constructor(public navCtrl: NavController, public params: NavParams, public authService: AuthService, public loadingController: LoadingController) {
     this.loading.present();
     this.studentID = params.get('studentID');
+    this.filter = params.get('filter');
     this.getExams(1);
   }
 
@@ -55,11 +58,14 @@ export class ExamsPage {
       this.page++;
     }
   }
-  
-  
+
   goToStudent(params){
     if (!params) params = {};
     this.navCtrl.setRoot(StudentsPage);
+  }
+
+  filterExams() {
+    this.navCtrl.push(ExamFilterPage);
   }
   
 }

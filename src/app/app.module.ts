@@ -18,6 +18,7 @@ import { AccountPage } from '../pages/account/account';
 import { SettingPage } from '../pages/setting/setting';
 import { StudentsPage } from '../pages/students/students';
 import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
+import { ExamFilterPage } from '../pages/exam-filter/exam-filter';
 import { OrganisationPaymentPage } from '../pages/organisation-payment/organisation-payment';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -38,6 +39,7 @@ import { AlertService } from '../providers/alert-service/alert-service';
     SettingPage,
     StudentsPage,
     EracordPaymentPage,
+    ExamFilterPage,
     OrganisationPaymentPage
   ],
   imports: [
@@ -60,6 +62,7 @@ import { AlertService } from '../providers/alert-service/alert-service';
     SettingPage,
     StudentsPage,
     EracordPaymentPage,
+    ExamFilterPage,
     OrganisationPaymentPage
   ],
   providers: [

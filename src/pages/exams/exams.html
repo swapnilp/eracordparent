@@ -12,6 +12,14 @@
       </button>
     </ion-buttons>
   </ion-navbar>
+  <ion-list id="exam-header" class="relative">
+    <h5 class="paddingL10"><strong>Total Records - </strong> {{totalCount}}</h5>
+    <ion-note item-right class="right">
+      <button ion-button icon-only on-click="filterExams()">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+    </ion-note>
+  </ion-list>
 </ion-header>
 <ion-content padding id="page8">
   <div *ngIf="totalCount > 0">
