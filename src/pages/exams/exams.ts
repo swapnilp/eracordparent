@@ -65,7 +65,9 @@ export class ExamsPage {
   }
 
   filterExams() {
-    this.navCtrl.push(ExamFilterPage);
+    this.navCtrl.push(ExamFilterPage, {
+      'studentID': this.studentID,
+      'filter': this.filter
+    });
   }
-  
 }

@@ -4,16 +4,38 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-
-<ion-content padding>
-  <ion-list id="exam-header" class="relative">
-    <button ion-button icon-only on-click="back()">
+<ion-header>
+  <ion-list id="examFilter-header" class="relative">
+    <button ion-button icon-only clear on-click="back()" *ngIf="(this.filterData.subjects.length == 0 && this.filterData.startDate == '' && this.filterData.endDate == '')">
+      <ion-icon name="arrow-dropleft"></ion-icon>
+    </button>
+    <button ion-button icon-only clear on-click="clear()" *ngIf="!(this.filterData.subjects.length == 0 && this.filterData.startDate == '' && this.filterData.endDate == '')">
       <ion-icon name="close"></ion-icon>
     </button>
-    <ion-note item-right class="right">
-      <button ion-button icon-only on-click="apply()">
-        <ion-icon name="funnel"></ion-icon>
+    <ion-note item-right class="right" *ngIf="!(this.filterData.subjects.length == 0 && this.filterData.startDate == '' && this.filterData.endDate == '')">
+      <button ion-button icon-only clear on-click="apply()">
+        <ion-icon name="checkmark-circle"></ion-icon>
       </button>
     </ion-note>
+  </ion-list>
+</ion-header>
+
+<ion-content padding>
+  <ion-list id="exam-filter">
+    <ion-item-divider color="light">Subjects Filter</ion-item-divider>
+    <ion-item *ngFor="let subject of subjects">
+      <ion-label [innerHtml]="subject.name"></ion-label>
+      <ion-checkbox color="dark" checked="{{filterData.subjects.includes(subject.id)}}" on-click="checkSubject(this, subject.id)"></ion-checkbox>
+    </ion-item>
+    
+    <ion-item-divider color="light">Date Filter</ion-item-divider>
+    <ion-item>
+      <ion-label floating>Start Date</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="filterData.startDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>End Date</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="filterData.endDate"></ion-datetime>
+    </ion-item>
   </ion-list>
 </ion-content>
