@@ -12,7 +12,7 @@
     <button ion-button icon-only clear on-click="clear()" *ngIf="!(this.filterData.subjects.length == 0 && this.filterData.startDate == '' && this.filterData.endDate == '')">
       <ion-icon name="close"></ion-icon>
     </button>
-    <ion-note item-right class="right" *ngIf="!(this.filterData.subjects.length == 0 && this.filterData.startDate == '' && this.filterData.endDate == '')">
+    <ion-note item-right class="right">
       <button ion-button icon-only clear on-click="apply()">
         <ion-icon name="checkmark-circle"></ion-icon>
       </button>
