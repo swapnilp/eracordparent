@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { StudentsPage } from '../students/students';
+import { AccountFilterPage } from '../account-filter/account-filter';
 
 @Component({
   selector: 'page-account',
@@ -19,11 +20,12 @@ export class AccountPage {
   page = 2;
   isLoading = true;
   totalCount = 0;
-
+  filter: any= {};
 
   constructor(public navCtrl: NavController, public params: NavParams, public authService: AuthService, public loadingController: LoadingController) {
     this.loading.present();
     this.studentID = params.get('studentID');
+    this.filter = params.get('filter');
     this.getBalance();
   }
 
@@ -71,6 +73,13 @@ export class AccountPage {
       this.getTransactions(this.page, infiniteScroll);
       this.page++;
     }
+  }
+
+  filterAccount() {
+    this.navCtrl.push(AccountFilterPage, {
+      'studentID': this.studentID,
+      'filter': this.filter
+    });
   }
 
 }
