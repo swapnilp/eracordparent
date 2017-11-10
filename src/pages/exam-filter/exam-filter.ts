@@ -33,9 +33,22 @@ export class ExamFilterPage {
     }
     if(this.filterData.subjects === undefined) {
       this.filterData.subjects = [];
-    } else {
-      this.filterData.subjects = this.filterData.subjects.split(',').map(Number);
+    } else if(typeof(this.filterData.subjects) === "string"){
+      let subjects = this.filterData.subjects.split(',').map(Number);
+      if(subjects == 0) {
+        this.filterData.subjects = [];
+      } else {
+        this.filterData.subjects = subjects;
+      }
+    } 
+
+    if(this.filterData.absentee === undefined) {
+      this.filterData.absentee = "all";
     }
+    if(this.filterData.examType === undefined) {
+      this.filterData.examType = "all";
+    }
+
     if(this.filterData.startDate === undefined) {
       this.filterData.startDate = "";
     }
@@ -81,6 +94,8 @@ export class ExamFilterPage {
     this.filterData.subjects = [];
     this.filterData.startDate = "";
     this.filterData.endDate = "";
+    this.filterData.absentee = "all";
+    this.filterData.examType = "all";
   }
 
   isBlankSort() {

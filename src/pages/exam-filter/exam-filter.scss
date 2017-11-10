@@ -1,5 +1,8 @@
 page-exam-filter {
-  #examFilter-header{
+  .gradient {
+    background: linear-gradient(to bottom right, #3399ff 0%, #339A03 300%);
+  }
+  #examFilter-header {
     margin:0;
   }
   .right {
