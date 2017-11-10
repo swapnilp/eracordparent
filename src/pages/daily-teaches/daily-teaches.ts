@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { StudentsPage } from '../students/students';
+import { DailyTeachesFilterPage } from '../daily-teaches-filter/daily-teaches-filter';
 
 @Component({
   selector: 'page-daily-teaches',
@@ -17,10 +18,12 @@ export class DailyTeachesPage {
   page = 2;
   isLoading= false;
   totalCount = 0;
-  
+  filter: any= {};
+
   constructor(public navCtrl: NavController, public params: NavParams, public authService: AuthService, public loadingController: LoadingController) {
     this.loading.present();
     this.studentID = params.get('studentID');
+    this.filter = params.get('filter');
     this.getDailyTeaches(1)
   }
 
@@ -61,4 +64,12 @@ export class DailyTeachesPage {
       this.page++;
     }
   }
+  
+  filterDailyTeaches() {
+    this.navCtrl.push(DailyTeachesFilterPage, {
+      'studentID': this.studentID,
+      'filter': this.filter
+    });
+  }
+  
 }

@@ -13,7 +13,7 @@
     </ion-buttons>
   </ion-navbar>
   <ion-list id="exam-header" class="relative">
-    <h5 class="paddingL10"><strong>Total Records - </strong> {{totalCount}}</h5>
+    <h5 class="paddingL10"><small><strong>Total Records - </strong> {{totalCount}}</small></h5>
     <ion-note item-right class="right">
       <button ion-button icon-left clear color="dark" on-click="filterExams()">
         <ion-icon name="funnel"></ion-icon>
@@ -28,7 +28,7 @@
       <ion-item class="animated fadeInLeft" color="none" id="exams-list-item15" *ngFor="let exam of exams">
         <h3 class="examName"><strong [innerHtml]="exam.name"></strong></h3>
         <span [innerHtml]="exam.marks"></span>
-        <ion-note item-right><small>{{exam.date}}</small></ion-note>
+        <ion-note item-right><small [innerHtml]="exam.date"></small></ion-note>
       </ion-item>
     </ion-list>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

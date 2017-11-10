@@ -41,7 +41,38 @@ $colors: (
   dark:       #222
 );
 
+.danger {
+  color: #f53d3d;
+}
 
+.right {
+  position: absolute;
+  top: -8px;
+  right: 5px;
+}
+.relative {
+  position: relative;
+}
+.paddingL10 {
+  padding-left: 10px;
+}
+.gradient {
+  background: linear-gradient(to bottom right, #3399ff 0%, #339A03 300%);
+}
+#examFilter-header {
+  margin:0;
+}
+.right {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+}
+.relative {
+  position: relative;
+}
+.paddingL10 {
+  padding-left: 10px;
+}
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

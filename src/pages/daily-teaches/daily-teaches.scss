@@ -2,4 +2,15 @@ page-daily-teaches {
   .dtpName {
     line-height: 2rem;
   }
+  .right {
+    position: absolute;
+    top: -8px;
+    right: 5px;
+  }
+  .relative {
+    position: relative;
+  }
+  .paddingL10 {
+    padding-left: 10px;
+  }
 }
