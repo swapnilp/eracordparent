@@ -102,7 +102,7 @@ export class MyApp {
         {
           text: 'Update Now',
           handler: () => {
-            this.inAppBrowser.create(url, '_blank');
+            this.inAppBrowser.create(url, '_system');
             self.navCtrl.setRoot(StudentsPage, {payment: this.payment});
           }
         }
