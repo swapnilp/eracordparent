@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, Slides, Events } from 'ionic-angular';
+import { Platform, Nav, Slides, Events, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { InAppBrowser} from "@ionic-native/in-app-browser";
 
 import { HostelPage } from '../pages/hostel/hostel';
 import { DailyTeachesPage } from '../pages/daily-teaches/daily-teaches';
@@ -27,7 +28,7 @@ export class MyApp {
   isFirstChange = true;
   payment:any = "";
   
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device, private inAppBrowser: InAppBrowser, public alertCtrl: AlertController) {
     
     if(localStorage.getItem('mobile') && localStorage.getItem('deviceId')) {
       this.rootPage = MpinLoginPage;
@@ -41,6 +42,8 @@ export class MyApp {
       let self = this;
       const user = JSON.parse(localStorage.getItem('userData'));
       this.payment = localStorage.getItem('paymentPriority');
+      let updatePriority = user.update_priority;
+      debugger
       this.students = user.students;
       //if(this.students.length > 0 && self.slides) {
       //  setTimeout(function(){
@@ -48,7 +51,11 @@ export class MyApp {
       //    self.navCtrl.setRoot(StudentsPage);
       //  }, 2000);
       //}
-      self.navCtrl.setRoot(StudentsPage, {payment: this.payment});
+      if(updatePriority.priority == "Urgent") {
+        self.hasUpdate(updatePriority.update_url);
+      } else {
+        self.navCtrl.setRoot(StudentsPage, {payment: this.payment});
+      }
     });
 
     events.subscribe('user:unauth', (name) => {
@@ -83,6 +90,25 @@ export class MyApp {
 
   onMousedown() {
     this.isFirstChange = true;
+  }
+
+  hasUpdate(url) {
+    let self = this;
+    let confirm = this.alertCtrl.create({
+      title: 'Update App !!',
+      message: 'Please update app for getting new features. ',
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'Update Now',
+          handler: () => {
+            this.inAppBrowser.create(url, '_blank');
+            self.navCtrl.setRoot(StudentsPage, {payment: this.payment});
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
   
   goToHostel(params){

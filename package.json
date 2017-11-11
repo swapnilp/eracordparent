@@ -41,7 +41,8 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "cordova-plugin-device": {}
+      "cordova-plugin-device": {},
+      "cordova-plugin-inappbrowser": {}
     }
   }
 }
