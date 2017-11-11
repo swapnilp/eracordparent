@@ -41,11 +41,11 @@
       </ion-slide>
     </ion-slides>
     <ion-list>
-      <ion-item color="none" menuClose="" on-click="goToStudent()" id="menu-list-item23">
+      <ion-item color="none" menuClose="" on-click="goToStudent()" id="menu-list-item23" *ngIf="payment !== 'Urgent'">
         <ion-icon name="contacts" item-left></ion-icon>
         Students
       </ion-item>
-      <ion-item color="none" menuClose="" on-click="goToUnlock()" id="menu-list-item23">
+      <ion-item color="none" menuClose="" on-click="goToUnlock()" id="menu-list-item23" *ngIf="payment !== 'None'">
         <ion-icon name="unlock" item-left></ion-icon>
         Unlock account
       </ion-item>

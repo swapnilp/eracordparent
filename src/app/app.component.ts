@@ -25,6 +25,7 @@ export class MyApp {
   rootPage:any = EracordPage;
   students = [];
   isFirstChange = true;
+  payment:any = "";
   
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device) {
     
@@ -39,6 +40,7 @@ export class MyApp {
     events.subscribe('user:login', (name) => {
       let self = this;
       const user = JSON.parse(localStorage.getItem('userData'));
+      this.payment = localStorage.getItem('paymentPriority');
       this.students = user.students;
       //if(this.students.length > 0 && self.slides) {
       //  setTimeout(function(){
@@ -46,7 +48,7 @@ export class MyApp {
       //    self.navCtrl.setRoot(StudentsPage);
       //  }, 2000);
       //}
-      self.navCtrl.setRoot(StudentsPage);
+      self.navCtrl.setRoot(StudentsPage, {payment: this.payment});
     });
 
     events.subscribe('user:unauth', (name) => {

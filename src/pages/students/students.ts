@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { HostelPage } from '../hostel/hostel';
 import { DailyTeachesPage } from '../daily-teaches/daily-teaches';
 import { AccountPage } from '../account/account';
 import { SettingPage } from '../setting/setting';
 import { ExamsPage } from '../exams/exams';
+import { EracordPaymentPage } from '../eracord-payment/eracord-payment';
 
 @Component({
   selector: 'page-students',
@@ -13,8 +14,16 @@ import { ExamsPage } from '../exams/exams';
 })
 export class StudentsPage {
   students = [];
-  constructor(public navCtrl: NavController) {
+  payment:any;
+  constructor(public navCtrl: NavController, public params: NavParams, public alertCtrl: AlertController) {
     const user = JSON.parse(localStorage.getItem('userData'));
+    this.payment = params.get('payment');
+    if(this.payment === "Urgent") {
+      this.onlyPay();
+    } else if(this.payment !== "None" && this.payment !== undefined) {
+      this.mightPay();
+    }
+      
     this.students = user.students;
   }
   
@@ -44,5 +53,45 @@ export class StudentsPage {
     this.navCtrl.setRoot(ExamsPage, {
       'studentID': params['studentId']
     });
+  }
+
+  mightPay() {
+    let confirm = this.alertCtrl.create({
+      title: 'Unlock Account ?',
+      message: 'You have limited period offer. Please Unlock your account to continue your services.',
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'Pay Later',
+          handler: () => {
+            
+          }
+        },
+        {
+          text: 'Pay now',
+          handler: () => {
+            this.navCtrl.setRoot(EracordPaymentPage);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  onlyPay() {
+    let confirm = this.alertCtrl.create({
+      title: 'Unlock Account ?',
+      message: 'You have limited period offer. Please Unlock your account to continue your services.',
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'Pay now',
+          handler: () => {
+            this.navCtrl.setRoot(EracordPaymentPage);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }

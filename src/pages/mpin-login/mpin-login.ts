@@ -15,6 +15,7 @@ export class MpinLoginPage {
   loading:any;
   menu:any;
   mobile:any='';
+  payment: any = "normal";
 
   constructor(public navCtrl: NavController, public authService: AuthService, public events: Events, public alertService: AlertService, public loadingController: LoadingController, public menuCtr: MenuController) {
     this.menu = menuCtr;
@@ -40,6 +41,7 @@ export class MpinLoginPage {
       this.menu.enable(true);
       this.responseData = result;
       localStorage.setItem('userData', JSON.stringify(this.responseData));
+      localStorage.setItem('paymentPriority', this.responseData.payment_priority);
       this.events.publish('user:login', "Swapnil Patil");
     }, (err) => {
       this.loading.dismiss();
