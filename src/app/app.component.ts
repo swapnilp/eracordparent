@@ -100,6 +100,12 @@ export class MyApp {
       enableBackdropDismiss: false,
       buttons: [
         {
+          text: 'Not Now',
+          handler: () => {
+            self.navCtrl.setRoot(StudentsPage, {payment: this.payment});
+          }
+        },
+        {
           text: 'Update Now',
           handler: () => {
             this.inAppBrowser.create(url, '_system');
