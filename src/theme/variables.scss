@@ -45,6 +45,16 @@ $colors: (
   color: #f53d3d;
 }
 
+.success {
+  .toast-container {
+    background: #85da85;
+    
+    .toast-message, .toast-button {
+      color: #000;
+    } 
+  }
+}
+
 .right {
   position: absolute;
   top: -8px;

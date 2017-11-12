@@ -19,7 +19,20 @@ export class AlertService {
   warning(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
-      duration: 2000
+      duration: 8000,
+      showCloseButton: true,
+      closeButtonText: 'X'
+    });
+    toast.present();
+  }
+
+  success(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 8000,
+      showCloseButton: true,
+      closeButtonText: 'X',
+      cssClass: 'success'
     });
     toast.present();
   }

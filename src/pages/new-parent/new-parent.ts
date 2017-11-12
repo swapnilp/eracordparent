@@ -34,7 +34,7 @@ export class NewParentPage {
       });  
       let params = this.parentForm.value;
       var data = "&register_parent[device_id]=" + localStorage.getItem('deviceId') + "&register_parent[mobile]=" + params.mobile + "&register_parent[name]=" + params.name;
-      
+      this.loading.present();
       this.authService.getPostData(data,'register_parent').then((result) => {
         this.loading.dismiss();
         localStorage.removeItem('mobile');

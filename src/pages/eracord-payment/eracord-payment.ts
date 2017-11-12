@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PaymentHistoryPage } from '../payment-history/payment-history';
+import { ApplyCouponPage } from '../apply-coupon/apply-coupon';
 
 @Component({
   selector: 'page-eracord-payment',
@@ -14,5 +15,7 @@ export class EracordPaymentPage {
   
   goToPaymentHistory() {
     this.navCtrl.push(PaymentHistoryPage);
+  } goToApplyCoupon() {
+    this.navCtrl.push(ApplyCouponPage);
   }  
 }
