@@ -28,19 +28,16 @@ export class PaymentHistoryPage {
   }
   
   getHistory() {
-    this.authService.getApiData('exam_catlogs', {}, null, this).then((result) => {
+    this.authService.getApiData('parent_payments', {}, null, this).then((result) => {
       this.totalCount = result['total_count'];
-      //if(result['payments']){
-      //  for(let payment of result['payments']) {
-      //    setTimeout(() => {
-      //      this.payments.push(payment);
-      //    }, 500);
-      //
-      //  }
-      //  if(this.loading) {
-      //    this.loading.dismiss();
-      //  }
-      //}
+      if(result['payments']){
+        for(let payment of result['payments']) {
+          setTimeout(() => {
+            this.payments.push(payment);
+          }, 500);
+      
+        }
+      }
       if(this.loading) {
         this.loading.dismiss();
       }

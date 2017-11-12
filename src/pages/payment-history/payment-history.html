@@ -7,17 +7,17 @@
       Payment History
     </ion-title>
   </ion-navbar>
-  <ion-list id="exam-header" class="relative">
+  <ion-list id="payment-header" class="relative">
     <h5 class="paddingL10"><small><strong>Total Records - </strong> {{totalCount}}</small></h5>
   </ion-list>
 </ion-header>
 <ion-content padding id="page8">
   <div *ngIf="totalCount > 0">
-    <ion-list id="exams-list4">
-      <ion-item class="animated fadeInLeft" color="none" id="exams-list-item15" *ngFor="let exam of payments">
-        <h3 class="paymentName"><strong [innerHtml]="exam.name"></strong></h3>
-        <span [innerHtml]="exam.marks"></span>
-        <ion-note item-right><small [innerHtml]="exam.date"></small></ion-note>
+    <ion-list id="payments-list4">
+      <ion-item class="animated fadeInLeft" color="none" id="payments-list-item15" *ngFor="let payment of payments">
+        <h3 class="paymentName"><strong [innerHtml]="payment.name"></strong></h3>
+        <span [innerHtml]="payment.desc"></span>
+        <ion-note item-right><small [innerHtml]="payment.amount"></small></ion-note>
       </ion-item>
     </ion-list>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
@@ -25,6 +25,6 @@
     </ion-infinite-scroll>
   </div>
   <div *ngIf="isLoading === false && totalCount == 0">
-    <h3 style="color:red;">Exams not present</h3>
+    <h3 style="color:red;">Payments not present</h3>
   </div>
 </ion-content>
