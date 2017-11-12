@@ -43,7 +43,6 @@ export class MyApp {
       const user = JSON.parse(localStorage.getItem('userData'));
       this.payment = localStorage.getItem('paymentPriority');
       let updatePriority = user.update_priority;
-      debugger
       this.students = user.students;
       //if(this.students.length > 0 && self.slides) {
       //  setTimeout(function(){

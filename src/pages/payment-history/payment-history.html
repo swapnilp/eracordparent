@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Payment History
+    </ion-title>
+  </ion-navbar>
+  <ion-list id="exam-header" class="relative">
+    <h5 class="paddingL10"><small><strong>Total Records - </strong> {{totalCount}}</small></h5>
+  </ion-list>
+</ion-header>
+<ion-content padding id="page8">
+  <div *ngIf="totalCount > 0">
+    <ion-list id="exams-list4">
+      <ion-item class="animated fadeInLeft" color="none" id="exams-list-item15" *ngFor="let exam of payments">
+        <h3 class="paymentName"><strong [innerHtml]="exam.name"></strong></h3>
+        <span [innerHtml]="exam.marks"></span>
+        <ion-note item-right><small [innerHtml]="exam.date"></small></ion-note>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+  <div *ngIf="isLoading === false && totalCount == 0">
+    <h3 style="color:red;">Exams not present</h3>
+  </div>
+</ion-content>

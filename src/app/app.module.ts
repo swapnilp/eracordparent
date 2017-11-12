@@ -23,6 +23,7 @@ import { ExamFilterPage } from '../pages/exam-filter/exam-filter';
 import { AccountFilterPage } from '../pages/account-filter/account-filter';
 import { DailyTeachesFilterPage } from '../pages/daily-teaches-filter/daily-teaches-filter';
 import { OrganisationPaymentPage } from '../pages/organisation-payment/organisation-payment';
+import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AlertService } from '../providers/alert-service/alert-service';
@@ -43,6 +44,7 @@ import { AlertService } from '../providers/alert-service/alert-service';
     StudentsPage,
     EracordPaymentPage,
     ExamFilterPage,
+    PaymentHistoryPage,
     DailyTeachesFilterPage,
     AccountFilterPage,
     OrganisationPaymentPage
@@ -68,6 +70,7 @@ import { AlertService } from '../providers/alert-service/alert-service';
     StudentsPage,
     EracordPaymentPage,
     ExamFilterPage,
+    PaymentHistoryPage,
     DailyTeachesFilterPage,
     AccountFilterPage,
     OrganisationPaymentPage
