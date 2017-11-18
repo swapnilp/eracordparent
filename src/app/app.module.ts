@@ -5,6 +5,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Device } from '@ionic-native/device';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
 import { AuthService } from '../providers/auth-service/auth-service';
 import { EracordPage } from '../pages/eracord/eracord';
@@ -28,6 +29,24 @@ import { ApplyCouponPage } from '../pages/apply-coupon/apply-coupon';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AlertService } from '../providers/alert-service/alert-service';
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': '41af3a73'
+  },
+  'push': {
+    'sender_id': '32839642830',
+    'pluginConfig': {
+      'ios': {
+        'badge': true,
+        'sound': true
+      },
+      'android': {
+        'iconColor': '#343434'
+      }
+    }
+  }
+};
 
 @NgModule({
   declarations: [
@@ -54,7 +73,8 @@ import { AlertService } from '../providers/alert-service/alert-service';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
