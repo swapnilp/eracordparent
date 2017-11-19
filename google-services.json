@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "32839642830",
+    "firebase_url": "https://eracord-c0107.firebaseio.com",
+    "project_id": "eracord-c0107",
+    "storage_bucket": "eracord-c0107.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32839642830:android:26356a01c005f785",
+        "android_client_info": {
+          "package_name": "com.eracordparent.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32839642830-9iaddeq1hmtmais9gbkmhqfuovjmqaru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1Mnm50K9iw1BqICcosI9-Z9DyQda_Xqw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
