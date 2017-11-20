@@ -37,7 +37,6 @@ export class NewParentPage {
       this.loading.present();
       this.authService.getPostData(data,'register_parent').then((result) => {
         this.loading.dismiss();
-        localStorage.removeItem('mobile');
         if(result['email']) {
           params['email'] = result['email'];
         }

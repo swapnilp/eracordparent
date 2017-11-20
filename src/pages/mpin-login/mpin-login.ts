@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, MenuController } from 'ionic-angular';
-import { EracordPage } from '../eracord/eracord';
+import { NewParentPage } from '../new-parent/new-parent';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
 import { Events } from 'ionic-angular';
@@ -23,9 +23,9 @@ export class MpinLoginPage {
     this.mobile = localStorage.getItem('mobile');
   }
 
-  goToRegister(params){
+  goToNewParent(params){
     if (!params) params = {};
-    this.navCtrl.push(EracordPage);
+    this.navCtrl.push(NewParentPage);
   }
   
   login(): void {

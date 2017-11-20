@@ -50,7 +50,7 @@ export class RegisterParentPage {
     if(this.parentForm.valid) {
       let values  = this.parentForm.value;
       if(values.mpin === values.confirm_mpin ) {
-        var data = "&parent[name]=" + values.name + "&parent[mobile]=" + values.mobile+ "&parent[device_id]=" + values.device_id+ "&parent[email]=" + values.email + "&parent[mpin]=" + values.mpin+ "&parent[confirm_mpin]=" + values.confirm_mpin + "&parent[token]=" +values.token;
+        var data = "&parent[name]=" + values.name + "&parent[mobile]=" + values.mobile+ "&parent[device_id]=" + values.device_id+ "&parent[email]=" + values.email + "&parent[mpin]=" + values.mpin+ "&parent[confirm_mpin]=" + values.confirm_mpin + "&parent[token]=" +values.token + "&parent[os]=android";
         
         this.authService.getPostData(data,'register_parent/register').then((result) => {
           this.loading.dismiss();

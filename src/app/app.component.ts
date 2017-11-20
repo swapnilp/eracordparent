@@ -15,7 +15,7 @@ import { EracordPage } from '../pages/eracord/eracord';
 import { StudentsPage } from '../pages/students/students';
 import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
 import { Device } from '@ionic-native/device';
-import { Push, PushToken } from '@ionic/cloud-angular';
+//import { Push, PushToken } from '@ionic/cloud-angular';
 
 
 @Component({
@@ -29,7 +29,8 @@ export class MyApp {
   isFirstChange = true;
   payment:any = "";
   
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device, private inAppBrowser: InAppBrowser, public alertCtrl: AlertController, public push: Push) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device, private inAppBrowser: InAppBrowser, public alertCtrl: AlertController) {
+    //, public push: Push) {
     
     if(localStorage.getItem('mobile') && localStorage.getItem('deviceId')) {
       this.rootPage = MpinLoginPage;
@@ -68,17 +69,17 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-
-    this.push.register().then((t: PushToken) => {
-      return this.push.saveToken(t);
-    }).then((t: PushToken) => {
-      console.log('Token saved:', t.token);
-    });
     
-    this.push.rx.notification()
-      .subscribe((msg) => {
-        alert(msg.title + ': ' + msg.text);
-      });
+    //this.push.register().then((t: PushToken) => {
+    //  return this.push.saveToken(t);
+    //}).then((t: PushToken) => {
+    //  console.log('Token saved:', t.token);
+    //});
+    //
+    //this.push.rx.notification()
+    //  .subscribe((msg) => {
+    //    alert(msg.title + ': ' + msg.text);
+    //  });
   }
   
   ngAfterViewInit() {
