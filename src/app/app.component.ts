@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, Slides, Events, AlertController } from 'ionic-angular';
+import { Platform, Nav, Slides, Events, AlertController, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { InAppBrowser} from "@ionic-native/in-app-browser";
@@ -28,8 +28,9 @@ export class MyApp {
   students = [];
   isFirstChange = true;
   payment:any = "";
+  backButtonPressedOnceToExit:any = false;
   
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device, private inAppBrowser: InAppBrowser, public alertCtrl: AlertController) {
+  constructor(private platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device, private inAppBrowser: InAppBrowser, public alertCtrl: AlertController, private toastCtrl:   ToastController,) {
     //, public push: Push) {
     
     if(localStorage.getItem('mobile') && localStorage.getItem('deviceId')) {
@@ -68,6 +69,21 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      
+      platform.registerBackButtonAction(() => {
+        if (this.backButtonPressedOnceToExit) {
+          this.platform.exitApp();
+        } else if (this.navCtrl.canGoBack()) {
+          this.navCtrl.pop({});
+        } else {
+          this.showToast();
+          this.backButtonPressedOnceToExit = true;
+          setTimeout(() => {
+            
+            this.backButtonPressedOnceToExit = false;
+          },2000)
+        }
+      });
     });
     
     //this.push.register().then((t: PushToken) => {
@@ -80,6 +96,20 @@ export class MyApp {
     //  .subscribe((msg) => {
     //    alert(msg.title + ': ' + msg.text);
     //  });
+  }
+  
+  showToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Press Again to exit',
+      duration: 2000,
+      position: 'bottom'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
   
   ngAfterViewInit() {
