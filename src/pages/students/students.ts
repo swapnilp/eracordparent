@@ -30,27 +30,27 @@ export class StudentsPage {
 
   goToHostel(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(HostelPage, {
+    this.navCtrl.push(HostelPage, {
       'studentID': params.studentId
     });
   }goToDailyTeaches(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(DailyTeachesPage, {
+    this.navCtrl.push(DailyTeachesPage, {
       'studentID': params.studentId
     });
   }goToAccount(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(AccountPage, {
+    this.navCtrl.push(AccountPage, {
       'studentID': params.studentId
     });
   }goToSetting(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(SettingPage, {
+    this.navCtrl.push(SettingPage, {
       'studentID': params['studentID']
     });
   }goToExams(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(ExamsPage, {
+    this.navCtrl.push(ExamsPage, {
       'studentID': params['studentId']
     });
   }

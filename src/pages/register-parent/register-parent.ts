@@ -56,7 +56,7 @@ export class RegisterParentPage {
           this.loading.dismiss();
           if(result['success']) {
             localStorage.setItem('mobile', values.mobile);
-            this.navCtrl.push(MpinLoginPage);
+            this.navCtrl.setRoot(MpinLoginPage);
           } else{
             this.hasError= true;
             this.errorClass= 'error';
