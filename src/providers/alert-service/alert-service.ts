@@ -36,5 +36,19 @@ export class AlertService {
     });
     toast.present();
   }
+
+  backBtn() {
+    let toast = this.toastCtrl.create({
+      message: 'Press Again to exit',
+      duration: 2000,
+      position: 'bottom'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
+  }
   
 }

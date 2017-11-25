@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, Slides, Events, AlertController, ToastController } from 'ionic-angular';
+import { Platform, Nav, Slides, Events, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { InAppBrowser} from "@ionic-native/in-app-browser";
@@ -15,6 +15,7 @@ import { EracordPage } from '../pages/eracord/eracord';
 import { StudentsPage } from '../pages/students/students';
 import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
 import { Device } from '@ionic-native/device';
+import { AlertService } from '../providers/alert-service/alert-service';
 //import { Push, PushToken } from '@ionic/cloud-angular';
 
 
@@ -30,7 +31,7 @@ export class MyApp {
   payment:any = "";
   backButtonPressedOnceToExit:any = false;
   
-  constructor(private platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device, private inAppBrowser: InAppBrowser, public alertCtrl: AlertController, private toastCtrl:   ToastController,) {
+  constructor(private platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device, private inAppBrowser: InAppBrowser, public alertCtrl: AlertController, public alertService: AlertService) {
     //, public push: Push) {
     
     if(localStorage.getItem('mobile') && localStorage.getItem('deviceId')) {
@@ -76,7 +77,7 @@ export class MyApp {
         } else if (this.navCtrl.canGoBack()) {
           this.navCtrl.pop({});
         } else {
-          this.showToast();
+          this.alertService.backBtn();
           this.backButtonPressedOnceToExit = true;
           setTimeout(() => {
             
@@ -96,20 +97,6 @@ export class MyApp {
     //  .subscribe((msg) => {
     //    alert(msg.title + ': ' + msg.text);
     //  });
-  }
-  
-  showToast() {
-    let toast = this.toastCtrl.create({
-      message: 'Press Again to exit',
-      duration: 2000,
-      position: 'bottom'
-    });
-
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-
-    toast.present();
   }
   
   ngAfterViewInit() {
