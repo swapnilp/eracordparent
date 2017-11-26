@@ -9,7 +9,7 @@ import { InAppBrowser, InAppBrowserOptions} from "@ionic-native/in-app-browser";
   templateUrl: 'eracord-payment.html'
 })
 export class EracordPaymentPage {
-
+  browser:any;
   constructor(public navCtrl: NavController, public params: NavParams, private inAppBrowser: InAppBrowser) {
   }
 
@@ -18,7 +18,7 @@ export class EracordPaymentPage {
     const options: InAppBrowserOptions = {
       zoom: 'no'
     };
-    const browser = this.inAppBrowser.create(url, '_self', options);
+    browser = this.inAppBrowser.create(url, '_self', options);
     
     //browser.on('exit').subscribe(
     //  () => {
