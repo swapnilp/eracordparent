@@ -20,7 +20,7 @@ export class StudentsPage {
     this.payment = params.get('payment');
     if(this.payment === "Urgent") {
       this.onlyPay();
-    } else if(this.payment !== "None" && this.payment !== undefined) {
+    } else if(this.payment !== "None" && this.payment !== undefined && this.payment !== "Soft") {
       this.mightPay();
     }
       
