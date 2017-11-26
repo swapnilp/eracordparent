@@ -18,7 +18,7 @@ export class EracordPaymentPage {
     const options: InAppBrowserOptions = {
       zoom: 'no'
     };
-    browser = this.inAppBrowser.create(url, '_self', options);
+    this.browser = this.inAppBrowser.create(url, '_self', options);
     
     //browser.on('exit').subscribe(
     //  () => {
