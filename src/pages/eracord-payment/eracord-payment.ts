@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { PaymentHistoryPage } from '../payment-history/payment-history';
 import { ApplyCouponPage } from '../apply-coupon/apply-coupon';
 import { InAppBrowser, InAppBrowserOptions} from "@ionic-native/in-app-browser";
+import { AlertService } from '../../providers/alert-service/alert-service';
 
 @Component({
   selector: 'page-eracord-payment',
@@ -10,7 +11,7 @@ import { InAppBrowser, InAppBrowserOptions} from "@ionic-native/in-app-browser";
 })
 export class EracordPaymentPage {
   browser:any;
-  constructor(public navCtrl: NavController, public params: NavParams, private inAppBrowser: InAppBrowser) {
+  constructor(public navCtrl: NavController, public params: NavParams, private inAppBrowser: InAppBrowser, public alertService: AlertService) {
   }
 
   payNow() {
@@ -20,13 +21,13 @@ export class EracordPaymentPage {
     };
     this.browser = this.inAppBrowser.create(url, '_self', options);
     this.browser.close();
-    //browser.on('exit').subscribe(
-    //  () => {
-    //    this.close_event=true;
-    //  },
-    //  err => {
-    //    console.log("InAppBrowser Loadstop Event Error: " + err);
-    //  });
+    browser.on('exit').subscribe(
+      () => {
+        this.alertService.warning("Closed");
+      },
+      err => {
+        console.log("InAppBrowser Loadstop Event Error: " + err);
+      });
   }
   
   
