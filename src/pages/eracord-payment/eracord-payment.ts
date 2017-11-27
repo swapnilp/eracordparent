@@ -14,12 +14,12 @@ export class EracordPaymentPage {
   }
 
   payNow() {
-    const url = "https://eracord.com"
+    const url = "https://eracord.com/eracord_payment/10"
     const options: InAppBrowserOptions = {
       zoom: 'no'
     };
     this.browser = this.inAppBrowser.create(url, '_self', options);
-    
+    this.browser.close();
     //browser.on('exit').subscribe(
     //  () => {
     //    this.close_event=true;
