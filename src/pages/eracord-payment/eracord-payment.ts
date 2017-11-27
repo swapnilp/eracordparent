@@ -20,8 +20,8 @@ export class EracordPaymentPage {
       zoom: 'no'
     };
     this.browser = this.inAppBrowser.create(url, '_self', options);
-    this.browser.close();
-    browser.on('exit').subscribe(
+    //this.browser.close();
+    this.browser.on('exit').subscribe(
       () => {
         this.alertService.warning("Closed");
       },
