@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <small [innerHtml]="student.name"></small>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only on-click="goToStudent()">
+        <ion-icon name="contacts"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page8">
+  <div>
+    <h3 style="color:red;">Are you really want to remove <small>{{student.name}}</small> from your account??? </h3>
+    <span>Please Enter <strong>"DELETE"</strong> in following textbox and click on submit Button</span>
+    <br />
+    <span>For reconnecting this student you need to contact <strong>{{student.organisation_name}}</strong></span>
+  </div>
+  <ion-item id="mpinLogin-input9">
+    <ion-label floating>
+      DELETE
+    </ion-label>
+    <ion-input type="tel" placeholder="" required [(ngModel)]="text" [ngModelOptions]="{standalone: true}"></ion-input>
+  </ion-item>
+  <button id="mpinLogin-button6" ion-button color="positive" full [disabled]="text !== 'DELETE'" on-click="deleteMe()">
+    Submit
+  </button>
+</ion-content>

@@ -18,6 +18,7 @@ export class StudentsPage {
   payment:any;
   isReload: any = false;
   loading: any;
+  reqLoading: any = false;
   
   constructor(public navCtrl: NavController, public params: NavParams, public alertCtrl: AlertController, public loadingController: LoadingController, public authService: AuthService) {
     this.isReload = params.get('reload');
@@ -38,6 +39,8 @@ export class StudentsPage {
   }
 
   getStudents() {
+    this.reqLoading = true;
+    this.students = [];
     this.loading = this.loadingController.create({
       spinner: 'bubbles',
       content: "Please wait..."
@@ -54,6 +57,7 @@ export class StudentsPage {
           this.loading.dismiss();
         }
       }
+      this.reqLoading = false;
     });
   }
   
@@ -76,7 +80,7 @@ export class StudentsPage {
   }goToSetting(params){
     if (!params) params = {};
     this.navCtrl.push(SettingPage, {
-      'studentID': params['studentID']
+      'studentID': params.studentId
     });
   }goToExams(params){
     if (!params) params = {};

@@ -12,8 +12,8 @@ import 'rxjs/add/operator/map';
 //let apiUrl = 'http://localhost:3000/parents/';
 let apiUrl = 'https://eracord.com/parents/';
 let serverUrl = 'https://eracord.com/api/v1/parents/';
-//let apiUrl = 'http://192.168.1.100:3000/parents/';
-//let serverUrl = 'http://192.168.1.100:3000/api/v1/parents/';
+//let apiUrl = 'http://192.168.1.101:3000/parents/';
+//let serverUrl = 'http://192.168.1.101:3000/api/v1/parents/';
 
 @Injectable()
 export class AuthService {
@@ -37,13 +37,17 @@ export class AuthService {
     });
   }
 
-  getPostData(credentials, type) {
+  getPostData(credentials, type, auth = false) {
     return new Promise((resolve, reject) => {
       
       let headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      
-      this.http.post(serverUrl + type+ ".json" , credentials, {headers: headers})
+      let req_params = "";
+      if (auth) {
+        const user = JSON.parse(localStorage.getItem('userData'));
+        req_params = req_params + "&authorization_token="+ user.token;
+      }
+      this.http.post(serverUrl + type+ ".json?" + req_params , credentials, {headers: headers})
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -52,13 +56,13 @@ export class AuthService {
       
     });
   }
-  
+
   getApiData(url, params, student_id = null, pageObj) {
     let self = this;
     return new Promise((resolve, reject) => {
       const user = JSON.parse(localStorage.getItem('userData'));
       if(user) {
-      
+        
         let req_params = "&authorization_token="+ user.token;
         
         if(student_id) {

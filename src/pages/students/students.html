@@ -6,10 +6,15 @@
     <ion-title>
       Students
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only on-click="getStudents()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page15" >
-  <div id="students-markdown3" class="show-list-numbers-and-dots" *ngIf="students.length == 0">
+  <div id="students-markdown3" class="show-list-numbers-and-dots" *ngIf="students.length == 0 && !reqLoading">
     <p style="color:#000000;">
       You are not connect with any student organisation. Please contact to student Class / School / College. Or contact with eracord Admin.
     </p>
