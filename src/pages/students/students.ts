@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
 import { HostelPage } from '../hostel/hostel';
 import { DailyTeachesPage } from '../daily-teaches/daily-teaches';
@@ -7,6 +7,7 @@ import { AccountPage } from '../account/account';
 import { SettingPage } from '../setting/setting';
 import { ExamsPage } from '../exams/exams';
 import { EracordPaymentPage } from '../eracord-payment/eracord-payment';
+import { AuthService } from '../../providers/auth-service/auth-service';
 
 @Component({
   selector: 'page-students',
@@ -15,8 +16,17 @@ import { EracordPaymentPage } from '../eracord-payment/eracord-payment';
 export class StudentsPage {
   students = [];
   payment:any;
-  constructor(public navCtrl: NavController, public params: NavParams, public alertCtrl: AlertController) {
-    const user = JSON.parse(localStorage.getItem('userData'));
+  isReload: any = false;
+  loading: any;
+  
+  constructor(public navCtrl: NavController, public params: NavParams, public alertCtrl: AlertController, public loadingController: LoadingController, public authService: AuthService) {
+    this.isReload = params.get('reload');
+    if(this.isReload) {
+      this.getStudents();
+    } else {
+      const user = JSON.parse(localStorage.getItem('userData'));
+      this.students = user.students;
+    }
     this.payment = params.get('payment');
     if(this.payment === "Urgent") {
       this.onlyPay();
@@ -24,7 +34,27 @@ export class StudentsPage {
       this.mightPay();
     }
       
-    this.students = user.students;
+
+  }
+
+  getStudents() {
+    this.loading = this.loadingController.create({
+      spinner: 'bubbles',
+      content: "Please wait..."
+    });  
+    this.loading.present();
+    
+    this.authService.getApiData('students', {}, null, this).then((result) => {
+      if(result['success']){
+        this.students = result['students'];
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        userData.students = this.students;
+        localStorage.setItem('userData', JSON.stringify(userData));
+        if(this.loading) {
+          this.loading.dismiss();
+        }
+      }
+    });
   }
   
 
