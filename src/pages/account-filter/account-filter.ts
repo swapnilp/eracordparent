@@ -66,7 +66,7 @@ export class AccountFilterPage {
   }
 
   back() {
-    this.navCtrl.pop();
+    this.apply();
   }
   
   clear() {

@@ -88,7 +88,7 @@ export class ExamFilterPage {
   }
 
   back() {
-    this.navCtrl.pop();
+    this.apply();
   }
   
   clear() {

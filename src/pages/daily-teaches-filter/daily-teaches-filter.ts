@@ -88,7 +88,7 @@ export class DailyTeachesFilterPage {
   }
 
   back() {
-    this.navCtrl.pop();
+    this.apply();
   }
   
   clear() {
