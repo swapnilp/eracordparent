@@ -50,6 +50,7 @@ export class AccountFilterPage {
   }
 
   apply() {
+    let hasFilter = !(this.filterData.startDate == '' && this.filterData.endDate == '' && this.filterData.transactionType === 'all')
     if(this.filterData.startDate === "") {
       delete(this.filterData.startDate);
     }
@@ -59,7 +60,8 @@ export class AccountFilterPage {
 
     this.navCtrl.setRoot(AccountPage, {
       'studentID': this.studentID,
-      'filter': this.filterData
+      'filter': this.filterData,
+      'hasFiltered': hasFilter
     });
   }
 

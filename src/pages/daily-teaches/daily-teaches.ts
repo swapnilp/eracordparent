@@ -19,11 +19,13 @@ export class DailyTeachesPage {
   isLoading= false;
   totalCount = 0;
   filter: any= {};
+  isFltered:any = false;
 
   constructor(public navCtrl: NavController, public params: NavParams, public authService: AuthService, public loadingController: LoadingController) {
     this.loading.present();
     this.studentID = params.get('studentID');
     this.filter = params.get('filter');
+    this.isFltered = params.get('hasFiltered');
     this.getDailyTeaches(1)
   }
 

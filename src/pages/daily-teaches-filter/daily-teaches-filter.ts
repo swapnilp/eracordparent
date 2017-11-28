@@ -70,16 +70,20 @@ export class DailyTeachesFilterPage {
   }
 
   apply() {
+    let hasFilter = !(this.filterData.subjects.length == 0 && this.filterData.startDate == '' && this.filterData.endDate == '' && this.filterData.absentee === 'all')
+    
     if(this.filterData.startDate === "") {
       delete(this.filterData.startDate);
     }
     if(this.filterData.endDate === "") {
       delete(this.filterData.endDate);
     }
+    
     this.filterData.subjects = this.filterData.subjects.join(',');
     this.navCtrl.setRoot(DailyTeachesPage, {
       'studentID': this.studentID,
-      'filter': this.filterData
+      'filter': this.filterData,
+      'hasFiltered': hasFilter
     });
   }
 

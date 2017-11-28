@@ -16,7 +16,7 @@
     <h5 class="paddingL10"><small><strong>Total Records - </strong> {{totalCount}}</small></h5>
     <ion-note item-right class="right">
       <button ion-button icon-left clear color="dark" on-click="filterDailyTeaches()">
-        <ion-icon name="funnel"></ion-icon>
+        <ion-icon name="funnel" [ngClass]="{'danger': isFltered}"></ion-icon>
         Filter
       </button>
     </ion-note>

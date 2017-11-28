@@ -72,6 +72,7 @@ export class ExamFilterPage {
   }
 
   apply() {
+    let hasFilter = !(this.filterData.subjects.length == 0 && this.filterData.startDate == '' && this.filterData.endDate == '' && this.filterData.absentee === 'all' && this.filterData.examType === 'all');
     if(this.filterData.startDate === "") {
       delete(this.filterData.startDate);
     }
@@ -81,7 +82,8 @@ export class ExamFilterPage {
     this.filterData.subjects = this.filterData.subjects.join(',');
     this.navCtrl.setRoot(ExamsPage, {
       'studentID': this.studentID,
-      'filter': this.filterData
+      'filter': this.filterData,
+      'hasFiltered': hasFilter
     });
   }
 
