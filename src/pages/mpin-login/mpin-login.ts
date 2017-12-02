@@ -16,6 +16,7 @@ export class MpinLoginPage {
   menu:any;
   mobile:any='';
   payment: any = "normal";
+  passcode:any = "";
 
   constructor(public navCtrl: NavController, public authService: AuthService, public events: Events, public alertService: AlertService, public loadingController: LoadingController, public menuCtr: MenuController) {
     this.menu = menuCtr;
@@ -23,6 +24,25 @@ export class MpinLoginPage {
     this.mobile = localStorage.getItem('mobile');
   }
 
+  
+  add(value) {
+    if(this.passcode.length < 4) {
+      this.alertService.dismiss();
+      this.passcode = this.passcode + value;
+      if(this.passcode.length == 4) {
+        setTimeout(() => {
+          this.login();
+        }, 500);
+      }
+    }
+  }
+
+  delete(): void {
+    if(this.passcode.length > 0) {
+      this.passcode = this.passcode.substring(0, this.passcode.length - 1);
+    }
+  }
+  
   goToNewParent(params){
     if (!params) params = {};
     this.navCtrl.push(NewParentPage);
@@ -34,17 +54,19 @@ export class MpinLoginPage {
       content: "Please wait..."
     });  
     this.loading.present();
-    var data = "&parent[device_id]="+this.userData.device_id+"&parent[mobile]="+this.userData.mobile+"&parent[mpin]="+this.userData.mpin;
+    var data = "&parent[device_id]="+this.userData.device_id+"&parent[mobile]="+this.userData.mobile+"&parent[mpin]="+ this.passcode;
     
     this.authService.postData(data,'sign_in').then((result) => {
       this.loading.dismiss();
       this.menu.enable(true);
+      this.alertService.dismiss();
       this.responseData = result;
       localStorage.setItem('userData', JSON.stringify(this.responseData));
       localStorage.setItem('paymentPriority', this.responseData.payment_priority);
       this.events.publish('user:login', "Swapnil Patil");
     }, (err) => {
       this.loading.dismiss();
+      this.passcode = ""
       var msg = JSON.parse(err._body).message;
       this.alertService.warning(msg);
       // Error log

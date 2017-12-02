@@ -11,44 +11,50 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class AlertService {
-
+  toast: any;
   constructor(public http: Http, public toastCtrl: ToastController) {
     console.log('Hello AlertServiceProvider Provider');
   }
 
   warning(msg) {
-    let toast = this.toastCtrl.create({
+    this.toast = this.toastCtrl.create({
       message: msg,
       duration: 8000,
       showCloseButton: true,
       closeButtonText: 'X'
     });
-    toast.present();
+    this.toast.present();
   }
 
   success(msg) {
-    let toast = this.toastCtrl.create({
+    this.toast = this.toastCtrl.create({
       message: msg,
       duration: 8000,
       showCloseButton: true,
       closeButtonText: 'X',
       cssClass: 'success'
     });
-    toast.present();
+    this.toast.present();
   }
 
   backBtn() {
-    let toast = this.toastCtrl.create({
+    this.toast = this.toastCtrl.create({
       message: 'Press Again to exit',
       duration: 2000,
       position: 'bottom'
     });
-
-    toast.onDidDismiss(() => {
+    
+    this.toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
 
-    toast.present();
+    this.toast.present();
   }
+
+  dismiss() {
+    if(this.toast) {
+      this.toast.dismissAll();
+    }
+  } 
   
 }

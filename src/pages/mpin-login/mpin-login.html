@@ -14,19 +14,69 @@
   <h4 id="mpinLogin-heading5" style="color:#000000;">
     Mobile - {{mobile}}
   </h4>
-  <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
-    <ion-item id="mpinLogin-input9">
-      <ion-label floating>
-        MPIN
-      </ion-label>
-      <ion-input type="tel" placeholder="" required [(ngModel)]="userData.mpin" [ngModelOptions]="{standalone: true}"></ion-input>
-    </ion-item>
-    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-    <button id="mpinLogin-button6" ion-button color="positive" full [disabled]="!loginForm.form.valid">
-      Login
-    </button>
-  </form>
+  <div style="border:1px solid; padding-top:4px;">
+    <div class="row" style="text-align: center;height:30px;">
+      <div class="col col-10 col-offset-15">
+        <strong *ngIf="passcode.length >= 1">*</strong>
+      </div>
+      <div class="col col-10 col-offset-10">
+        <strong *ngIf="passcode.length >= 2">*</strong>
+      </div>
+      <div class="col col-10 col-offset-10">
+        <strong *ngIf="passcode.length >= 3">*</strong>
+      </div>
+      <div class="col col-10 col-offset-10">
+        <strong *ngIf="passcode.length == 4">*</strong>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 20px">
+    <div class="row">
+      <div class="col col-20 col-offset-20">
+        <button class="button button-light button-stretch" on-click="add(1)">1</button>
+      </div>
+      <div class="col col-20">
+        <button class="button button-light button-stretch" on-click="add(2)">2</button>
+      </div>
+      <div class="col col-20">
+        <button class="button button-light button-stretch" on-click="add(3)">3</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-20 col-offset-20">
+        <button class="button button-light button-stretch" on-click="add(4)">4</button>
+      </div>
+      <div class="col col-20">
+        <button class="button button-light button-stretch" on-click="add(5)">5</button>
+      </div>
+      <div class="col col-20">
+        <button class="button button-light button-stretch" on-click="add(6)">6</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-20 col-offset-20">
+        <button class="button button-light button-stretch" on-click="add(7)">7</button>
+      </div>
+      <div class="col col-20">
+        <button class="button button-light button-stretch" on-click="add(8)">8</button>
+      </div>
+      <div class="col col-20">
+        <button class="button button-light button-stretch" on-click="add(9)">9</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-20 col-offset-20">
+        <button class="button button-light button-stretch"></button>
+      </div>
+      <div class="col col-20">
+        <button class="button button-light button-stretch" on-click="add(0)">0</button>
+      </div>
+      <div class="col col-20">
+        <button class="button icon ion-arrow-left-a button-light button-stretch" on-click="delete()"></button>
+      </div>
+    </div>
+  </div>
   <button id="mpinLogin-button7" ion-button clear color="positive" full small on-click="goToNewParent()">
-    Different Account / forgot mpin ?
+      Different Account / forgot mpin ?
   </button>
 </ion-content>
