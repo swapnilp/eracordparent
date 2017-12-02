@@ -27,15 +27,15 @@
     </ion-item>
     <ion-item id="registerParent-input4">
       <ion-label floating>MPIN (4 Digit)</ion-label>
-      <ion-input formControlName="mpin" type="password" placeholder="MPIN" pattern="[0-9]*"></ion-input>
+      <ion-input formControlName="mpin" type="tel" placeholder="MPIN" class="mask-text" maxlength="4"></ion-input>
     </ion-item>
     <ion-item id="registerParent-input5">
       <ion-label floating>Confirm MPIN</ion-label>
-      <ion-input formControlName="confirm_mpin" type="password" placeholder="Confirm MPIN" pattern="[0-9]*"></ion-input>
+      <ion-input formControlName="confirm_mpin" type="tel" placeholder="Confirm MPIN" class="mask-text" maxlength="4"></ion-input>
     </ion-item>
     <ion-item id="registerParent-input6">
       <ion-label floating>SMS Code</ion-label>
-      <ion-input formControlName="token" type="password" placeholder="SMS Code" pattern="[0-9]*"></ion-input>
+      <ion-input formControlName="token" type="number" placeholder="SMS Code" class="mask-text"></ion-input>
     </ion-item>
     <button id="registerParent-button5" ion-button clear color="positive" full small>
       Resend SMS
@@ -43,7 +43,7 @@
     <ion-list-header id="registerParent-input7" class="{{errorClass}} list-header-md" *ngIf="hasError">
       {{errors}}
     </ion-list-header>
-    <button id="registerParent-button4" ion-button color="positive" full on-click="register()">
+    <button id="registerParent-button4" ion-button color="positive" full on-click="register()" [disabled]="!parentForm.valid">
       Register
     </button>
   </form>

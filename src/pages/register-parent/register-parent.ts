@@ -36,7 +36,7 @@ export class RegisterParentPage {
       email: [this.email || ''],
       mpin: ['', Validators.compose([Validators.minLength(4), Validators.maxLength(4), Validators.pattern('[0-9]*'), Validators.required])],
       confirm_mpin: ['', Validators.compose([Validators.minLength(4), Validators.maxLength(4), Validators.pattern('[0-9]*'), Validators.required])],
-      token: ['', Validators.compose([Validators.minLength(4), Validators.maxLength(4), Validators.pattern('[0-9]*'), Validators.required])],
+      token: ['', Validators.compose([Validators.minLength(2), Validators.pattern('[0-9]*'), Validators.required])],
     });
   }
 
