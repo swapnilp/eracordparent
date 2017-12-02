@@ -49,8 +49,16 @@ page-mpin-login {
   .button-stretch {
     width: 100%;
   }
-  .button{ 
+
+  .button-stretch{ 
     border: 1px solid;
     height: 40px;
+    padding-top: 10px;
+    color: #000;
+  }
+
+  .animateLink:active {
+    animation-name: flash;
+    background: #2a6fbf;
   }
 }
