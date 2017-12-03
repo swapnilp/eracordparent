@@ -23,6 +23,9 @@
   </ion-list>
 </ion-header>
 <ion-content padding id="page11">
+  <button id="newPayment-button3" ion-button color="positive" full style="font-weight:500;" on-click="payOnline()">
+    Pay Online
+  </button>
   <ion-list id="account-list8">
     <ion-item-divider class="gradient" color="light">Transactions ({{totalCount}})</ion-item-divider>
     <div *ngIf="totalCount > 0">

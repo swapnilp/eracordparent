@@ -3,6 +3,7 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { StudentsPage } from '../students/students';
 import { AccountFilterPage } from '../account-filter/account-filter';
+import { StudentPaymentPage } from '../student-payment/student-payment';
 
 @Component({
   selector: 'page-account',
@@ -82,6 +83,13 @@ export class AccountPage {
       'studentID': this.studentID,
       'filter': this.filter
     });
+  }
+
+  payOnline() {
+    this.navCtrl.push(StudentPaymentPage, {
+      'studentID': this.studentID
+    })
+    
   }
 
 }

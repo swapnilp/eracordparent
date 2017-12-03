@@ -20,6 +20,7 @@ import { AccountPage } from '../pages/account/account';
 import { SettingPage } from '../pages/setting/setting';
 import { StudentsPage } from '../pages/students/students';
 import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
+import { StudentPaymentPage } from '../pages/student-payment/student-payment';
 import { ExamFilterPage } from '../pages/exam-filter/exam-filter';
 import { AccountFilterPage } from '../pages/account-filter/account-filter';
 import { DailyTeachesFilterPage } from '../pages/daily-teaches-filter/daily-teaches-filter';
@@ -64,6 +65,7 @@ const cloudSettings: CloudSettings = {
     SettingPage,
     StudentsPage,
     EracordPaymentPage,
+    StudentPaymentPage,
     ExamFilterPage,
     PaymentHistoryPage,
     ApplyCouponPage,
@@ -93,6 +95,7 @@ const cloudSettings: CloudSettings = {
     SettingPage,
     StudentsPage,
     EracordPaymentPage,
+    StudentPaymentPage,
     ExamFilterPage,
     PaymentHistoryPage,
     ApplyCouponPage,
