@@ -47,7 +47,7 @@ export class EracordPaymentPage {
         content: "Please wait..."
       });  
       let params = this.paymentForm.value;
-      var data = "&amount[amount_id]=" + params.amount_id;
+      var data = "&amount[eracord_amount_id]=" + params.amount_id;
       this.loading.present();
       
       this.authService.getPostData(data,'payments', true).then((result) => {

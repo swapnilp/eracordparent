@@ -49,7 +49,7 @@
             </ion-col>
           </ion-row>
           <ion-row style="height: 70px;" text-center justify-content-center align-items-center>
-            <ion-col on-click="goToAccount({studentId: student.student_id})" col-4>
+            <ion-col on-click="goToAccount({studentId: student.student_id, hasPayOnline: student.has_online_pay})" col-4>
               <ion-icon name="briefcase" item-left></ion-icon>
               <br />
               Accounts

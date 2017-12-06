@@ -23,7 +23,7 @@
   </ion-list>
 </ion-header>
 <ion-content padding id="page11">
-  <button id="newPayment-button3" ion-button color="positive" full style="font-weight:500;" on-click="payOnline()">
+  <button id="newPayment-button3" ion-button color="positive" full style="font-weight:500;" on-click="payOnline()" *ngIf="hasPayOnline">
     Pay Online
   </button>
   <ion-list id="account-list8">

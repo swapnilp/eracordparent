@@ -75,7 +75,8 @@ export class StudentsPage {
   }goToAccount(params){
     if (!params) params = {};
     this.navCtrl.push(AccountPage, {
-      'studentID': params.studentId
+      'studentID': params.studentId,
+      'hasPayOnline': params.hasPayOnline
     });
   }goToSetting(params){
     if (!params) params = {};

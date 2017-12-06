@@ -62,7 +62,7 @@ export class StudentPaymentPage {
       var data = "&amount[amount]=" + params.amount;
       this.loading.present();
       
-      this.authService.getPostData(data,'payments', true).then((result) => {
+      this.authService.getPostData(data,'students/organisation_payments', true).then((result) => {
         this.loading.dismiss();
         if(result['success']) {
           let token = result['token'];
