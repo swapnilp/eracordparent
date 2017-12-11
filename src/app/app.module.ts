@@ -24,7 +24,7 @@ import { StudentPaymentPage } from '../pages/student-payment/student-payment';
 import { ExamFilterPage } from '../pages/exam-filter/exam-filter';
 import { AccountFilterPage } from '../pages/account-filter/account-filter';
 import { DailyTeachesFilterPage } from '../pages/daily-teaches-filter/daily-teaches-filter';
-import { PaymentHistoryPage } from '../pages/payment-history/payment-history';_
+import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 import { ApplyCouponPage } from '../pages/apply-coupon/apply-coupon';
 import { DeleteStudentPage } from '../pages/delete-student/delete-student';
 import { StatusBar } from '@ionic-native/status-bar';

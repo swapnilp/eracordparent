@@ -6,7 +6,7 @@ import { ApplyCouponPage } from '../apply-coupon/apply-coupon';
 import { InAppBrowser, InAppBrowserOptions} from "@ionic-native/in-app-browser";
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
-
+import { StudentsPage } from '../students/students';
 
 /**
  * Generated class for the StudentPaymentPage page.
