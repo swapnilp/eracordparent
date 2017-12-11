@@ -26,7 +26,7 @@ export class StudentPaymentPage {
   amount:any = [] ;
   loading: any;
   studentID:any;
-
+  
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public params: NavParams, private inAppBrowser: InAppBrowser, public alertService: AlertService, public loadingController: LoadingController, public authService: AuthService) {
     this.studentID = params.get('studentID');
     this.paymentForm = formBuilder.group({
@@ -41,7 +41,7 @@ export class StudentPaymentPage {
       content: "Please wait..."
     });
     this.loading.present();
-    this.authService.getApiData('students/organisation_payments/new', "", this.studentID, this).then((result) => {
+    this.authService.getApiData('students/' + this.studentID + '/organisation_payments/new', "", null, this).then((result) => {
       if(result['success']) {
         this.amount = result['amount'];
         this.paymentForm.setValue({amount: this.amount});
@@ -62,7 +62,7 @@ export class StudentPaymentPage {
       var data = "&amount[amount]=" + params.amount;
       this.loading.present();
       
-      this.authService.getPostData(data,'students/organisation_payments', true).then((result) => {
+      this.authService.getPostData(data,'students/' + this.studentID + '/organisation_payments', true).then((result) => {
         this.loading.dismiss();
         if(result['success']) {
           let token = result['token'];
@@ -89,7 +89,7 @@ export class StudentPaymentPage {
     this.browser.on('loadstart').subscribe(event => {
       if(event.url.match('mobile/close')) {
         this.browser.close()
-        alert('asdasd');
+        this.getPaymentStatus(token);
       }
     }, err => {
       console.log("InAppBrowser loadstart Event Error: " + err);
@@ -110,11 +110,18 @@ export class StudentPaymentPage {
       content: "Please wait..."
     });
     this.loading.present();
-    this.authService.getApiData('payments/get_status?&token=' + token, "", null, this).then((result) => {
+    this.authService.getApiData('students/' + this.studentID + '/organisation_payments/'+ token+'/check_status', "", null, this).then((result) => {
       if(result['success']) {
+        if(result['payment_invoice']['success']) {
+          this.alertService.success(result['message']);
+          this.navCtrl.setRoot(StudentsPage);
+        } else {
+          this.alertService.warning(result['message']);
+        }
+          
         //this.amounts = result['amounts'];
       } else {
-        
+        this.alertService.warning(result['message']);
       }
       
       if(this.loading){
@@ -122,8 +129,7 @@ export class StudentPaymentPage {
       }
     });
   }
-  
-  
+
   goToPaymentHistory() {
     this.navCtrl.push(PaymentHistoryPage);
   } goToApplyCoupon() {

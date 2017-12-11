@@ -3,6 +3,7 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PaymentHistoryPage } from '../payment-history/payment-history';
 import { ApplyCouponPage } from '../apply-coupon/apply-coupon';
+import { StudentsPage } from '../students/students';
 import { InAppBrowser, InAppBrowserOptions} from "@ionic-native/in-app-browser";
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
@@ -54,7 +55,7 @@ export class EracordPaymentPage {
         this.loading.dismiss();
         if(result['success']) {
           let token = result['token'];
-          this.payNow(token);
+          this.payNow(token, result['url']);
         } else {
           this.alertService.warning(result['message']);
         }
@@ -66,8 +67,8 @@ export class EracordPaymentPage {
     }
   }
   
-  payNow(token) {
-    const url = "https://eracord.com/eracord_payment/"+ token;
+  payNow(token, app_url) {
+    const url = app_url + token;
     const options: InAppBrowserOptions = {
       zoom: 'no'
     };
@@ -76,7 +77,7 @@ export class EracordPaymentPage {
     this.browser.on('loadstart').subscribe(event => {
       if(event.url.match('mobile/close')) {
         this.browser.close()
-        alert('asdasd');
+        this.getPaymentStatus(token)
       }
     }, err => {
       console.log("InAppBrowser loadstart Event Error: " + err);
@@ -97,11 +98,18 @@ export class EracordPaymentPage {
       content: "Please wait..."
     });
     this.loading.present();
-    this.authService.getApiData('payments/get_status?&token=' + token, "", null, this).then((result) => {
+    this.authService.getApiData('payments/'+ token+'/check_status', "", null, this).then((result) => {
       if(result['success']) {
+        if(result['payment_invoice']['success']) {
+          this.alertService.success(result['message']);
+          this.navCtrl.setRoot(StudentsPage);
+        } else {
+          this.alertService.warning(result['message']);
+        }
+          
         //this.amounts = result['amounts'];
       } else {
-        
+        this.alertService.warning(result['message']);
       }
       
       if(this.loading){
@@ -109,7 +117,6 @@ export class EracordPaymentPage {
       }
     });
   }
-  
   
   goToPaymentHistory() {
     this.navCtrl.push(PaymentHistoryPage);
