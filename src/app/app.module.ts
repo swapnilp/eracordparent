@@ -14,6 +14,7 @@ import { RegisterParentPage } from '../pages/register-parent/register-parent';
 import { MpinLoginPage } from '../pages/mpin-login/mpin-login';
 import { RegisterPage } from '../pages/register/register';
 import { ExamsPage } from '../pages/exams/exams';
+import { ExamDetailPage } from '../pages/exam-detail/exam-detail';
 import { DailyTeachesPage } from '../pages/daily-teaches/daily-teaches';
 import { HostelPage } from '../pages/hostel/hostel';
 import { AccountPage } from '../pages/account/account';
@@ -58,6 +59,7 @@ const cloudSettings: CloudSettings = {
     MpinLoginPage,
     RegisterPage,
     ExamsPage,
+    ExamDetailPage,
     DailyTeachesPage,
     HostelPage,
     AccountPage,
@@ -87,6 +89,7 @@ const cloudSettings: CloudSettings = {
     MpinLoginPage,
     RegisterPage,
     ExamsPage,
+    ExamDetailPage,
     DailyTeachesPage,
     HostelPage,
     AccountPage,

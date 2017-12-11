@@ -3,6 +3,7 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { StudentsPage } from '../students/students';
 import { ExamFilterPage } from '../exam-filter/exam-filter';
+import { ExamDetailPage } from '../exam-detail/exam-detail';
 
 @Component({
   selector: 'page-exams',
@@ -64,6 +65,12 @@ export class ExamsPage {
   goToStudent(params){
     if (!params) params = {};
     this.navCtrl.setRoot(StudentsPage);
+  } goToExamDetailPage(params) {
+    if (!params) params = {};
+    this.navCtrl.push(ExamDetailPage, {
+      'studentID': params.studentID,
+      'examID': params.examID
+    });
   }
 
   filterExams() {

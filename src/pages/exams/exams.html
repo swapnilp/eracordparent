@@ -25,7 +25,7 @@
 <ion-content padding id="page8">
   <div *ngIf="totalCount > 0">
     <ion-list id="exams-list4">
-      <ion-item class="animated fadeInLeft" color="none" id="exams-list-item15" *ngFor="let exam of exams">
+      <ion-item class="animated fadeInLeft" color="none" id="exams-list-item15" *ngFor="let exam of exams" (click)="goToExamDetailPage({studentID: studentID, examID: exam.id})">
         <h3 class="examName"><strong [innerHtml]="exam.name"></strong></h3>
         <span [innerHtml]="exam.marks"></span>
         <ion-note item-right><small [innerHtml]="exam.date"></small></ion-note>
