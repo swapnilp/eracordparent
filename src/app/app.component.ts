@@ -29,6 +29,8 @@ export class MyApp {
   students = [];
   isFirstChange = true;
   payment:any = "";
+  parentName: any= "";
+  mobile: any = "";
   backButtonPressedOnceToExit:any = false;
   
   constructor(private platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device, private inAppBrowser: InAppBrowser, public alertCtrl: AlertController, public alertService: AlertService) {
@@ -48,6 +50,8 @@ export class MyApp {
       this.payment = localStorage.getItem('paymentPriority');
       let updatePriority = user.update_priority;
       this.students = user.students;
+      this.parentName = user.name;
+      this.mobile = localStorage.getItem('mobile');
       //if(this.students.length > 0 && self.slides) {
       //  setTimeout(function(){
       //    self.slides.update();
