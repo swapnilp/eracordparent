@@ -31,7 +31,6 @@ export class ExamDetailPage {
   }
 
   loadExam() {
-    alert('asdasd');
     this.authService.getApiData('exam_catlogs/' + this.examID, {}, this.studentID, this).then((result) => {
       if(result['success']){
         this.exam = result['exam'];
