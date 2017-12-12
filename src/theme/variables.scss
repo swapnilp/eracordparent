@@ -45,7 +45,17 @@ $colors: (
   color: #f53d3d;
 }
 
+.warning {
+  color: #ff9800;
+}
+
+.info {
+  color: #2196F3;
+}
+
 .success {
+  color: #4CAF50;
+
   .toast-container {
     background: #85da85;
     

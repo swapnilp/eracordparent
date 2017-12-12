@@ -39,5 +39,9 @@
       Rank
       <ion-badge item-end [innerHtml]="exam.rank"></ion-badge>
     </ion-item>
+    <ion-card-content *ngIf="exam.notice">
+      <p [innerHtml]="exam.notice">
+      </p>
+    </ion-card-content>
   </ion-card>
 </ion-content>
