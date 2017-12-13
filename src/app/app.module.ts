@@ -28,6 +28,7 @@ import { DailyTeachesFilterPage } from '../pages/daily-teaches-filter/daily-teac
 import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 import { ApplyCouponPage } from '../pages/apply-coupon/apply-coupon';
 import { DeleteStudentPage } from '../pages/delete-student/delete-student';
+import { NotificationPage } from '../pages/notification/notification';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AlertService } from '../providers/alert-service/alert-service';
@@ -71,6 +72,7 @@ const cloudSettings: CloudSettings = {
     PaymentHistoryPage,
     ApplyCouponPage,
     DeleteStudentPage,
+    NotificationPage,
     DailyTeachesFilterPage,
     AccountFilterPage
   ],
@@ -101,6 +103,7 @@ const cloudSettings: CloudSettings = {
     PaymentHistoryPage,
     ApplyCouponPage,
     DeleteStudentPage,
+    NotificationPage,
     DailyTeachesFilterPage,
     AccountFilterPage
   ],

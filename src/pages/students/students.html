@@ -54,8 +54,9 @@
               <br />
               Accounts
             </ion-col>
-            <ion-col col-4 class="colNoBorder">
+            <ion-col on-click="goToNotifications({studentId: student.student_id})" col-4 class="colNoBorder">
               <ion-icon name="alarm" item-left></ion-icon>
+              <ion-badge color="danger" class="badgeRight" item-end>{{student.notification_count}}</ion-badge>
               <br />
               Notifications
             </ion-col>

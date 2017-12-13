@@ -6,6 +6,7 @@ import { DailyTeachesPage } from '../daily-teaches/daily-teaches';
 import { AccountPage } from '../account/account';
 import { SettingPage } from '../setting/setting';
 import { ExamsPage } from '../exams/exams';
+import { NotificationPage } from '../notification/notification';
 import { EracordPaymentPage } from '../eracord-payment/eracord-payment';
 import { AuthService } from '../../providers/auth-service/auth-service';
 
@@ -87,6 +88,11 @@ export class StudentsPage {
     if (!params) params = {};
     this.navCtrl.push(ExamsPage, {
       'studentID': params['studentId']
+    });
+  }goToNotifications(params){
+    if (!params) params = {};
+    this.navCtrl.push(NotificationPage, {
+      'studentID': params.studentId
     });
   }
 

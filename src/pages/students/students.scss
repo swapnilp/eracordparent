@@ -19,4 +19,9 @@ page-students {
   .colBottomNoBorder {
     border-bottom: none;
   }
+  .badgeRight {
+    float: right;
+    position: absolute;
+    right: 5px;
+  }
 }
