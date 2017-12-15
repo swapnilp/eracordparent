@@ -116,7 +116,7 @@ export class StudentPaymentPage {
           this.alertService.success(result['message']);
           this.navCtrl.setRoot(StudentsPage);
         } else {
-          this.alertService.warning(result['message']);
+          this.alertService.warning(result['payment_invoice']['message']);
         }
           
         //this.amounts = result['amounts'];
