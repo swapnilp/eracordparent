@@ -37,9 +37,12 @@
       <ion-label floating>SMS Code</ion-label>
       <ion-input formControlName="token" type="number" placeholder="SMS Code" class="mask-text"></ion-input>
     </ion-item>
-    <button id="registerParent-button5" ion-button clear color="positive" full small>
-      Resend SMS
-    </button>
+    <ion-item class="borderLess" padding>
+      <button id="registerParent-button5" ion-button item-right clear color="positive" small [disabled]="smsSending" on-click="resendSms()">
+        Resend SMS
+        <ion-spinner class="button-spinner" *ngIf="smsSending"></ion-spinner>
+      </button>
+    </ion-item>
     <ion-list-header id="registerParent-input7" class="{{errorClass}} list-header-md" *ngIf="hasError">
       {{errors}}
     </ion-list-header>

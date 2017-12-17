@@ -94,6 +94,25 @@ export class AuthService {
     });
   }
 
+  getApiDataWithoutUser(url, params, pageObj) {
+    let self = this;
+    return new Promise((resolve, reject) => {
+      let req_params = "?";
+      let paramsKeys = Object.keys(params);
+      for(let key of paramsKeys) {
+        req_params  = req_params +"&"+ key + "=" +params[key]
+      }
+      this.http.get(serverUrl + url+ ".json?" + req_params)
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          localStorage.setItem('userData', null);
+          self.events.publish('user:unauth', "Swapnil Patil");
+          resolve(err.json());
+        });
+    });
+  }
+  
   objToStr(obj, parent) {
     let keys = Object.keys(obj);
     let str = "";

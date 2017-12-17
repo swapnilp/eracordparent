@@ -93,6 +93,10 @@ $colors: (
 .paddingL10 {
   padding-left: 10px;
 }
+
+.item-md.item-block.borderLess .item-inner {
+  border: 0;
+}
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

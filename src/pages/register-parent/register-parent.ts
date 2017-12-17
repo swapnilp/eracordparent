@@ -21,6 +21,7 @@ export class RegisterParentPage {
   errorClass:any = 'error';
   menu:any;
   loading:any;
+  smsSending: any = false;
   
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public params: NavParams, public menuCtr: MenuController, public authService: AuthService, public alertService: AlertService, public loadingController: LoadingController) {
     this.menu = menuCtr;
@@ -73,6 +74,21 @@ export class RegisterParentPage {
       }
       
     }
+  }
+
+  resendSms() {
+    this.smsSending = true;
+    let self = this;
+    this.authService.getApiDataWithoutUser('register_parent/resend_sms', {mobile: this.mobile}, this).then((result) => {
+      if(result['success']) {
+        setTimeout(() => {
+          self.smsSending = false;
+        }, 60000);
+      } else {
+        self.smsSending = false;
+      }
+    })
+    
   }
 
   goToMpinLogin(params){
