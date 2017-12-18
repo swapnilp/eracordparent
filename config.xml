@@ -2,7 +2,7 @@
 <widget id="com.eracordparent.android" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Parent Eracord</name>
     <description>Eracord app for Parents.</description>
-    <author email="swapnil@eracord.com" href="http://ionicframework.com/">Eracord Team</author>
+    <author email="swapnil@eracord.com" href="https://eracord.com/">Eracord Team</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
