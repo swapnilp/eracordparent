@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PaymentHistoryPage } from '../payment-history/payment-history';
 import { ApplyCouponPage } from '../apply-coupon/apply-coupon';
@@ -15,7 +15,7 @@ import { StudentsPage } from '../students/students';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-student-payment',
   templateUrl: 'student-payment.html',

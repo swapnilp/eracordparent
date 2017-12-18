@@ -10,7 +10,7 @@ import { StudentsPage } from '../students/students';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-notification',
   templateUrl: 'notification.html',
