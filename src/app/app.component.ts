@@ -14,6 +14,7 @@ import { RegisterPage } from '../pages/register/register';
 import { EracordPage } from '../pages/eracord/eracord';
 import { StudentsPage } from '../pages/students/students';
 import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
+import { FeedbackPage } from '../pages/feedback/feedback';
 import { Device } from '@ionic-native/device';
 import { AlertService } from '../providers/alert-service/alert-service';
 //import { Push, PushToken } from '@ionic/cloud-angular';
@@ -188,5 +189,8 @@ export class MyApp {
   }goToUnlock(params){
     if (!params) params = {};
     this.navCtrl.setRoot(EracordPaymentPage);
+  }goToFeedback(params){
+    if (!params) params = {};
+    this.navCtrl.push(FeedbackPage);
   }
 }

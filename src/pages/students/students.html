@@ -32,15 +32,15 @@
         </ion-item-divider>
         <ion-grid>
           <ion-row style="height: 70px;" text-center justify-content-center align-items-center>
-            <ion-col on-click="goToExams({studentId: student.student_id})" col-4 class="colBottomNoBorder" justify-content-center align-items-center>
+            <ion-col on-click="goToDailyTeaches({studentId: student.student_id})" col-4 class="colBottomNoBorder" justify-content-center align-items-center>
               <ion-icon name="school" item-left></ion-icon>
               <br />
-              Exams
+              Daily teaches
             </ion-col>
-            <ion-col on-click="goToDailyTeaches({studentId: student.student_id})" col-4 class="colNoBorder colBottomNoBorder">
+            <ion-col on-click="goToExams({studentId: student.student_id})" col-4 class="colNoBorder colBottomNoBorder">
               <ion-icon name="list-box" item-left></ion-icon>
               <br />
-              Daily teaches
+              Exams
             </ion-col>
             <ion-col on-click="goToHostel({studentId: student.student_id})" col-4 class="colBottomNoBorder">
               <ion-icon name="home" item-left></ion-icon>

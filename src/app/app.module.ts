@@ -29,6 +29,7 @@ import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 import { ApplyCouponPage } from '../pages/apply-coupon/apply-coupon';
 import { DeleteStudentPage } from '../pages/delete-student/delete-student';
 import { NotificationPage } from '../pages/notification/notification';
+import { FeedbackPage } from '../pages/feedback/feedback';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AlertService } from '../providers/alert-service/alert-service';
@@ -73,6 +74,7 @@ const cloudSettings: CloudSettings = {
     ApplyCouponPage,
     DeleteStudentPage,
     NotificationPage,
+    FeedbackPage,
     DailyTeachesFilterPage,
     AccountFilterPage
   ],
@@ -104,6 +106,7 @@ const cloudSettings: CloudSettings = {
     ApplyCouponPage,
     DeleteStudentPage,
     NotificationPage,
+    FeedbackPage,
     DailyTeachesFilterPage,
     AccountFilterPage
   ],
