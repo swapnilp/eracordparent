@@ -21,8 +21,8 @@ export class FeedbackPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public loadingController: LoadingController, public authService: AuthService, public alertService: AlertService) {
     this.feedbackForm = formBuilder.group({
-      subject: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      text: ['', Validators.compose([Validators.maxLength(300), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
+      subject: ['', Validators.compose([Validators.maxLength(50), Validators.required])],
+      text: ['', Validators.compose([Validators.minLength(10), Validators.required])]
     });
   }
 
