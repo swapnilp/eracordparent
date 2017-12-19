@@ -44,4 +44,15 @@
       </p>
     </ion-card-content>
   </ion-card>
+  <h5 id="exam-detail-heading8" style="color:#000000;" *ngIf="exam && exam.upcomming && exam.upcomming.length > 0">
+    <ion-item-divider color="light">Upcomming exams</ion-item-divider>
+  </h5>
+  <ion-card *ngFor="let uc_exam of exam.upcomming">
+    <ion-card-header [innerHtml]="uc_exam.date">
+    </ion-card-header>
+    <ion-card-content>
+      <p [innerHtml]="uc_exam.points">
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
