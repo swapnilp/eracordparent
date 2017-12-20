@@ -21,8 +21,8 @@ export class FeedbackPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public loadingController: LoadingController, public authService: AuthService, public alertService: AlertService) {
     this.feedbackForm = formBuilder.group({
-      subject: ['', Validators.compose([Validators.maxLength(50), Validators.required])],
-      text: ['', Validators.compose([Validators.minLength(10), Validators.required])]
+      title: ['', Validators.required],
+      message: ['', Validators.required]
     });
   }
 
@@ -37,7 +37,8 @@ export class FeedbackPage {
         this.alertService.warning("Confirm Mobile does not match!!");
         return true;
       }
-      var data = "&register_feedback[mobile]=" + localStorage.getItem('mobile') + "&register_feedback[subject]=" + params.subject + "&register_feedback[text]=" + params.text;
+      debugger
+      var data = "&register_feedback[mobile]=" + localStorage.getItem('mobile') + "&register_feedback[title]=" + params.title + "&register_feedback[message]=" + params.message;
       this.loading.present();
       this.authService.getPostData(data,'register_feedback').then((result) => {
         this.loading.dismiss();

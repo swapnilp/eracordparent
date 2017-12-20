@@ -23,11 +23,15 @@
   <form [formGroup]="feedbackForm" id="feedback-form1">
     <ion-item id="feedback-input1">
       <ion-label floating>Subject</ion-label>
-      <ion-input formControlName="subject" type="text" placeholder="Subject"></ion-input>
+      <ion-select formControlName="title" interface="action-sheet">
+        <ion-option value="inprove ui" checked="true">Improve UI</ion-option>
+        <ion-option value="crash">Crash</ion-option>
+        <ion-option value="other">Other</ion-option>
+      </ion-select>
     </ion-item>
     <ion-item id="feedback-input2">
-      <ion-label stacked>Text</ion-label>
-      <ion-textarea formControlName="text" type="text" placeholder="Text" rows="5"></ion-textarea>
+      <ion-label stacked>Message</ion-label>
+      <ion-textarea formControlName="message" type="text" placeholder="Message" rows="5"></ion-textarea>
     </ion-item>
   </form>
   <button id="feedback-button3" ion-button color="positive" full style="font-weight:500;" on-click="registerFeedback()" [disabled]="!feedbackForm.valid">
