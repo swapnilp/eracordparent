@@ -23,9 +23,15 @@
       <ion-label floating>Mobile</ion-label>
       <ion-input formControlName="mobile" type="tel" placeholder="Mobile Number (10 Digit)"></ion-input>
     </ion-item>
-    <ion-item id="newParent-input2">
+    <ion-item id="newParent-input3">
       <ion-label floating>Confirm Mobile Number</ion-label>
       <ion-input formControlName="confirmMobile" type="tel" class="mask-text" placeholder="Confirm Mobile Number"></ion-input>
+    </ion-item>
+    <ion-item id="newParent-input4">
+      <label class="checkbox" on-click="clearFlash()">
+        <input formControlName="agree" type="checkbox">
+      </label>
+      I agree to the <a on-click="tos()">Terms of Service</a>
     </ion-item>
   </form>
   <button id="newParent-button3" ion-button color="positive" full style="font-weight:500;" on-click="registerParent()" [disabled]="!parentForm.valid">
