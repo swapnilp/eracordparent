@@ -7,6 +7,7 @@ import { Device } from '@ionic-native/device';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
+
 import { AuthService } from '../providers/auth-service/auth-service';
 import { EracordPage } from '../pages/eracord/eracord';
 import { NewParentPage } from '../pages/new-parent/new-parent';

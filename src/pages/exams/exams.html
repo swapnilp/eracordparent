@@ -24,13 +24,17 @@
 </ion-header>
 <ion-content padding id="page8">
   <div *ngIf="totalCount > 0">
-    <ion-list id="exams-list4">
-      <ion-item class="animated fadeInLeft" color="none" id="exams-list-item15" *ngFor="let exam of exams" (click)="goToExamDetailPage({studentID: studentID, examID: exam.id})">
-        <h3 class="examName"><strong [innerHtml]="exam.date"></strong></h3>
-        <span [innerHtml]="exam.name"></span>
-        <ion-note item-right><strong [innerHtml]="exam.marks"></strong></ion-note>
+    
+    <ion-card class="animated fadeInLeft" color="none" id="exams-list-item15" *ngFor="let exam of exams" (click)="goToExamDetailPage({studentID: studentID, examID: exam.id})">
+      <ion-item>
+        <span item-left [innerHtml]="exam.name"></span>
+        <span icon-left clear item-end [innerHtml]="exam.date"></span>
       </ion-item>
-    </ion-list>
+      <ion-item>
+        <ion-icon name='bug' item-start color="{{exam.is_present == false ? 'danger' : 'success'}}"></ion-icon>
+        <span [innerHtml]="exam.marks"></span>
+      </ion-item>
+    </ion-card>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>

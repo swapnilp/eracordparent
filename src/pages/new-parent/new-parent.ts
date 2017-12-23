@@ -7,7 +7,7 @@ import { RegisterPage } from '../register/register';
 import { ExamsPage } from '../exams/exams';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
-import { InAppBrowser, InAppBrowserOptions} from "@ionic-native/in-app-browser";
+import { InAppBrowser} from "@ionic-native/in-app-browser";
 
 @Component({
   selector: 'page-new-parent',
