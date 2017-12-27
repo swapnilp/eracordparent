@@ -58,12 +58,21 @@ export class MpinLoginPage {
     
     this.authService.postData(data,'sign_in').then((result) => {
       this.loading.dismiss();
-      this.menu.enable(true);
-      this.alertService.dismiss();
-      this.responseData = result;
-      localStorage.setItem('userData', JSON.stringify(this.responseData));
-      localStorage.setItem('paymentPriority', this.responseData.payment_priority);
-      this.events.publish('user:login', "Swapnil Patil");
+      if(result["success"]) {
+        this.menu.enable(true);
+        this.alertService.dismiss();
+        this.responseData = result;
+        localStorage.setItem('userData', JSON.stringify(this.responseData));
+        localStorage.setItem('paymentPriority', this.responseData.payment_priority);
+        this.events.publish('user:login', "Swapnil Patil");
+      } else {
+        localStorage.removeItem('userData');
+        localStorage.removeItem('paymentPriority');
+        localStorage.removeItem('deviceId');
+        localStorage.removeItem('mobile');
+        this.alertService.warning(result["message"]);
+        this.navCtrl.push(NewParentPage);
+      }
     }, (err) => {
       this.loading.dismiss();
       this.passcode = ""

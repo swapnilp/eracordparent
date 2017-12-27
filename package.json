@@ -23,11 +23,13 @@
     "@ionic-native/core": "4.3.0",
     "@ionic-native/device": "^4.3.3",
     "@ionic-native/in-app-browser": "^4.5.2",
+    "@ionic-native/push": "^4.5.2",
     "@ionic-native/splash-screen": "4.3.0",
     "@ionic-native/status-bar": "4.3.0",
     "@ionic-native/unique-device-id": "^4.3.3",
     "@ionic/cloud-angular": "^0.12.0",
     "@ionic/storage": "2.0.1",
+    "cordova-android": "~6.3.0",
     "cordova-ios": "~4.5.4",
     "cordova-plugin-device": "~1.1.4",
     "cordova-plugin-inappbrowser": "^1.7.2",
@@ -42,8 +44,7 @@
     "rxjs": "5.4.3",
     "sw-toolbox": "3.6.0",
     "swiper": "^4.0.2",
-    "zone.js": "0.8.18",
-    "cordova-android": "~6.3.0"
+    "zone.js": "0.8.18"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.0.0",

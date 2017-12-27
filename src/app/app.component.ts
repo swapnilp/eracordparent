@@ -17,7 +17,8 @@ import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { Device } from '@ionic-native/device';
 import { AlertService } from '../providers/alert-service/alert-service';
-//import { Push, PushToken } from '@ionic/cloud-angular';
+import { AuthService } from '../providers/auth-service/auth-service';
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
 
 @Component({
@@ -34,8 +35,7 @@ export class MyApp {
   mobile: any = "";
   backButtonPressedOnceToExit:any = false;
   
-  constructor(private platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device, private inAppBrowser: InAppBrowser, public alertCtrl: AlertController, public alertService: AlertService) {
-    //, public push: Push) {
+  constructor(private platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device, private inAppBrowser: InAppBrowser, public alertCtrl: AlertController, public alertService: AlertService, public push: Push, public authService: AuthService) {
     
     if(localStorage.getItem('mobile') && localStorage.getItem('deviceId')) {
       this.rootPage = MpinLoginPage;
@@ -90,19 +90,45 @@ export class MyApp {
           },2000)
         }
       });
+      this.pushsetup();
+    });
+  }
+
+  pushsetup() {
+    const options: PushOptions = {
+      android: {
+        senderID: '32839642830'
+      },
+      ios: {
+        alert: 'true',
+        badge: true,
+        sound: 'false'
+      },
+      windows: {}
+    };
+
+    const pushObject: PushObject = this.push.init(options);
+
+    pushObject.on('notification').subscribe((notification: any) => {
+      if (notification.additionalData.foreground) {
+        let youralert = this.alertCtrl.create({
+          title: 'New Push notification',
+          message: notification.message
+        });
+        youralert.present();
+      }
+    });
+    pushObject.on('registration').subscribe((registration: any) => {
+
+      let device_id = localStorage.getItem('deviceId')
+      var data = "&push_token[device_id]=" + device_id + "&push_token[registration_id]=" + registration['registrationId'] + "&push_token[registration_type]=" + registration['registrationType'] + "&push_token[os]=android";
+      this.authService.getPostData(data,'parent/resgister_firebase').then((result) => {
+      });
     });
     
-    //this.push.register().then((t: PushToken) => {
-    //  return this.push.saveToken(t);
-    //}).then((t: PushToken) => {
-    //  console.log('Token saved:', t.token);
-    //});
-    //
-    //this.push.rx.notification()
-    //  .subscribe((msg) => {
-    //    alert(msg.title + ': ' + msg.text);
-    //  });
+    pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
   }
+  
   
   ngAfterViewInit() {
     if(this.slides) {
