@@ -37,7 +37,7 @@ export class MyApp {
   
   constructor(private platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device, private inAppBrowser: InAppBrowser, public alertCtrl: AlertController, public alertService: AlertService, public push: Push, public authService: AuthService) {
     
-    if(localStorage.getItem('mobile') && localStorage.getItem('deviceId')) {
+    if(localStorage.getItem('mobile') && localStorage.getItem('deviceId') && localStorage.getItem('deviceId') !== null) {
       this.rootPage = MpinLoginPage;
     } else {
       let deviceid = this.device.uuid;
@@ -97,7 +97,11 @@ export class MyApp {
   pushsetup() {
     const options: PushOptions = {
       android: {
-        senderID: '32839642830'
+        senderID: '32839642830',
+        sound: true,
+        vibrate: true,
+        icon: 'file://assets/img/icon.png',
+        forceShow: true
       },
       ios: {
         alert: 'true',
@@ -110,9 +114,9 @@ export class MyApp {
     const pushObject: PushObject = this.push.init(options);
 
     pushObject.on('notification').subscribe((notification: any) => {
-      if (notification.additionalData.foreground) {
+      if (notification && notification.additionalData.foreground) {
         let youralert = this.alertCtrl.create({
-          title: 'New Push notification',
+          title: 'Notification from Eracord',
           message: notification.message
         });
         youralert.present();

@@ -68,7 +68,6 @@ export class MpinLoginPage {
       } else {
         localStorage.removeItem('userData');
         localStorage.removeItem('paymentPriority');
-        localStorage.removeItem('deviceId');
         localStorage.removeItem('mobile');
         this.alertService.warning(result["message"]);
         this.navCtrl.push(NewParentPage);
