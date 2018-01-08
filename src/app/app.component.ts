@@ -74,7 +74,6 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      splashScreen.hide();
       
       platform.registerBackButtonAction(() => {
         if (this.backButtonPressedOnceToExit) {
@@ -90,7 +89,10 @@ export class MyApp {
           },2000)
         }
       });
-      this.pushsetup();
+      if(localStorage.getItem('pushId') == null){
+        this.pushsetup();
+      }
+      splashScreen.hide();
     });
   }
 
@@ -127,6 +129,7 @@ export class MyApp {
       let device_id = localStorage.getItem('deviceId')
       var data = "&push_token[device_id]=" + device_id + "&push_token[registration_id]=" + registration['registrationId'] + "&push_token[registration_type]=" + registration['registrationType'] + "&push_token[os]=android";
       this.authService.getPostData(data,'parent/resgister_firebase').then((result) => {
+        localStorage.setItem('pushId', registration['registrationId']);
       });
     });
     

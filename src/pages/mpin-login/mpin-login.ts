@@ -64,6 +64,9 @@ export class MpinLoginPage {
         this.responseData = result;
         localStorage.setItem('userData', JSON.stringify(this.responseData));
         localStorage.setItem('paymentPriority', this.responseData.payment_priority);
+        if(result['remove_push']) {
+          localStorage.removeItem('pushId');
+        }
         this.events.publish('user:login', "Swapnil Patil");
       } else {
         localStorage.removeItem('userData');
