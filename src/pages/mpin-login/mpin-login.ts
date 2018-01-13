@@ -69,11 +69,13 @@ export class MpinLoginPage {
         }
         this.events.publish('user:login', "Swapnil Patil");
       } else {
-        localStorage.removeItem('userData');
-        localStorage.removeItem('paymentPriority');
-        localStorage.removeItem('mobile');
+        if(result['invalid']) {
+          localStorage.removeItem('userData');
+          localStorage.removeItem('paymentPriority');
+          localStorage.removeItem('mobile');
+          this.navCtrl.push(NewParentPage);
+        }
         this.alertService.warning(result["message"]);
-        this.navCtrl.push(NewParentPage);
       }
     }, (err) => {
       this.loading.dismiss();
