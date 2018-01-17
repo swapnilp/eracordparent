@@ -85,9 +85,8 @@ export class StudentPaymentPage {
       zoom: 'no'
     };
     this.browser = this.inAppBrowser.create(url, '_self', options);
-    //this.browser.close();
-    this.browser.on('loadstart').subscribe(event => {
-      if(event.url.match('mobile/close')) {
+    this.browser.on('loadstop').subscribe(event => {
+      if(event.url && event.url.match('mobile/close')) {
         this.browser.close()
         this.getPaymentStatus(token);
       }

@@ -54,8 +54,8 @@ export class EracordPaymentPage {
       this.authService.getPostData(data,'payments', true).then((result) => {
         this.loading.dismiss();
         if(result['success']) {
-          let token = result['token'];
-          this.payNow(token, result['url']);
+          let token = result['eracord_invoice']['token'];
+          this.payNow(token, result['eracord_invoice']['url']);
         } else {
           this.alertService.warning(result['message']);
         }
@@ -73,9 +73,8 @@ export class EracordPaymentPage {
       zoom: 'no'
     };
     this.browser = this.inAppBrowser.create(url, '_self', options);
-    //this.browser.close();
-    this.browser.on('loadstart').subscribe(event => {
-      if(event.url.match('mobile/close')) {
+    this.browser.on('loadstop').subscribe(event => {
+      if(event.url && event.url.match('mobile/close')) {
         this.browser.close()
         this.getPaymentStatus(token)
       }
