@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
-import { MpinLoginPage } from '../mpin-login/mpin-login';
-import { ExamsPage } from '../exams/exams';
 
+@IonicPage()
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html'
@@ -17,9 +16,6 @@ export class RegisterPage {
   
   goToMpinLogin(params){
     if (!params) params = {};
-    this.navCtrl.push(MpinLoginPage);
-  }goToExams(params){
-    if (!params) params = {};
-    this.navCtrl.push(ExamsPage);
+    this.navCtrl.push('MpinLoginPage');
   }
 }

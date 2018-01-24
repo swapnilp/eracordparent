@@ -4,17 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { InAppBrowser} from "@ionic-native/in-app-browser";
 
-import { HostelPage } from '../pages/hostel/hostel';
-import { DailyTeachesPage } from '../pages/daily-teaches/daily-teaches';
-import { AccountPage } from '../pages/account/account';
-import { SettingPage } from '../pages/setting/setting';
-import { ExamsPage } from '../pages/exams/exams';
-import { MpinLoginPage } from '../pages/mpin-login/mpin-login';
-import { RegisterPage } from '../pages/register/register';
-import { EracordPage } from '../pages/eracord/eracord';
-import { StudentsPage } from '../pages/students/students';
-import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
-import { FeedbackPage } from '../pages/feedback/feedback';
 import { Device } from '@ionic-native/device';
 import { AlertService } from '../providers/alert-service/alert-service';
 import { AuthService } from '../providers/auth-service/auth-service';
@@ -27,7 +16,7 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
   @ViewChild(Slides) slides: Slides;
-  rootPage:any = EracordPage;
+  rootPage:any = 'EracordPage';
   students = [];
   isFirstChange = true;
   payment:any = "";
@@ -38,11 +27,11 @@ export class MyApp {
   constructor(private platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events, private device: Device, private inAppBrowser: InAppBrowser, public alertCtrl: AlertController, public alertService: AlertService, public push: Push, public authService: AuthService) {
     
     if(localStorage.getItem('mobile') && localStorage.getItem('deviceId') && localStorage.getItem('deviceId') !== null) {
-      this.rootPage = MpinLoginPage;
+      this.rootPage = 'MpinLoginPage';
     } else {
       let deviceid = this.device.uuid;
       localStorage.setItem('deviceId', deviceid);
-      this.rootPage = EracordPage;
+      this.rootPage = 'EracordPage';
     }
     
     events.subscribe('user:login', (name) => {
@@ -62,12 +51,12 @@ export class MyApp {
       if(updatePriority.priority == "Urgent") {
         self.hasUpdate(updatePriority.update_url);
       } else {
-        self.navCtrl.setRoot(StudentsPage, {payment: this.payment});
+        self.navCtrl.setRoot('StudentsPage', {payment: this.payment});
       }
     });
 
     events.subscribe('user:unauth', (name) => {
-      this.navCtrl.setRoot(MpinLoginPage);
+      this.navCtrl.setRoot('MpinLoginPage');
     });
     
     platform.ready().then(() => {
@@ -90,7 +79,7 @@ export class MyApp {
         }
       });
       if(localStorage.getItem('pushId') == null){
-        this.pushsetup();
+        //this.pushsetup();
       }
       splashScreen.hide();
     });
@@ -169,14 +158,14 @@ export class MyApp {
         {
           text: 'Not Now',
           handler: () => {
-            self.navCtrl.setRoot(StudentsPage, {payment: this.payment});
+            self.navCtrl.setRoot('StudentsPage', {payment: this.payment});
           }
         },
         {
           text: 'Update Now',
           handler: () => {
             this.inAppBrowser.create(url, '_system');
-            self.navCtrl.setRoot(StudentsPage, {payment: this.payment});
+            self.navCtrl.setRoot('StudentsPage', {payment: this.payment});
           }
         }
       ]
@@ -186,44 +175,44 @@ export class MyApp {
   
   goToHostel(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(HostelPage, {
+    this.navCtrl.setRoot('HostelPage', {
       'studentID': params.studentID
     });
   }goToDailyTeaches(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(DailyTeachesPage, {
+    this.navCtrl.setRoot('DailyTeachesPage', {
       'studentID': params.studentID
     });
   }goToAccount(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(AccountPage, {
+    this.navCtrl.setRoot('AccountPage', {
       'studentID': params.studentID
     });
   }goToSetting(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(SettingPage, {
+    this.navCtrl.setRoot('SettingPage', {
       'studentID': params.studentID
     });
   }goToExams(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(ExamsPage, {
+    this.navCtrl.setRoot('ExamsPage', {
       'studentID': params['studentId']
     });
   }goToMpinLogin(params){
     if (!params) params = {};
     localStorage.removeItem('userData');
-    this.navCtrl.setRoot(MpinLoginPage);
+    this.navCtrl.setRoot('MpinLoginPage');
   }goToRegister(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(RegisterPage);
+    this.navCtrl.setRoot('RegisterPage');
   }goToStudent(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(StudentsPage);
+    this.navCtrl.setRoot('StudentsPage');
   }goToUnlock(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(EracordPaymentPage);
+    this.navCtrl.setRoot('EracordPaymentPage');
   }goToFeedback(params){
     if (!params) params = {};
-    this.navCtrl.push(FeedbackPage);
+    this.navCtrl.push('FeedbackPage');
   }
 }

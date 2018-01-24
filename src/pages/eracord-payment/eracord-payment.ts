@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PaymentHistoryPage } from '../payment-history/payment-history';
-import { ApplyCouponPage } from '../apply-coupon/apply-coupon';
-import { StudentsPage } from '../students/students';
 import { InAppBrowser, InAppBrowserOptions} from "@ionic-native/in-app-browser";
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
 
+@IonicPage()
 @Component({
   selector: 'page-eracord-payment',
   templateUrl: 'eracord-payment.html'
@@ -101,7 +99,7 @@ export class EracordPaymentPage {
       if(result['success']) {
         if(result['payment_invoice']['success']) {
           this.alertService.success(result['message']);
-          this.navCtrl.setRoot(StudentsPage);
+          this.navCtrl.setRoot('StudentsPage');
         } else {
           this.alertService.warning(result['payment_invoice']['message']);
         }
@@ -118,8 +116,8 @@ export class EracordPaymentPage {
   }
   
   goToPaymentHistory() {
-    this.navCtrl.push(PaymentHistoryPage);
+    this.navCtrl.push('PaymentHistoryPage');
   } goToApplyCoupon() {
-    this.navCtrl.push(ApplyCouponPage);
+    this.navCtrl.push('ApplyCouponPage');
   }  
 }

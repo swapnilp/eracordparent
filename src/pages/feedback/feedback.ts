@@ -3,14 +3,13 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
-import { StudentsPage } from '../students/students';
 /**
  * Generated class for the FeedbackPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-feedback',
   templateUrl: 'feedback.html',
@@ -43,7 +42,7 @@ export class FeedbackPage {
       this.authService.getPostData(data,'register_feedback').then((result) => {
         this.loading.dismiss();
         let payment = localStorage.getItem('paymentPriority');
-        this.navCtrl.setRoot(StudentsPage, {payment: payment});
+        this.navCtrl.setRoot('StudentsPage', {payment: payment});
         this.alertService.warning(result['message']);
       }, (err) => {
         this.loading.dismiss();

@@ -3,7 +3,6 @@ import { NavController, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
-import { StudentsPage } from '../students/students';
 
 /**
  * Generated class for the ApplyCouponPage page.
@@ -12,7 +11,7 @@ import { StudentsPage } from '../students/students';
  * Ionic pages and navigation.
  */
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-apply-coupon',
   templateUrl: 'apply-coupon.html',
@@ -42,7 +41,7 @@ export class ApplyCouponPage {
           this.loading.dismiss();
           if(result['success']) {
             this.alertService.success(result['message']);
-            this.navCtrl.setRoot(StudentsPage);
+            this.navCtrl.setRoot('StudentsPage');
           } else {
             this.alertService.warning(result['message']);
           }

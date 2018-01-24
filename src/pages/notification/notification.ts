@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { StudentsPage } from '../students/students';
 
 /**
  * Generated class for the NotificationPage page.
@@ -10,7 +9,7 @@ import { StudentsPage } from '../students/students';
  * Ionic pages and navigation.
  */
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-notification',
   templateUrl: 'notification.html',
@@ -70,7 +69,7 @@ export class NotificationPage {
 
   goToStudent(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(StudentsPage);
+    this.navCtrl.setRoot('StudentsPage');
   }
 
   filterNotification() {

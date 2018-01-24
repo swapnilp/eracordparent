@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
-import { NewParentPage } from '../new-parent/new-parent';
-import { RegisterParentPage } from '../register-parent/register-parent';
-import { MpinLoginPage } from '../mpin-login/mpin-login';
-import { ExamsPage } from '../exams/exams';
 
+@IonicPage()
 @Component({
   selector: 'page-eracord',
   templateUrl: 'eracord.html'
@@ -18,15 +15,15 @@ export class EracordPage {
   }
   goToNewParent(params){
     if (!params) params = {};
-    this.navCtrl.push(NewParentPage);
+    this.navCtrl.push('NewParentPage');
   }goToRegisterParent(params){
     if (!params) params = {};
-    this.navCtrl.push(RegisterParentPage);
+    this.navCtrl.push('RegisterParentPage');
   }goToMpinLogin(params){
     if (!params) params = {};
-    this.navCtrl.push(MpinLoginPage);
+    this.navCtrl.push('MpinLoginPage');
   }goToExams(params){
     if (!params) params = {};
-    this.navCtrl.push(ExamsPage);
+    this.navCtrl.push('ExamsPage');
   }
 }

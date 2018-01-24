@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { StudentsPage } from '../students/students';
-import { AccountFilterPage } from '../account-filter/account-filter';
-import { StudentPaymentPage } from '../student-payment/student-payment';
 
+@IonicPage()
 @Component({
   selector: 'page-account',
   templateUrl: 'account.html'
@@ -71,7 +69,7 @@ export class AccountPage {
   
   goToStudent(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(StudentsPage);
+    this.navCtrl.setRoot('StudentsPage');
   }
 
   doInfinite(infiniteScroll) {
@@ -82,14 +80,14 @@ export class AccountPage {
   }
 
   filterAccount() {
-    this.navCtrl.push(AccountFilterPage, {
+    this.navCtrl.push('AccountFilterPage', {
       'studentID': this.studentID,
       'filter': this.filter
     });
   }
 
   payOnline() {
-    this.navCtrl.push(StudentPaymentPage, {
+    this.navCtrl.push('StudentPaymentPage', {
       'studentID': this.studentID
     })
     

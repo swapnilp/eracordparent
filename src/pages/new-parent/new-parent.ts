@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RegisterParentPage } from '../register-parent/register-parent';
-import { MpinLoginPage } from '../mpin-login/mpin-login';
-import { RegisterPage } from '../register/register';
-import { ExamsPage } from '../exams/exams';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
 import { InAppBrowser} from "@ionic-native/in-app-browser";
 
+@IonicPage()
 @Component({
   selector: 'page-new-parent',
   templateUrl: 'new-parent.html'
@@ -59,7 +56,7 @@ export class NewParentPage {
         if(result['email']) {
           params['email'] = result['email'];
         }
-        this.navCtrl.push(RegisterParentPage, params);
+        this.navCtrl.push('RegisterParentPage', params);
       }, (err) => {
         this.loading.dismiss();
         var msg = JSON.parse(err._body).errors;
@@ -70,15 +67,12 @@ export class NewParentPage {
   
   goToRegisterParent(params){
     if (!params) params = {};
-    this.navCtrl.push(RegisterParentPage);
+    this.navCtrl.push('RegisterParentPage');
   }goToMpinLogin(params){
     if (!params) params = {};
-    this.navCtrl.push(MpinLoginPage);
+    this.navCtrl.push('MpinLoginPage');
   }goToRegister(params){
     if (!params) params = {};
-    this.navCtrl.push(RegisterPage);
-  }goToExams(params){
-    if (!params) params = {};
-    this.navCtrl.push(ExamsPage);
+    this.navCtrl.push('RegisterPage');
   }
 }

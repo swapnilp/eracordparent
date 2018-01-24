@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { StudentsPage } from '../students/students';
 
+@IonicPage()
 @Component({
   selector: 'page-hostel',
   templateUrl: 'hostel.html'
@@ -38,6 +38,6 @@ export class HostelPage {
   
   goToStudent(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(StudentsPage);
+    this.navCtrl.setRoot('StudentsPage');
   }
 }

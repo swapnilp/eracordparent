@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
-import { AccountPage } from '../account/account';
 import { AuthService } from '../../providers/auth-service/auth-service';
 /**
  * Generated class for the AccountFilterPage page.
@@ -8,7 +7,7 @@ import { AuthService } from '../../providers/auth-service/auth-service';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-account-filter',
   templateUrl: 'account-filter.html',
@@ -57,7 +56,7 @@ export class AccountFilterPage {
       delete(this.filterData.endDate);
     }
 
-    this.navCtrl.setRoot(AccountPage, {
+    this.navCtrl.setRoot('AccountPage', {
       'studentID': this.studentID,
       'filter': this.filterData,
       'hasFiltered': hasFilter

@@ -8,7 +8,7 @@ import { AuthService } from '../../providers/auth-service/auth-service';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-exam-detail',
   templateUrl: 'exam-detail.html',

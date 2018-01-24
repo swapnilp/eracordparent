@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
-import { DailyTeachesPage } from '../daily-teaches/daily-teaches';
 import { AuthService } from '../../providers/auth-service/auth-service';
 
 /**
@@ -10,7 +9,7 @@ import { AuthService } from '../../providers/auth-service/auth-service';
  * Ionic pages and navigation.
  */
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-daily-teaches-filter',
   templateUrl: 'daily-teaches-filter.html',
@@ -80,7 +79,7 @@ export class DailyTeachesFilterPage {
     }
     
     this.filterData.subjects = this.filterData.subjects.join(',');
-    this.navCtrl.setRoot(DailyTeachesPage, {
+    this.navCtrl.setRoot('DailyTeachesPage', {
       'studentID': this.studentID,
       'filter': this.filterData,
       'hasFiltered': hasFilter

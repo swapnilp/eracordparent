@@ -9,28 +9,6 @@ import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
 
 import { AuthService } from '../providers/auth-service/auth-service';
-import { EracordPage } from '../pages/eracord/eracord';
-import { NewParentPage } from '../pages/new-parent/new-parent';
-import { RegisterParentPage } from '../pages/register-parent/register-parent';
-import { MpinLoginPage } from '../pages/mpin-login/mpin-login';
-import { RegisterPage } from '../pages/register/register';
-import { ExamsPage } from '../pages/exams/exams';
-import { ExamDetailPage } from '../pages/exam-detail/exam-detail';
-import { DailyTeachesPage } from '../pages/daily-teaches/daily-teaches';
-import { HostelPage } from '../pages/hostel/hostel';
-import { AccountPage } from '../pages/account/account';
-import { SettingPage } from '../pages/setting/setting';
-import { StudentsPage } from '../pages/students/students';
-import { EracordPaymentPage } from '../pages/eracord-payment/eracord-payment';
-import { StudentPaymentPage } from '../pages/student-payment/student-payment';
-import { ExamFilterPage } from '../pages/exam-filter/exam-filter';
-import { AccountFilterPage } from '../pages/account-filter/account-filter';
-import { DailyTeachesFilterPage } from '../pages/daily-teaches-filter/daily-teaches-filter';
-import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
-import { ApplyCouponPage } from '../pages/apply-coupon/apply-coupon';
-import { DeleteStudentPage } from '../pages/delete-student/delete-student';
-import { NotificationPage } from '../pages/notification/notification';
-import { FeedbackPage } from '../pages/feedback/feedback';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Push } from '@ionic-native/push';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -56,29 +34,7 @@ const cloudSettings: CloudSettings = {
 
 @NgModule({
   declarations: [
-    MyApp,
-    EracordPage,
-    NewParentPage,
-    RegisterParentPage,
-    MpinLoginPage,
-    RegisterPage,
-    ExamsPage,
-    ExamDetailPage,
-    DailyTeachesPage,
-    HostelPage,
-    AccountPage,
-    SettingPage,
-    StudentsPage,
-    EracordPaymentPage,
-    StudentPaymentPage,
-    ExamFilterPage,
-    PaymentHistoryPage,
-    ApplyCouponPage,
-    DeleteStudentPage,
-    NotificationPage,
-    FeedbackPage,
-    DailyTeachesFilterPage,
-    AccountFilterPage
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -88,29 +44,7 @@ const cloudSettings: CloudSettings = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    EracordPage,
-    NewParentPage,
-    RegisterParentPage,
-    MpinLoginPage,
-    RegisterPage,
-    ExamsPage,
-    ExamDetailPage,
-    DailyTeachesPage,
-    HostelPage,
-    AccountPage,
-    SettingPage,
-    StudentsPage,
-    EracordPaymentPage,
-    StudentPaymentPage,
-    ExamFilterPage,
-    PaymentHistoryPage,
-    ApplyCouponPage,
-    DeleteStudentPage,
-    NotificationPage,
-    FeedbackPage,
-    DailyTeachesFilterPage,
-    AccountFilterPage
+    MyApp
   ],
   providers: [
     StatusBar,

@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MpinLoginPage } from '../mpin-login/mpin-login';
-import { RegisterPage } from '../register/register';
-import { ExamsPage } from '../exams/exams';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
 
+@IonicPage()
 @Component({
   selector: 'page-register-parent',
   templateUrl: 'register-parent.html'
@@ -57,7 +55,7 @@ export class RegisterParentPage {
           this.loading.dismiss();
           if(result['success']) {
             localStorage.setItem('mobile', values.mobile);
-            this.navCtrl.setRoot(MpinLoginPage);
+            this.navCtrl.setRoot('MpinLoginPage');
           } else{
             this.hasError= true;
             this.errorClass= 'error';
@@ -93,12 +91,9 @@ export class RegisterParentPage {
 
   goToMpinLogin(params){
     if (!params) params = {};
-    this.navCtrl.push(MpinLoginPage);
+    this.navCtrl.push('MpinLoginPage');
   }goToRegister(params){
     if (!params) params = {};
-    this.navCtrl.push(RegisterPage);
-  }goToExams(params){
-    if (!params) params = {};
-    this.navCtrl.push(ExamsPage);
+    this.navCtrl.push('RegisterPage');
   }
 }

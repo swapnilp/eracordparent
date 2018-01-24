@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
-import { ExamsPage } from '../exams/exams';
 import { AuthService } from '../../providers/auth-service/auth-service';
 /**
  * Generated class for the ExamFilterPage page.
@@ -9,7 +8,7 @@ import { AuthService } from '../../providers/auth-service/auth-service';
  * Ionic pages and navigation.
  */
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-exam-filter',
   templateUrl: 'exam-filter.html',
@@ -80,7 +79,7 @@ export class ExamFilterPage {
       delete(this.filterData.endDate);
     }
     this.filterData.subjects = this.filterData.subjects.join(',');
-    this.navCtrl.setRoot(ExamsPage, {
+    this.navCtrl.setRoot('ExamsPage', {
       'studentID': this.studentID,
       'filter': this.filterData,
       'hasFiltered': hasFilter

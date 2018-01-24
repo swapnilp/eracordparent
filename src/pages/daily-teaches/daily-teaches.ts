@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { StudentsPage } from '../students/students';
-import { DailyTeachesFilterPage } from '../daily-teaches-filter/daily-teaches-filter';
 
+@IonicPage()
 @Component({
   selector: 'page-daily-teaches',
   templateUrl: 'daily-teaches.html'
@@ -57,7 +56,7 @@ export class DailyTeachesPage {
   
   goToStudent(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(StudentsPage);
+    this.navCtrl.setRoot('StudentsPage');
   }
 
   doInfinite(infiniteScroll) {
@@ -68,7 +67,7 @@ export class DailyTeachesPage {
   }
   
   filterDailyTeaches() {
-    this.navCtrl.push(DailyTeachesFilterPage, {
+    this.navCtrl.push('DailyTeachesFilterPage', {
       'studentID': this.studentID,
       'filter': this.filter
     });

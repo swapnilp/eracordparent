@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
-import { HostelPage } from '../hostel/hostel';
-import { DailyTeachesPage } from '../daily-teaches/daily-teaches';
-import { AccountPage } from '../account/account';
-import { SettingPage } from '../setting/setting';
-import { ExamsPage } from '../exams/exams';
-import { NotificationPage } from '../notification/notification';
-import { EracordPaymentPage } from '../eracord-payment/eracord-payment';
 import { AuthService } from '../../providers/auth-service/auth-service';
 
+@IonicPage()
 @Component({
   selector: 'page-students',
   templateUrl: 'students.html'
@@ -65,33 +59,33 @@ export class StudentsPage {
 
   goToHostel(params){
     if (!params) params = {};
-    this.navCtrl.push(HostelPage, {
+    this.navCtrl.push('HostelPage', {
       'studentID': params.studentId
     });
   }goToDailyTeaches(params){
     if (!params) params = {};
-    this.navCtrl.push(DailyTeachesPage, {
+    this.navCtrl.push('DailyTeachesPage', {
       'studentID': params.studentId
     });
   }goToAccount(params){
     if (!params) params = {};
-    this.navCtrl.push(AccountPage, {
+    this.navCtrl.push('AccountPage', {
       'studentID': params.studentId,
       'hasPayOnline': params.hasPayOnline
     });
   }goToSetting(params){
     if (!params) params = {};
-    this.navCtrl.push(SettingPage, {
+    this.navCtrl.push('SettingPage', {
       'studentID': params.studentId
     });
   }goToExams(params){
     if (!params) params = {};
-    this.navCtrl.push(ExamsPage, {
+    this.navCtrl.push('ExamsPage', {
       'studentID': params['studentId']
     });
   }goToNotifications(params){
     if (!params) params = {};
-    this.navCtrl.push(NotificationPage, {
+    this.navCtrl.push('NotificationPage', {
       'studentID': params.studentId
     });
   }
@@ -111,7 +105,7 @@ export class StudentsPage {
         {
           text: 'Pay now',
           handler: () => {
-            this.navCtrl.setRoot(EracordPaymentPage);
+            this.navCtrl.setRoot('EracordPaymentPage');
           }
         }
       ]
@@ -128,7 +122,7 @@ export class StudentsPage {
         {
           text: 'Pay now',
           handler: () => {
-            this.navCtrl.setRoot(EracordPaymentPage);
+            this.navCtrl.setRoot('EracordPaymentPage');
           }
         }
       ]

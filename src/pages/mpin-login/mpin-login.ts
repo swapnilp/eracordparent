@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, MenuController } from 'ionic-angular';
-import { NewParentPage } from '../new-parent/new-parent';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
 import { Events } from 'ionic-angular';
 
+@IonicPage()
 @Component({
   selector: 'page-mpin-login',
   templateUrl: 'mpin-login.html'
@@ -45,7 +45,7 @@ export class MpinLoginPage {
   
   goToNewParent(params){
     if (!params) params = {};
-    this.navCtrl.push(NewParentPage);
+    this.navCtrl.push('NewParentPage');
   }
   
   login(): void {
@@ -73,7 +73,7 @@ export class MpinLoginPage {
           localStorage.removeItem('userData');
           localStorage.removeItem('paymentPriority');
           localStorage.removeItem('mobile');
-          this.navCtrl.push(NewParentPage);
+          this.navCtrl.push('NewParentPage');
         }
         this.alertService.warning(result["message"]);
       }

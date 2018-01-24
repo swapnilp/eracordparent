@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { ExamsPage } from '../exams/exams';
-import { StudentsPage } from '../students/students';
-import { DeleteStudentPage } from '../delete-student/delete-student';
 
+@IonicPage()
 @Component({
   selector: 'page-setting',
   templateUrl: 'setting.html'
@@ -17,16 +15,16 @@ export class SettingPage {
   }
   goToExams(params){
     if (!params) params = {};
-    this.navCtrl.push(ExamsPage);
+    this.navCtrl.push('ExamsPage');
   }
   goToDeleteStudent(params){
     if (!params) params = {};
-    this.navCtrl.push(DeleteStudentPage, {
+    this.navCtrl.push('DeleteStudentPage', {
       'studentID': this.studentID
     });
   }
   goToStudent(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(StudentsPage);
+    this.navCtrl.setRoot('StudentsPage');
   }
 }

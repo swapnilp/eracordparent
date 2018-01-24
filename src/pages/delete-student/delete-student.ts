@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
-import { StudentsPage } from '../students/students';
 
+@IonicPage()
 @Component({
   selector: 'page-delete-student',
   templateUrl: 'delete-student.html'
@@ -36,7 +36,7 @@ export class DeleteStudentPage {
   deleteMe() {
     this.authService.getPostData({},'students/' + this.studentID + '/remove_student', true).then((result) => {
       if(result['success']) {
-        this.navCtrl.setRoot(StudentsPage, {reload: true});
+        this.navCtrl.setRoot('StudentsPage', {reload: true});
       } else {
         this.alertService.warning(result['message']);
       }
@@ -48,6 +48,6 @@ export class DeleteStudentPage {
   
   goToStudent(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(StudentsPage);
+    this.navCtrl.setRoot('StudentsPage');
   }
 }
