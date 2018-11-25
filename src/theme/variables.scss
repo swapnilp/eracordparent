@@ -34,7 +34,7 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #679bc9,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
@@ -58,10 +58,10 @@ $colors: (
 
   .toast-container {
     background: #85da85;
-    
+
     .toast-message, .toast-button {
       color: #000;
-    } 
+    }
   }
 }
 

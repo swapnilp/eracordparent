@@ -1,28 +1,37 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button class="hide">
-      <ion-icon name="menu"></ion-icon>
+<ion-content>
+  <div class="onboarding-content">
+    <div class="logo-container">
+      <img src="assets/img/oCyQ3ST4Qy6s7UA6af33_400X100.png"/>
+    </div>
+    <ion-slides class="onboarding-slider" pager="true" paginationType="fraction">
+      <ion-slide>
+        <div>
+          A common platform for teachers, institution and administrative departments to work towards a common goal of helping the students to learn and score better which in turn improves their performance and help achieve a competitive output.
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div>
+          Works on four basic functions -
+        </div>
+        <ul class="onboarding-list">
+          <li text-left>planning</li>
+          <li text-left>organizing</li>
+          <li text-left>controlling</li>
+          <li text-left>motivating</li>
+        </ul>
+      </ion-slide>
+      <ion-slide>
+        <p>
+          One time Registration process that is simple and straight forward.
+        </p>
+        <small>
+          Click on <strong>Get Started</strong> and register with your <strong>Name</strong> and a valid <strong>Mobile Number</strong>.
+          Once you register you will get a one type password on your registered mobile number to create a <strong>4 Digit MPIN</strong> which you use to access your account.
+        </small>
+      </ion-slide>
+    </ion-slides>
+    <button ion-button color="positive" full on-click="goToNewParent()">
+      Get Started
     </button>
-    <ion-title>
-      Eracord
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-<ion-content padding id="page1">
-  <div class="spacer" style="width:300px;height:26px;" id="eracord-spacer1"></div>
-  <div style="margin-left:-10px;width:calc(100% + 20px);">
-    <img src="assets/img/oCyQ3ST4Qy6s7UA6af33_400X100.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
   </div>
-  <div class="spacer" style="width:300px;height:22px;" id="eracord-spacer2"></div>
-  <ion-card>
-    <ion-card-content>
-      <small>
-        A common platform for teachers, institution and administrative departments to work towards a common goal of helping the students to learn and score better which in turn improves their performance.
-        Working on four basic functions - planning, organizing, controlling and motivating, it helps you achieve a competitive output.
-      </small>
-    </ion-card-content>
-  </ion-card>
-  <button id="eracord-button1" ion-button color="positive" full on-click="goToNewParent()">
-    Register
-  </button>
 </ion-content>
