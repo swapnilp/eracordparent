@@ -1,8 +1,9 @@
 {
   "name": "eracordparent",
-  "app_id": "41af3a73",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular",
+  "old_app_id": "41af3a73",
+  "pro_id": "41af3a73"
 }
