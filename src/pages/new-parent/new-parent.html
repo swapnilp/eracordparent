@@ -8,33 +8,38 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page4">
-  <div class="spacer" style="width:300px;height:26px;" id="newParent-spacer3"></div>
-  <div style="margin-left:-10px;width:calc(100% + 20px);">
-    <img src="assets/img/oCyQ3ST4Qy6s7UA6af33_400X100.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
-  </div>
-  <div class="spacer" style="width:300px;height:22px;" id="newParent-spacer4"></div>
-  <form [formGroup]="parentForm" id="newParent-form1">
-    <ion-item id="newParent-input1">
-      <ion-label floating>Name</ion-label>
-      <ion-input formControlName="name" type="text" placeholder="Name"></ion-input>
-    </ion-item>
-    <ion-item id="newParent-input2">
-      <ion-label floating>Mobile</ion-label>
-      <ion-input formControlName="mobile" type="tel" placeholder="Mobile Number (10 Digit)"></ion-input>
-    </ion-item>
-    <ion-item id="newParent-input3">
-      <ion-label floating>Confirm Mobile Number</ion-label>
-      <ion-input formControlName="confirmMobile" type="tel" class="mask-text" placeholder="Confirm Mobile Number"></ion-input>
-    </ion-item>
-    <div padding>
-      <label class="checkbox" on-click="clearFlash()">
-        <input formControlName="agree" type="checkbox">
-      </label>
-      I agree to the <a on-click="tos()">Terms of Service</a>
+<ion-content padding class="pattern-bg">
+  <div class="">
+    <br>
+    <div style="margin-left:-10px;width:calc(100% + 20px);">
+      <img src="assets/img/oCyQ3ST4Qy6s7UA6af33_400X100.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
     </div>
-  </form>
-  <button id="newParent-button3" ion-button color="positive" full style="font-weight:500;" on-click="registerParent()" [disabled]="!parentForm.valid">
-    Register
-  </button>
+    <br>
+    <form [formGroup]="parentForm">
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input formControlName="name" type="text" placeholder="Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Mobile</ion-label>
+        <ion-input formControlName="mobile" type="tel" placeholder="Mobile Number (10 Digit)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Confirm Mobile Number</ion-label>
+        <ion-input formControlName="confirmMobile" type="tel" class="mask-text" placeholder="Confirm Mobile Number"></ion-input>
+      </ion-item>
+      <br>
+      <div padding>
+        <label class="checkbox" on-click="clearFlash()">
+          <input formControlName="agree" type="checkbox">
+        </label>
+        I agree to the <a on-click="tos()">Terms of Service</a>
+      </div>
+      <br>
+    </form>
+    <br>
+    <button ion-button color="positive" full style="font-weight:500;" on-click="registerParent()" [disabled]="!parentForm.valid">
+      Register
+    </button>
+  </div>
 </ion-content>

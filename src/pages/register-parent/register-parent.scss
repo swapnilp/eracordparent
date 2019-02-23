@@ -1,5 +1,13 @@
 page-register-parent {
-  .list-header-md.error { 
+  form {
+    border: 1px solid #eaeaea;
+    border-radius: 25px;
+    overflow: hidden;
+    padding-right: 15px;
+    background: #fff;
+  }
+
+  .list-header-md.error {
     background: rgba(255, 0, 0, 0.33);
     color: #FFF;
   }

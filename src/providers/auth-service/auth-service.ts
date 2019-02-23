@@ -20,26 +20,26 @@ export class AuthService {
 
   constructor(public http: Http, public events: Events) {
   }
-  
+
   postData(credentials, type) {
     return new Promise((resolve, reject) => {
-      
+
       let headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      
+
       this.http.post(apiUrl + type+ ".json" , credentials, {headers: headers})
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
           reject(err);
         });
-      
+
     });
   }
 
   getPostData(credentials, type, auth = false) {
     return new Promise((resolve, reject) => {
-      
+
       let headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       let req_params = "";
@@ -53,7 +53,7 @@ export class AuthService {
         }, (err) => {
           reject(err);
         });
-      
+
     });
   }
 
@@ -62,13 +62,13 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       const user = JSON.parse(localStorage.getItem('userData'));
       if(user) {
-        
+
         let req_params = "&authorization_token="+ user.token;
-        
+
         if(student_id) {
           req_params  = req_params  + "&student_id=" + student_id;
         }
-        
+
         let paramsKeys = Object.keys(params);
         for(let key of paramsKeys) {
           req_params  = req_params +"&"+ key + "=" +params[key]
@@ -82,7 +82,7 @@ export class AuthService {
           }, (err) => {
             localStorage.setItem('userData', null);
             if(url !== 'hostels' && pageObj.loading) {
-              
+
               pageObj.loading.dismiss();
             }
             self.events.publish('user:unauth', "Swapnil Patil");
@@ -102,7 +102,7 @@ export class AuthService {
       for(let key of paramsKeys) {
         req_params  = req_params +"&"+ key + "=" +params[key]
       }
-      this.http.get(serverUrl + url+ ".json?" + req_params)
+      this.http.get(serverUrl + url+ ".json" + req_params)
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -112,7 +112,7 @@ export class AuthService {
         });
     });
   }
-  
+
   objToStr(obj, parent) {
     let keys = Object.keys(obj);
     let str = "";

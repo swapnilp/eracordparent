@@ -4,58 +4,45 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Register Parent
+      Confirm your account
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page5">
-  <div class="spacer" style="width:300px;height:26px;" id="registerParent-spacer5"></div>
-  <div style="margin-left:-10px;width:calc(100% + 20px);">
-    <img src="assets/img/oCyQ3ST4Qy6s7UA6af33_400X100.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+<ion-content padding class="pattern-bg">
+  <div padding class="white-bg">
+    <p>Welcome <strong>{{name}}</strong>, (Mob) {{mobile}}</p>
+    <small>Enter the SMS code received on your mobile number to confirm your account.</small>
   </div>
-  <div class="spacer" style="width:300px;height:22px;" id="registerParent-spacer6"></div>
-  <h3 id="registerParent-heading2" style="color:#000000;">
-    name - {{name}}
-  </h3>
-  <h4 id="registerParent-heading3" style="color:#000000;">
-    Mobile - {{mobile}}
-  </h4>
-  <form [formGroup]="parentForm" id="registerParent-form2">
-    <ion-item id="registerParent-input3">
+  <form [formGroup]="parentForm">
+    <ion-item>
       <ion-label floating>Email</ion-label>
       <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
     </ion-item>
-    <ion-item id="registerParent-input4">
+    <ion-item>
       <ion-label floating>MPIN (4 Digit)</ion-label>
       <ion-input formControlName="mpin" type="tel" placeholder="MPIN" class="mask-text" maxlength="4"></ion-input>
     </ion-item>
-    <ion-item id="registerParent-input5">
+    <ion-item>
       <ion-label floating>Confirm MPIN</ion-label>
       <ion-input formControlName="confirm_mpin" type="tel" placeholder="Confirm MPIN" class="mask-text" maxlength="4"></ion-input>
     </ion-item>
-    <ion-item id="registerParent-input6">
+    <ion-item>
       <ion-label floating>SMS Code</ion-label>
       <ion-input formControlName="token" type="number" placeholder="SMS Code" class="mask-text"></ion-input>
     </ion-item>
-    <ion-item class="borderLess" padding>
-      <button id="registerParent-button5" ion-button item-right clear color="positive" small [disabled]="smsSending" on-click="resendSms()">
+    <div float-right padding>
+      <button ion-button clear color="positive" small [disabled]="smsSending" on-click="resendSms()">
         Resend SMS
         <ion-spinner class="button-spinner" *ngIf="smsSending"></ion-spinner>
       </button>
-    </ion-item>
-    <ion-list-header id="registerParent-input7" class="{{errorClass}} list-header-md" *ngIf="hasError">
+    </div>
+    <ion-list-header class="{{errorClass}} list-header-md" *ngIf="hasError">
       {{errors}}
     </ion-list-header>
-    <button id="registerParent-button4" ion-button color="positive" full on-click="register()" [disabled]="!parentForm.valid">
-      Register
-    </button>
-    <ion-card>
-    <ion-card-content>
-      <small>
-        To successfull registration enter valid Email and 4 digit MPIN. MPIN will be your account access key to every time you will use. Do not share MPIN with others.
-        <br/> For SMS code please check your SMS. Or use <strong>RESEND CODE</strong> If you are not got SMS code
-      </small>
-    </ion-card-content>
-  </ion-card>
   </form>
+  <br>
+  <button ion-button color="positive" full on-click="register()" [disabled]="!parentForm.valid">
+    Register
+  </button>
+  <br>
 </ion-content>
