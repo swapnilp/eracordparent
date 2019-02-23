@@ -1,8 +1,12 @@
 page-students {
   .divider{
-    background: linear-gradient(to bottom right, #3399ff 0%, #339A03 300%);
+    background: #ccc;
+    border: 1px solid gray;
+    border-bottom: 0;
   }
-
+  .grid {
+    padding: 0;
+  }
   ion-icon {
     display: inline-block;
     font-size: 1.5em;
