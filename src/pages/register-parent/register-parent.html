@@ -10,7 +10,7 @@
 </ion-header>
 <ion-content padding class="pattern-bg">
   <div padding class="white-bg">
-    <p>Welcome <strong>{{name}}</strong>, (Mob) {{mobile}}</p>
+    <p>Welcome <strong>{{name}}</strong>, ({{mobile}})</p>
     <small>Enter the SMS code received on your mobile number to confirm your account.</small>
   </div>
   <form [formGroup]="parentForm">
@@ -36,9 +36,6 @@
         <ion-spinner class="button-spinner" *ngIf="smsSending"></ion-spinner>
       </button>
     </div>
-    <ion-list-header class="{{errorClass}} list-header-md" *ngIf="hasError">
-      {{errors}}
-    </ion-list-header>
   </form>
   <br>
   <button ion-button color="positive" full on-click="register()" [disabled]="!parentForm.valid">

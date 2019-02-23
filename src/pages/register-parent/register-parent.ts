@@ -14,20 +14,24 @@ export class RegisterParentPage {
   mobile:any;
   email:any;
   parentForm: FormGroup;
-  hasError:boolean = false;
-  errors: any;
-  errorClass:any = 'error';
   menu:any;
   loading:any;
   smsSending: any = false;
-  
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public params: NavParams, public menuCtr: MenuController, public authService: AuthService, public alertService: AlertService, public loadingController: LoadingController) {
+
+  constructor(public navCtrl: NavController,
+    public formBuilder: FormBuilder,
+    public params: NavParams,
+    public menuCtr: MenuController,
+    public authService: AuthService,
+    public alertService: AlertService,
+    public loadingController: LoadingController) {
+
     this.menu = menuCtr;
     this.menu.enable(false);
     this.name = params.get('name');
     this.mobile = params.get('mobile');
     this.email = params.get('email');
-    
+
     this.parentForm = formBuilder.group({
       name: [this.name],
       mobile: [this.mobile],
@@ -43,23 +47,21 @@ export class RegisterParentPage {
     this.loading = this.loadingController.create({
       spinner: 'bubbles',
       content: "Please wait..."
-    });  
+    });
     this.loading.present();
 
     if(this.parentForm.valid) {
       let values  = this.parentForm.value;
       if(values.mpin === values.confirm_mpin ) {
         var data = "&parent[name]=" + values.name + "&parent[mobile]=" + values.mobile+ "&parent[device_id]=" + values.device_id+ "&parent[email]=" + values.email + "&parent[mpin]=" + values.mpin+ "&parent[confirm_mpin]=" + values.confirm_mpin + "&parent[token]=" +values.token + "&parent[os]=android";
-        
+
         this.authService.getPostData(data,'register_parent/register').then((result) => {
           this.loading.dismiss();
           if(result['success']) {
             localStorage.setItem('mobile', values.mobile);
             this.navCtrl.setRoot('MpinLoginPage');
-          } else{
-            this.hasError= true;
-            this.errorClass= 'error';
-            this.errors= result['error'];
+          } else {
+            this.alertService.warning(result["error"]);
           }
         }, (err) => {
           this.loading.dismiss();
@@ -70,7 +72,7 @@ export class RegisterParentPage {
         this.loading.dismiss();
         this.alertService.warning("Confirm Mpin not match");
       }
-      
+
     }
   }
 
@@ -86,14 +88,17 @@ export class RegisterParentPage {
         self.smsSending = false;
       }
     })
-    
+
   }
 
   goToMpinLogin(params){
     if (!params) params = {};
     this.navCtrl.push('MpinLoginPage');
-  }goToRegister(params){
+  }
+
+  goToRegister(params){
     if (!params) params = {};
     this.navCtrl.push('RegisterPage');
   }
+
 }

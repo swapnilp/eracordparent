@@ -8,42 +8,44 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page7">
-  <div class="spacer" style="width:300px;height:26px;" id="register-spacer9"></div>
-  <div style="margin-left:-10px;width:calc(100% + 20px);">
-    <img src="assets/img/oCyQ3ST4Qy6s7UA6af33_400X100.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
-  </div>
-  <div class="spacer" style="width:300px;height:22px;" id="register-spacer10"></div>
-  <form id="register-form6">
-    <ion-item id="register-input10">
-      <ion-label>
-        Mobile
-      </ion-label>
-      <ion-input type="tel" placeholder=""></ion-input>
-    </ion-item>
-    <button id="register-button10" ion-button clear color="positive" full small>
-      Get SMS Code
+<ion-content padding>
+  <div class="pattern-bg">
+    <br>
+    <div style="margin-left:-10px;width:calc(100% + 20px);">
+      <img src="assets/img/oCyQ3ST4Qy6s7UA6af33_400X100.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+    </div>
+    <br>
+    <form>
+      <ion-item>
+        <ion-label floating>
+          Mobile
+        </ion-label>
+        <ion-input type="tel"></ion-input>
+      </ion-item>
+      <butto" ion-button clear color="positive" full small>
+        Get SMS Code
+      </button>
+      <ion-item>
+        <ion-label floating>
+          SMS Code
+        </ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>
+          MPIN
+        </ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>
+          Confirm
+        </ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+    </form>
+    <button ion-button color="positive" full on-click="goToMpinLogin()">
+      Register
     </button>
-    <ion-item id="register-input13">
-      <ion-label>
-        SMS Code
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item id="register-input11">
-      <ion-label>
-        MPIN
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item id="register-input12">
-      <ion-label>
-        Confirm
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-  </form>
-  <button id="register-button8" ion-button color="positive" full on-click="goToMpinLogin()">
-    Register
-  </button>
+  </div>
 </ion-content>
