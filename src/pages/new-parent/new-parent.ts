@@ -14,7 +14,7 @@ export class NewParentPage {
   parentForm: FormGroup;
   menu:any;
   loading:any;
-  
+
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public menuCtr: MenuController, public authService: AuthService, public alertService: AlertService, public loadingController: LoadingController, private inAppBrowser: InAppBrowser) {
     this.menu = menuCtr;
     this.menu.enable(false);
@@ -22,7 +22,7 @@ export class NewParentPage {
       name: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       mobile: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[0-9]*'), Validators.required])],
       confirmMobile: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[0-9]*'), Validators.required])],
-      agree: [false]
+      agree: [false, Validators.pattern('true')]
     });
   }
 
@@ -64,7 +64,7 @@ export class NewParentPage {
       });
     }
   }
-  
+
   goToRegisterParent(params){
     if (!params) params = {};
     this.navCtrl.push('RegisterParentPage');
