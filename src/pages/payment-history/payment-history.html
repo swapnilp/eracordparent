@@ -7,8 +7,10 @@
       Payment History
     </ion-title>
   </ion-navbar>
-  <ion-list id="payment-header" class="relative">
-    <h5 class="paddingL10"><small><strong>Total Records - </strong> {{totalCount}}</small></h5>
+  <ion-list>
+    <ion-row>
+      <ion-col padding-horizontal><h6>Total Records - {{totalCount}}</h6></ion-col>
+    </ion-row>
   </ion-list>
 </ion-header>
 <ion-content padding id="page8">
@@ -24,7 +26,7 @@
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </div>
-  <div *ngIf="isLoading === false && totalCount == 0">
-    <h3 style="color:red;">Payments not present</h3>
+  <div text-center *ngIf="isLoading === false && totalCount == 0">
+    <strong style="color:red;">No Payments</strong>
   </div>
 </ion-content>

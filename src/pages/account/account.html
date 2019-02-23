@@ -12,8 +12,8 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-list id="exam-header" class="relative">
-    <h5 class="paddingL10"><small><strong [innerHtml]="balance"></strong></small></h5>
+  <ion-list class="relative">
+    <h5 padding><small><strong [innerHtml]="balance"></strong></small></h5>
     <ion-note item-right class="right">
       <button ion-button icon-left clear color="dark" on-click="filterAccount()">
         <ion-icon name="funnel" [ngClass]="{'danger': isFltered}"></ion-icon>
@@ -26,11 +26,10 @@
   <button id="newPayment-button3" ion-button color="positive" full style="font-weight:500;" on-click="payOnline()" *ngIf="hasPayOnline">
     Pay Online
   </button>
-  <ion-list id="account-list8">
+  <ion-list>
     <ion-item-divider class="gradient" color="light">Transactions ({{totalCount}})</ion-item-divider>
     <div *ngIf="totalCount > 0">
-      
-      <ion-item  class="animated fadeInLeft" color="none" id="account-list-item19" *ngFor="let transaction of transactions">
+      <ion-item  class="animated fadeInLeft" color="none" *ngFor="let transaction of transactions">
         <h3><strong [innerHtml]="transaction.date"></strong></h3>
         <span [innerHtml]="transaction.obj_type"></span>
         <ion-note item-right class="{{transaction.class}}"><span [innerHtml]="transaction.amount"></span></ion-note>
@@ -40,8 +39,8 @@
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
-  
-  <div *ngIf="!isLoading && totalCount == 0">
-    <h3 style="color:red;">Transactions not present</h3>
+
+  <div text-center *ngIf="!isLoading && totalCount == 0">
+    <strong style="color:red;">No Transactions</strong>
   </div>
 </ion-content>

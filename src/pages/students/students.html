@@ -28,14 +28,14 @@
           </ion-avatar>
           <strong>{{student.name}}</strong><br/>
           {{student.organisation_name}}
-          
+
         </ion-item-divider>
         <ion-grid>
           <ion-row style="height: 70px;" text-center justify-content-center align-items-center>
             <ion-col on-click="goToDailyTeaches({studentId: student.student_id})" col-4 class="colBottomNoBorder" justify-content-center align-items-center>
               <ion-icon name="school" item-left></ion-icon>
               <br />
-              Daily teaches
+              Classes
             </ion-col>
             <ion-col on-click="goToExams({studentId: student.student_id})" col-4 class="colNoBorder colBottomNoBorder">
               <ion-icon name="list-box" item-left></ion-icon>
@@ -63,7 +63,7 @@
             <ion-col on-click="goToSetting({studentId: student.student_id})" col-4>
               <ion-icon name="construct" item-left></ion-icon>
               <br />
-              Setting
+              Settings
             </ion-col>
           </ion-row>
         </ion-grid>

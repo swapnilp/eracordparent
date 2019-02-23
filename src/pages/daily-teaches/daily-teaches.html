@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Daily teaches
+      Classes
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only on-click="goToStudent()">
@@ -12,15 +12,18 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-list id="exam-header" class="relative">
-    <h5 class="paddingL10"><small><strong>Total Records - </strong> {{totalCount}}</small></h5>
-    <ion-note item-right class="right">
-      <button ion-button icon-left clear color="dark" on-click="filterDailyTeaches()">
-        <ion-icon name="funnel" [ngClass]="{'danger': isFltered}"></ion-icon>
-        Filter
-      </button>
-    </ion-note>
+  <ion-list class="relative" no-margin>
+    <ion-row>
+      <ion-col padding-horizontal><h6>Total Records - {{totalCount}}</h6></ion-col>
+      <ion-note item-right class="filter-icon-container">
+        <button ion-button icon-left clear color="dark" on-click="filterDailyTeaches()">
+          <ion-icon name="funnel" [ngClass]="{'danger': isFltered}"></ion-icon>
+          Filter
+        </button>
+      </ion-note>
+    </ion-row>
   </ion-list>
+
 </ion-header>
 <ion-content padding id="page9">
   <div *ngIf="totalCount > 0">
@@ -38,7 +41,7 @@
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </div>
-  <div *ngIf="!isLoading && totalCount == 0">
-    <h3 style="color:red;">Daily Teaches not present</h3>
+  <div text-center *ngIf="!isLoading && totalCount == 0">
+    <strong style="color:red;">No Classes</strong>
   </div>
 </ion-content>
