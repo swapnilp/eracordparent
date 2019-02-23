@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, MenuController, LoadingController, IonicPage } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
@@ -58,10 +58,9 @@ export class RegisterParentPage {
         this.authService.getPostData(data,'register_parent/register').then((result) => {
           this.loading.dismiss();
           if(result['success']) {
-            debugger
             localStorage.setItem('name', values.name);
             localStorage.setItem('mobile', values.mobile);
-            this.navCtrl.setRoot('MpinLoginPage');
+            this.navCtrl.setRoot('MpinLoginPage', {showRegistrationSuccessToast: true});
           } else {
             this.alertService.warning(result["error"]);
           }
@@ -74,7 +73,6 @@ export class RegisterParentPage {
         this.loading.dismiss();
         this.alertService.warning("Confirm Mpin not match");
       }
-
     }
   }
 
@@ -91,11 +89,6 @@ export class RegisterParentPage {
       }
     })
 
-  }
-
-  goToMpinLogin(params){
-    if (!params) params = {};
-    this.navCtrl.push('MpinLoginPage');
   }
 
   goToRegister(params){

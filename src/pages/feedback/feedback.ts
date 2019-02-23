@@ -30,13 +30,12 @@ export class FeedbackPage {
       this.loading = this.loadingController.create({
         spinner: 'bubbles',
         content: "Please wait..."
-      });  
+      });
       let params = this.feedbackForm.value;
       if(params.mobile !== params.confirmMobile) {
         this.alertService.warning("Confirm Mobile does not match!!");
         return true;
       }
-      debugger
       var data = "&register_feedback[mobile]=" + localStorage.getItem('mobile') + "&register_feedback[title]=" + params.title + "&register_feedback[message]=" + params.message;
       this.loading.present();
       this.authService.getPostData(data,'register_feedback').then((result) => {
@@ -51,7 +50,7 @@ export class FeedbackPage {
       });
     }
   }
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad FeedbackPage');
   }

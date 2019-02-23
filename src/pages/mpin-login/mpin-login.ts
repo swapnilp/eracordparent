@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, MenuController } from 'ionic-angular';
+import { NavController, LoadingController, MenuController, NavParams, IonicPage } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
 import { Events } from 'ionic-angular';
@@ -11,7 +11,7 @@ import { Events } from 'ionic-angular';
 })
 export class MpinLoginPage {
   responseData : any;
-  userData = {"device_id": localStorage.getItem('deviceId'),"mpin": "", "mobile": localStorage.getItem('mobile')};
+  userData = {"device_id": localStorage.getItem('deviceId'),"mpin": "", "mobile": localStorage.getItem('mobile'), "name": localStorage.getItem('name')};
   loading:any;
   menu:any;
   mobile:any='';
@@ -19,14 +19,23 @@ export class MpinLoginPage {
   payment: any = "normal";
   passcode:any = "";
 
-  constructor(public navCtrl: NavController, public authService: AuthService, public events: Events, public alertService: AlertService, public loadingController: LoadingController, public menuCtr: MenuController) {
+  constructor(public navCtrl: NavController,
+              public authService: AuthService,
+              public events: Events,
+              public alertService: AlertService,
+              public loadingController: LoadingController,
+              public navParams: NavParams,
+              public menuCtr: MenuController) {
     this.menu = menuCtr;
     this.menu.enable(false);
     this.mobile = localStorage.getItem('mobile');
-    this.mobile = localStorage.getItem('name');
+    this.name = localStorage.getItem('name');
+    if(!!this.navParams.data["showRegistrationSuccessToast"]) {
+      this.alertService.success("You have successfully registered. Login with MPIN");
+    }
   }
 
-  
+
   add(value) {
     if(this.passcode.length < 4) {
       this.alertService.dismiss();
@@ -44,20 +53,20 @@ export class MpinLoginPage {
       this.passcode = this.passcode.substring(0, this.passcode.length - 1);
     }
   }
-  
+
   goToNewParent(params){
     if (!params) params = {};
     this.navCtrl.push('NewParentPage');
   }
-  
+
   login(): void {
     this.loading = this.loadingController.create({
       spinner: 'bubbles',
       content: "Please wait..."
-    });  
+    });
     this.loading.present();
     var data = "&parent[device_id]="+this.userData.device_id+"&parent[mobile]="+this.userData.mobile+"&parent[mpin]="+ this.passcode;
-    
+
     this.authService.postData(data,'sign_in').then((result) => {
       this.loading.dismiss();
       if(result["success"]) {
@@ -87,7 +96,7 @@ export class MpinLoginPage {
       // Error log
     });
 
-    
+
   }
 }
 
