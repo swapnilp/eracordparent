@@ -1,21 +1,13 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>feedback</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-  <div class="spacer" style="width:300px;height:26px;" id="feedback-spacer3"></div>
-  <div style="margin-left:-10px;width:calc(100% + 20px);">
-    <img src="assets/img/oCyQ3ST4Qy6s7UA6af33_400X100.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
-  </div>
-  <div class="spacer" style="width:300px;height:26px;" id="feedback-spacer3"></div>
   <ion-list color="light">We all need people who will give us feedback. That’s how we improve.</ion-list>
-  <form [formGroup]="feedbackForm" id="feedback-form1">
-    <ion-item id="feedback-input1">
+  <form [formGroup]="feedbackForm">
+    <ion-item>
       <ion-label floating>Subject</ion-label>
       <ion-select formControlName="title" interface="action-sheet">
         <ion-option value="inprove ui" checked="true">Improve UI</ion-option>
@@ -23,12 +15,13 @@
         <ion-option value="other">Other</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item id="feedback-input2">
+    <ion-item>
       <ion-label stacked>Message</ion-label>
-      <ion-textarea formControlName="message" type="text" placeholder="Message" rows="5"></ion-textarea>
+      <ion-textarea formControlName="message" type="text" rows="5"></ion-textarea>
     </ion-item>
   </form>
-  <button id="feedback-button3" ion-button color="positive" full style="font-weight:500;" on-click="registerFeedback()" [disabled]="!feedbackForm.valid">
-    Register
+  <br>
+  <button ion-button color="positive" full style="font-weight:500;" on-click="registerFeedback()" [disabled]="!feedbackForm.valid">
+    Send
   </button>
 </ion-content>

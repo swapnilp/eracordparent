@@ -16,7 +16,7 @@
 <ion-content padding id="page8">
   <div *ngIf="totalCount > 0">
     <ion-list id="payments-list4">
-      <ion-item class="animated fadeInLeft" color="none" id="payments-list-item15" *ngFor="let payment of payments">
+      <ion-itemcolor="none" id="payments-list-item15" *ngFor="let payment of payments">
         <h3 class="paymentName"><strong [innerHtml]="payment.name"></strong></h3>
         <span [innerHtml]="payment.desc"></span>
         <ion-note item-right><small [innerHtml]="payment.amount"></small></ion-note>

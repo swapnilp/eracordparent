@@ -27,7 +27,7 @@
 </ion-header>
 <ion-content padding id="page9">
   <div *ngIf="totalCount > 0">
-    <ion-card class="animated fadeInLeft" color="none" id="dailyTeaches-list-item16" *ngFor="let dtp of daily_teachs">
+    <ion-cardcolor="none" id="dailyTeaches-list-item16" *ngFor="let dtp of daily_teachs">
       <ion-card-header>
         <h3 class="dtpName"><strong [innerHtml]="dtp.subject"></strong></h3>
         <span [innerHtml]="dtp.date"></span>

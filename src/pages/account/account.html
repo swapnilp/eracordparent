@@ -12,16 +12,19 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-list class="relative">
-    <h5 padding><small><strong [innerHtml]="balance"></strong></small></h5>
-    <ion-note item-right class="right">
-      <button ion-button icon-left clear color="dark" on-click="filterAccount()">
-        <ion-icon name="funnel" [ngClass]="{'danger': isFltered}"></ion-icon>
-        Filter
-      </button>
-    </ion-note>
+  <ion-list class="relative" no-margin>
+    <ion-row>
+      <ion-col padding-horizontal><h6 [innerHtml]="balance"></h6></ion-col>
+      <ion-note float-right>
+        <button ion-button icon-left clear color="dark" class="filter-icon-container" on-click="filterAccount()">
+          <ion-icon name="funnel" [ngClass]="{'danger': isFltered}"></ion-icon>
+          Filter
+        </button>
+      </ion-note>
+    </ion-row>
   </ion-list>
 </ion-header>
+
 <ion-content padding id="page11">
   <button id="newPayment-button3" ion-button color="positive" full style="font-weight:500;" on-click="payOnline()" *ngIf="hasPayOnline">
     Pay Online
@@ -29,7 +32,7 @@
   <ion-list>
     <ion-item-divider class="gradient" color="light">Transactions ({{totalCount}})</ion-item-divider>
     <div *ngIf="totalCount > 0">
-      <ion-item  class="animated fadeInLeft" color="none" *ngFor="let transaction of transactions">
+      <ion-item color="none" *ngFor="let transaction of transactions">
         <h3><strong [innerHtml]="transaction.date"></strong></h3>
         <span [innerHtml]="transaction.obj_type"></span>
         <ion-note item-right class="{{transaction.class}}"><span [innerHtml]="transaction.amount"></span></ion-note>

@@ -8,7 +8,7 @@
       <ion-icon name="close"></ion-icon>
       Clear
     </button>
-    <ion-note item-right class="right">
+    <ion-note float-right>
       <button ion-button icon-left clear color="dark" on-click="apply()">
         <ion-icon name="checkmark-circle"></ion-icon>
         Apply
@@ -20,14 +20,21 @@
 <ion-content padding>
   <ion-list id="exam-filter">
     <ion-item-divider class="gradient" color="light">Date Filter</ion-item-divider>
-    <ion-item>
-      <ion-label floating>Start Date</ion-label>
-      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="filterData.startDate"></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>End Date</ion-label>
-      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="filterData.endDate"></ion-datetime>
-    </ion-item>
+
+    <ion-row>
+      <ion-col no-padding>
+        <ion-item>
+          <ion-label floating>Start Date</ion-label>
+          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="filterData.startDate"></ion-datetime>
+        </ion-item>
+      </ion-col>
+      <ion-col no-padding>
+        <ion-item>
+          <ion-label floating>End Date</ion-label>
+          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="filterData.endDate"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
   </ion-list>
   <ion-list radio-group [(ngModel)]="filterData.transactionType">
     <ion-item-divider class="gradient" color="light">Transaction Type Filter</ion-item-divider>
