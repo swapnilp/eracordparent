@@ -15,6 +15,7 @@ export class MpinLoginPage {
   loading:any;
   menu:any;
   mobile:any='';
+  name:any='';
   payment: any = "normal";
   passcode:any = "";
 
@@ -22,6 +23,7 @@ export class MpinLoginPage {
     this.menu = menuCtr;
     this.menu.enable(false);
     this.mobile = localStorage.getItem('mobile');
+    this.mobile = localStorage.getItem('name');
   }
 
   

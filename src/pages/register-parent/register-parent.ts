@@ -58,6 +58,8 @@ export class RegisterParentPage {
         this.authService.getPostData(data,'register_parent/register').then((result) => {
           this.loading.dismiss();
           if(result['success']) {
+            debugger
+            localStorage.setItem('name', values.name);
             localStorage.setItem('mobile', values.mobile);
             this.navCtrl.setRoot('MpinLoginPage');
           } else {
