@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { InAppBrowser, InAppBrowserOptions} from "@ionic-native/in-app-browser";
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
 
@@ -24,7 +23,7 @@ export class StudentPaymentPage {
   loading: any;
   studentID:any;
   
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public params: NavParams, private inAppBrowser: InAppBrowser, public alertService: AlertService, public loadingController: LoadingController, public authService: AuthService) {
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public params: NavParams, public alertService: AlertService, public loadingController: LoadingController, public authService: AuthService) {
     this.studentID = params.get('studentID');
     this.paymentForm = formBuilder.group({
       amount: ['',  Validators.compose([Validators.required])]
@@ -77,52 +76,5 @@ export class StudentPaymentPage {
   }
   
   payNow(token, pay_url) {
-    const url = pay_url + token;
-    const options: InAppBrowserOptions = {
-      zoom: 'no'
-    };
-    this.browser = this.inAppBrowser.create(url, '_self', options);
-    this.browser.on('loadstop').subscribe(event => {
-      if(event.url && event.url.match('mobile/close')) {
-        this.browser.close()
-        this.getPaymentStatus(token);
-      }
-    }, err => {
-      console.log("InAppBrowser loadstart Event Error: " + err);
-    });
-    
-    //this.browser.on('exit').subscribe(
-    //  () => {
-    //    this.alertService.warning("Closed");
-    //  },
-    //  err => {
-    //    console.log("InAppBrowser Loadstop Event Error: " + err);
-    //  });
-  }
-
-  getPaymentStatus(token) {
-    this.loading = this.loadingController.create({
-      spinner: 'bubbles',
-      content: "Please wait..."
-    });
-    this.loading.present();
-    this.authService.getApiData('students/' + this.studentID + '/organisation_payments/'+ token+'/check_status', "", null, this).then((result) => {
-      if(result['success']) {
-        if(result['payment_invoice']['success']) {
-          this.alertService.success(result['message']);
-          this.navCtrl.setRoot('StudentsPage');
-        } else {
-          this.alertService.warning(result['payment_invoice']['message']);
-        }
-          
-        //this.amounts = result['amounts'];
-      } else {
-        this.alertService.warning(result['message']);
-      }
-      
-      if(this.loading){
-        this.loading.dismiss();
-      }
-    });
   }
 }

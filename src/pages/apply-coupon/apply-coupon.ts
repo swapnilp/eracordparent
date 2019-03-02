@@ -36,14 +36,14 @@ export class ApplyCouponPage {
       const user = JSON.parse(localStorage.getItem('userData'));
       if(user) {
         this.loading.present();
-        var data = "&parent_payment[coupon]=" + params.coupon + "&parent_payment[is_coupon]=true&authorization_token="+ user.token;
-        this.authService.getPostData(data,'parent_payments').then((result) => {
+        var data = "&parent_payment[coupon]=" + params.coupon;
+        this.authService.getPostData(data,'parent_payments/apply_coupon', true).then((result) => {
           this.loading.dismiss();
           if(result['success']) {
             this.alertService.success(result['message']);
             this.navCtrl.setRoot('StudentsPage');
           } else {
-            this.alertService.warning(result['message']);
+            this.alertService.warning(result['errors']);
           }
         });
       }

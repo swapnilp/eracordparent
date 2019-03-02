@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { InAppBrowser, InAppBrowserOptions} from "@ionic-native/in-app-browser";
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
 
@@ -16,7 +15,7 @@ export class EracordPaymentPage {
   amounts:any = [] ;
   loading: any;
   
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public params: NavParams, private inAppBrowser: InAppBrowser, public alertService: AlertService, public loadingController: LoadingController, public authService: AuthService) {
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public params: NavParams, public alertService: AlertService, public loadingController: LoadingController, public authService: AuthService) {
     this.loadAmounts();
     this.paymentForm = formBuilder.group({
       amount_id: ['',  Validators.compose([Validators.required])]
@@ -46,14 +45,14 @@ export class EracordPaymentPage {
         content: "Please wait..."
       });  
       let params = this.paymentForm.value;
-      var data = "&amount[eracord_amount_id]=" + params.amount_id;
+      var data = "&parent_payment[plan_id]=" + params.amount_id;
       this.loading.present();
       
       this.authService.getPostData(data,'payments', true).then((result) => {
         this.loading.dismiss();
         if(result['success']) {
-          let token = result['eracord_invoice']['token'];
-          this.payNow(token, result['eracord_invoice']['url']);
+          let token = result['order_id'];
+          this.payNow(token);
         } else {
           this.alertService.warning(result['message']);
         }
@@ -65,28 +64,8 @@ export class EracordPaymentPage {
     }
   }
   
-  payNow(token, app_url) {
-    const url = app_url + token;
-    const options: InAppBrowserOptions = {
-      zoom: 'no'
-    };
-    this.browser = this.inAppBrowser.create(url, '_self', options);
-    this.browser.on('loadstop').subscribe(event => {
-      if(event.url && event.url.match('mobile/close')) {
-        this.browser.close()
-        this.getPaymentStatus(token)
-      }
-    }, err => {
-      console.log("InAppBrowser loadstart Event Error: " + err);
-    });
-    
-    //this.browser.on('exit').subscribe(
-    //  () => {
-    //    this.alertService.warning("Closed");
-    //  },
-    //  err => {
-    //    console.log("InAppBrowser Loadstop Event Error: " + err);
-    //  });
+  payNow(token) {
+    this.alertService.warning("asdasd");
   }
 
   getPaymentStatus(token) {
