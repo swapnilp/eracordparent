@@ -10,10 +10,10 @@ import 'rxjs/add/operator/map';
   and Angular DI.
 */
 //let apiUrl = 'http://localhost:3000/parents/';
-//let apiUrl = 'https://eracord.com/parents/';
-//let serverUrl = 'https://eracord.com/api/v1/parents/';
-let apiUrl = 'http://0.0.0.0:3000/parents/';
-let serverUrl = 'http://0.0.0.0:3000/api/v1/parents/';
+let apiUrl = 'https://eracord.com/parents/';
+let serverUrl = 'https://eracord.com/api/v1/parents/';
+//let apiUrl = 'http://0.0.0.0:3000/parents/';
+//let serverUrl = 'http://0.0.0.0:3000/api/v1/parents/';
 
 @Injectable()
 export class AuthService {
