@@ -55,6 +55,11 @@ export class MyApp {
       }
     });
 
+    events.subscribe('payment:success', (type) => {
+      localStorage.setItem('paymentPriority', type);
+      this.payment = type;
+    });
+
     events.subscribe('user:unauth', (name) => {
       this.navCtrl.setRoot('MpinLoginPage');
     });

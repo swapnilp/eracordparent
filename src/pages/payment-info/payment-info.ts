@@ -3,6 +3,7 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
+import { Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -16,7 +17,10 @@ export class PaymentInfoPage {
   loading: any;
   orderId: any;
   
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public params: NavParams, public alertService: AlertService, public loadingController: LoadingController, public authService: AuthService) {
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder,
+              public params: NavParams, public alertService: AlertService,
+              public loadingController: LoadingController,
+              public authService: AuthService, public events: Events) {
     this.orderId = params.get('orderId');
     this.paymentForm = formBuilder.group({
       name: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -96,6 +100,7 @@ export class PaymentInfoPage {
       this.loading.dismiss();
       if(result['success']) {
         this.alertService.success(result['messsage']);
+        this.events.publish('payment:success', result['payment_priority']);
         this.goToStudent();
       } else {
         this.alertService.warning(result['errors']);

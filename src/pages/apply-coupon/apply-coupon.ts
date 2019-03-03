@@ -3,6 +3,7 @@ import { NavController, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { AlertService } from '../../providers/alert-service/alert-service';
+import { Events } from 'ionic-angular';
 
 /**
  * Generated class for the ApplyCouponPage page.
@@ -20,7 +21,9 @@ export class ApplyCouponPage {
   couponForm: FormGroup;
   loading:any;
   
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public authService: AuthService, public alertService: AlertService, public loadingController: LoadingController) {
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder,
+              public authService: AuthService, public alertService: AlertService,
+              public loadingController: LoadingController, public events: Events) {
     this.couponForm = formBuilder.group({
       coupon: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.required])]
     });
@@ -41,6 +44,7 @@ export class ApplyCouponPage {
           this.loading.dismiss();
           if(result['success']) {
             this.alertService.success(result['message']);
+            this.events.publish('payment:success', result['payment_priority']);
             this.navCtrl.setRoot('StudentsPage');
           } else {
             this.alertService.warning(result['errors']);
@@ -49,6 +53,4 @@ export class ApplyCouponPage {
       }
     }
   }
-
-
 }
