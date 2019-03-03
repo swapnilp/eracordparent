@@ -16,16 +16,36 @@ export class PaymentInfoPage {
   amounts:any = [] ;
   loading: any;
   orderId: any;
+  order: any = {};
   
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder,
               public params: NavParams, public alertService: AlertService,
               public loadingController: LoadingController,
               public authService: AuthService, public events: Events) {
     this.orderId = params.get('orderId');
+    this.loadOrder(this.orderId);
     this.paymentForm = formBuilder.group({
       name: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       email: ['',  Validators.compose([Validators.required])],
       mobile: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[0-9]*'), Validators.required])],
+    });
+  }
+
+  loadOrder(orderId) {
+    this.loading = this.loadingController.create({
+      spinner: 'bubbles',
+      content: "Please wait..."
+    });  
+    this.authService.getApiData('payments/' + orderId, {}, null, this).then((result) => {
+      if(result['success']){
+        this.order = result['order'];
+      } else {
+        this.alertService.warning(result['message']);
+        this.navCtrl.pop({});
+      }
+      this.loading.dismiss();
+    }, () => {
+      this.loading.dismiss();
     });
   }
 

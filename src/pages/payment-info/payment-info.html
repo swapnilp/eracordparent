@@ -8,7 +8,20 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content padding class="relative">
+  <ion-list text-right>
+    <ion-row>
+      <ion-col padding-horizontal><h6 [innerHtml]="order.description"></h6></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of order.invoice">
+      <ion-col padding-horizontal [innerHtml]="item.name"></ion-col>
+      <ion-col item-right padding-horizontal  [innerHtml]="item.amount"></ion-col>
+    </ion-row>
+    <ion-row class="border-top">
+      <ion-col padding-horizontal><span>Total</span></ion-col>
+      <ion-col item-right padding-horizontal  [innerHtml]="order.amount"></ion-col>
+    </ion-row>
+  </ion-list>
   <form [formGroup]="paymentForm">
     <ion-item>
       <ion-label floating>Email</ion-label>
