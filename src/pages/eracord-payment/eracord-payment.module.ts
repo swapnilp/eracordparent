@@ -10,7 +10,7 @@ import { EracordPaymentPage } from './eracord-payment';
     IonicPageModule.forChild(EracordPaymentPage),
   ],
   exports: [
-    EracordPaymentPage
+    EracordPaymentPage,
   ],
 })
 export class EracordPaymentPageModule {}

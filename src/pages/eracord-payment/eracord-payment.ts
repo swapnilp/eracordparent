@@ -52,9 +52,9 @@ export class EracordPaymentPage {
         this.loading.dismiss();
         if(result['success']) {
           let token = result['order_id'];
-          this.payNow(token);
+          this.goToPaymentInfo(token);
         } else {
-          this.alertService.warning(result['message']);
+          this.alertService.warning(result['errors']);
         }
       }, (err) => {
         this.loading.dismiss();
@@ -64,39 +64,13 @@ export class EracordPaymentPage {
     }
   }
   
-  payNow(token) {
-    this.alertService.warning("asdasd");
-  }
-
-  getPaymentStatus(token) {
-    this.loading = this.loadingController.create({
-      spinner: 'bubbles',
-      content: "Please wait..."
-    });
-    this.loading.present();
-    this.authService.getApiData('payments/'+ token+'/check_status', "", null, this).then((result) => {
-      if(result['success']) {
-        if(result['payment_invoice']['success']) {
-          this.alertService.success(result['message']);
-          this.navCtrl.setRoot('StudentsPage');
-        } else {
-          this.alertService.warning(result['payment_invoice']['message']);
-        }
-          
-        //this.amounts = result['amounts'];
-      } else {
-        this.alertService.warning(result['message']);
-      }
-      
-      if(this.loading){
-        this.loading.dismiss();
-      }
-    });
-  }
-  
   goToPaymentHistory() {
     this.navCtrl.push('PaymentHistoryPage');
   } goToApplyCoupon() {
     this.navCtrl.push('ApplyCouponPage');
-  }  
+  } goToPaymentInfo(orderId) {
+    this.navCtrl.push('PaymentInfoPage', {
+      'orderId': orderId
+    });
+  }
 }
