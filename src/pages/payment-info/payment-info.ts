@@ -93,10 +93,10 @@ export class PaymentInfoPage {
       spinner: 'bubbles',
       content: "Please wait..."
     });  
-    var data = "&payment[payment_id]=" + data.razorpay_payment_id + "&payment[order_id]=" + data.razorpay_order_id + "&payment[signature]=" + data.razorpay_signature;
+    var fromData = "&payment[payment_id]=" + data.razorpay_payment_id + "&payment[order_id]=" + data.razorpay_order_id + "&payment[signature]=" + data.razorpay_signature;
     this.loading.present();
 
-    this.authService.getPostData(data,'payments/' + this.orderId +'/capture_payment', true).then((result) => {
+    this.authService.getPostData(fromData,'payments/' + this.orderId +'/capture_payment', true).then((result) => {
       this.loading.dismiss();
       if(result['success']) {
         this.alertService.success(result['messsage']);
