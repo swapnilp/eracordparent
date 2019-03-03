@@ -80,7 +80,7 @@ export class PaymentInfoPage {
     };
     
     var cancelCallback = function(error) {
-      alert(error.description + ' (Error ' + error.code + ')');
+      self.cancelOrder(error);
     };
 
     RazorpayCheckout.on('payment.success', successCallback)
@@ -110,6 +110,31 @@ export class PaymentInfoPage {
       var msg = JSON.parse(err._body).errors;
       this.alertService.warning(msg);
     });
+  }
+
+  cancelOrder(error) {
+    this.loading = this.loadingController.create({
+      spinner: 'bubbles',
+      content: "Please wait..."
+    });  
+    var fromData = "&payment[error]=" + error.description + "&payment[code]=" + error.code;
+    this.loading.present();
+
+    this.authService.getPostData(fromData,'payments/' + this.orderId +'/reject_payment', true).then((result) => {
+      this.loading.dismiss();
+      if(result['success']) {
+        
+      } else {
+        this.alertService.warning(result['errors']);
+      }
+    }, (err) => {
+      this.loading.dismiss();
+      var msg = JSON.parse(err._body).errors;
+      this.alertService.warning(msg);
+    });
+    
+    this.alertService.warning(error.description + ' (Error ' + error.code + ')');
+    this.navCtrl.pop({});
   }
 
   goToStudent(){
