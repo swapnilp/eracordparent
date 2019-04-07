@@ -1,5 +1,58 @@
 page-payment-info {
-  .border-top {
-    border-top: solid 1px #999;
+  table {
+    width: 100%;
+    line-height: inherit;
+    text-align: left;
+    border: 1px solid #eaeaea;
+    border-width: 0 0 1px 0;
+    box-shadow: 1px 1px 6px #eaeaea;
+
+    tr {
+      td {
+        padding: 10px;
+        vertical-align: top;
+        &:first-child {
+          width: 75%;
+        }
+        &:last-child {
+          width: 25%;
+          text-align: right;
+        }
+      }
+      &.details {
+        td {
+          background: #b5cbdd;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          text-align: left;
+          font-weight: bold;
+        }
+      }
+      &.heading {
+        td {
+          background: #eee;
+          border-bottom: 1px solid #ddd;
+          font-weight: bold;
+        }
+      }
+      &.item {
+        td {
+          border-bottom: 1px solid #eee;
+        }
+      }
+      &.total {
+        td {
+          &:first-child {
+            text-align: right;
+            font-weight: bold;
+          }
+          &:last-child {
+            border-top: 2px solid #eee;
+            font-weight: bold;
+          }
+        }
+      }
+    }
   }
+
 }

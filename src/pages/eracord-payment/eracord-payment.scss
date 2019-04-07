@@ -1,11 +1,38 @@
 page-eracord-payment {
-  .radioBtn {
-    margin-left: 1px;
+  #attributes .attribute_list input.attribute_radio {
+    display:none;
+    margin:10px;
+    + label {
+      display: inline-block;
+      padding: 4px 12px;
+      width: 100%;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      .amount {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+      }
+      .description {
+        font-size: 18px;
+        text-align: center;
+        font-style: italic;
+      }
+    }
+    &:checked + label {
+      background: #ddd;
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 30px;
   }
 
-  .desc {
-    display: inline-flex;
-    width:100%;
-    padding-left: 5px;
+  ul li {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 100%;
   }
+
 }

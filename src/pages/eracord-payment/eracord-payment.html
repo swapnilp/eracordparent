@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Eracord Payment
+      Select Plan
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only on-click="goToPaymentHistory()">
@@ -13,23 +13,24 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page13">
-  <div class="spacer" style="width:300px;height:28px;" id="eracordPayment-spacer11"></div>
-  <div>
-    <img src="assets/img/MwmNa4HlTIqsGbyxL01u_400X100.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
-  </div>
-  <div class="spacer" style="width:300px;height:23px;" id="eracordPayment-spacer12"></div>
+<ion-content padding>
+
   <form [formGroup]="paymentForm" id="newPayment-form1">
-    <ion-item *ngFor="let amount of amounts">
-      <label>
-        <input class="radioBtn" type="radio" formControlName="amount_id" value="{{amount.id}}">
-        <div class="desc">
-          Rs {{amount.amount}}
-          <br />
-          {{amount.description}}
-        </div>
-      </label>
-    </ion-item>
+    <div id="attributes">
+      <ul class="attribute_list">
+        <li *ngFor="let amount of amounts">
+          <div class="radio">
+              <input type="radio" class="attribute_radio" id="radio-{{amount.id}}" formControlName="amount_id" value="{{amount.id}}">
+              <label for="radio-{{amount.id}}">
+                <div class="amount">Rs {{amount.amount}}</div>
+                <div class="description">{{amount.description}}</div>
+              </label>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
   </form>
   <button id="newPayment-button3" ion-button color="positive" full style="font-weight:500;" on-click="registerPayment()" [disabled]="!paymentForm.valid">
     Pay now
